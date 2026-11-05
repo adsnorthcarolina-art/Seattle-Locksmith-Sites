@@ -73,6 +73,7 @@ PALETTES = [
     ("#123C5A", "#FF8C69", "#123C5A", "#EFF4F8"),  # ocean + coral
     ("#2A1E4A", "#FFB347", "#2A1E4A", "#F4F2F8"),  # royal purple + amber
     ("#2B1D14", "#E39A4F", "#2B1D14", "#F6F2EC"),  # espresso + copper
+    ("#0B2A5B", "#E0282E", "#FFFFFF", "#F3F5F9"),  # navy + red (logo colors red/blue)
 ]
 
 

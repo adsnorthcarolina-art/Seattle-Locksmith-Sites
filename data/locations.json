@@ -200,7 +200,7 @@
     "phone": "206-984-6356",
     "email": "nicole@bobslocksmithseattle.com",
     "since": "2014",
-    "palette": 2,
+    "palette": 10,
     "gtm": "",
     "maps_embed": "",
     "neighborhoods": [
@@ -258,9 +258,39 @@
     "gallery": [
       [
         "g0.jpg",
-        "{{business}} mobile locksmith serving {{city}}",
+        "{{business}} service vehicle on a call in {{city}}",
         1400,
         1050
+      ],
+      [
+        "g7.jpg",
+        "Key cutting machine in the {{business}} van, {{city}}",
+        900,
+        1200
+      ],
+      [
+        "g0k.jpg",
+        "Replacement key fob cut and programmed on site in {{city}}",
+        1152,
+        648
+      ],
+      [
+        "g5.jpg",
+        "Residential lock rekeyed in {{city}}",
+        900,
+        1200
+      ],
+      [
+        "g1.jpg",
+        "Key blanks and transponder chips stocked on the van",
+        675,
+        1200
+      ],
+      [
+        "g8.jpg",
+        "Car door lock cylinder repaired in {{city}}",
+        576,
+        1024
       ]
     ]
   }
