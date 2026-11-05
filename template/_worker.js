@@ -5,6 +5,11 @@ export default {
     const url = new URL(request.url);
     let host = url.hostname.toLowerCase();
     const isPagesDev = host.endsWith(".pages.dev");
+    // Production preview host -> canonical domain (avoid duplicate indexing). Keep deploy previews (<hash>.project.pages.dev) working.
+    if (host === "seattle-locksmith-sites.pages.dev") {
+      url.hostname = "www." + DEFAULT;
+      return Response.redirect(url.toString(), 301);
+    }
     if (!isPagesDev && !host.startsWith("www.")) {
       url.hostname = "www." + host;
       return Response.redirect(url.toString(), 301);
