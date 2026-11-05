@@ -1,0 +1,20 @@
+[
+  {"name": "Schlage", "url": "https://www.schlage.com/", "cat": "Residential & smart locks", "note": "Encode smart deadbolts, Grade 1 deadbolts and levers"},
+  {"name": "Kwikset", "url": "https://www.kwikset.com/", "cat": "Residential & smart locks", "note": "SmartKey rekeyable locks, Halo and Kevo smart locks"},
+  {"name": "Yale", "url": "https://www.yalehome.com/", "cat": "Residential & smart locks", "note": "Assure Lock smart deadbolts and keypad locks"},
+  {"name": "August", "url": "https://august.com/", "cat": "Residential & smart locks", "note": "Retrofit Wi-Fi smart locks that keep your existing keys"},
+  {"name": "Baldwin", "url": "https://www.baldwinhardware.com/", "cat": "Residential & smart locks", "note": "Premium handlesets and deadbolts"},
+  {"name": "Ultraloq", "url": "https://u-tec.com/", "cat": "Residential & smart locks", "note": "Fingerprint and keypad smart locks"},
+  {"name": "Level", "url": "https://level.co/", "cat": "Residential & smart locks", "note": "Invisible smart locks with Apple Home Key"},
+  {"name": "Medeco", "url": "https://www.medeco.com/", "cat": "High-security", "note": "Restricted keyways, pick- and drill-resistant cylinders"},
+  {"name": "Mul-T-Lock", "url": "https://www.mul-t-lock.com/", "cat": "High-security", "note": "Patented high-security cylinders and padlocks"},
+  {"name": "ABLOY", "url": "https://www.abloy.com/", "cat": "High-security", "note": "Disc-detainer high-security locks"},
+  {"name": "Von Duprin", "url": "https://www.allegion.com/us/en/brands/von-duprin.html", "cat": "Commercial", "note": "Panic bars and exit devices"},
+  {"name": "Detex", "url": "https://www.detex.com/", "cat": "Commercial", "note": "Alarmed exit devices and panic hardware"},
+  {"name": "Adams Rite", "url": "https://www.adamsrite.com/", "cat": "Commercial", "note": "Storefront and aluminum door locks"},
+  {"name": "Sargent", "url": "https://www.sargentlock.com/", "cat": "Commercial", "note": "Commercial mortise locks and exit devices"},
+  {"name": "Corbin Russwin", "url": "https://www.corbinrusswin.com/", "cat": "Commercial", "note": "Commercial locks and master key systems"},
+  {"name": "LCN", "url": "https://www.allegion.com/us/en/brands/lcn.html", "cat": "Commercial", "note": "Door closers"},
+  {"name": "Master Lock", "url": "https://www.masterlock.com/", "cat": "Padlocks & safes", "note": "Padlocks, lockboxes and safes"},
+  {"name": "SentrySafe", "url": "https://www.sentrysafe.com/", "cat": "Padlocks & safes", "note": "Home and office safes"}
+]

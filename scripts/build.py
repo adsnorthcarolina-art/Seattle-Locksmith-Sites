@@ -23,6 +23,41 @@ REVIEWS_FILE = ROOT / "data" / "reviews.json"
 REVIEWS = json.loads(REVIEWS_FILE.read_text()) if REVIEWS_FILE.exists() else {"rating": "", "count": "", "reviews": []}
 AREA_TPL = (T / "area.html").read_text()
 FAQS = json.loads((ROOT / "data" / "faqs.json").read_text())
+BRANDS = json.loads((ROOT / "data" / "brands.json").read_text())
+
+
+def brands_section(f):
+    cats = []
+    for b in BRANDS:
+        if b["cat"] not in cats:
+            cats.append(b["cat"])
+    cols = []
+    for c in cats:
+        items = "".join(f'<li><a href="{htmlmod.escape(b["url"])}" target="_blank" rel="noopener">{htmlmod.escape(b["name"])}</a><span>{htmlmod.escape(b["note"])}</span></li>' for b in BRANDS if b["cat"] == c)
+        cols.append(f'      <div class="brandcol"><h3>{htmlmod.escape(c)}</h3><ul>{items}</ul></div>')
+    return f"""<section class="seam" aria-labelledby="h-brands">
+  <div class="wrap">
+    <h2 id="h-brands">Lock brands we install and service in {f['city']}</h2>
+    <p>{f['business']} carries, installs, rekeys and repairs hardware from the manufacturers below. Links go to the official manufacturer sites so you can compare models before you call.</p>
+    <div class="brandgrid">
+{chr(10).join(cols)}
+    </div>
+  </div>
+</section>"""
+
+
+def autolink_brands(html):
+    """Link the first plain-text mention of each brand name (outside tags/links/headings) to the manufacturer site."""
+    for b in sorted(BRANDS, key=lambda x: -len(x["name"])):
+        name = b["name"]
+        pat = re.compile(r"(?<![\w/-])" + re.escape(name) + r"(?![\w-])(?![^<]*>)(?![^<]*</a>)(?![^<]*</h[1-3]>)(?![^<]*</summary>)")
+        html, n = pat.subn(f'<a href="{htmlmod.escape(b["url"])}" target="_blank" rel="noopener">{name}</a>', html, count=1)
+    return html
+
+
+def brand_links_inline():
+    return ", ".join(f'<a href="{htmlmod.escape(b["url"])}" target="_blank" rel="noopener">{htmlmod.escape(b["name"])}</a>' for b in BRANDS[:9])
+
 IMG_DIR = T / "img"
 OUT = ROOT / "sites"
 
@@ -101,6 +136,7 @@ FAQ_SCHEMA = """<script type="application/ld+json">
 {"@type":"Question","name":"Can you make a car key if I lost the only one?","acceptedAnswer":{"@type":"Answer","text":"Yes. We cut and program keys from scratch for almost every make and model, including transponder keys and push-to-start fobs, right where the car is. No tow to the dealer."}},
 {"@type":"Question","name":"Will you damage my lock or my car?","acceptedAnswer":{"@type":"Answer","text":"No. Lockouts are opened with picks, bypass tools and air wedges, not drills or slim jims, whenever the lock allows it. If drilling is the only option we tell you first."}},
 {"@type":"Question","name":"Should I rekey or replace my locks after moving?","acceptedAnswer":{"@type":"Answer","text":"If the hardware is in good shape, rekeying is cheaper and just as secure: the old keys stop working and you get one new key for every door. We replace only locks that are worn, damaged or low-grade."}},
+{"@type":"Question","name":"Do you cover the whole {{area_code}} area?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every {{city}} neighborhood plus {{nearby_inline}}. Whether you call it {{nicknames}} or just the {{area_code}}, a technician is usually 20 to 40 minutes away."}},
 {"@type":"Question","name":"Are you licensed and insured?","acceptedAnswer":{"@type":"Answer","text":"Yes. {{business}} is licensed and insured, and every technician is background-checked and carries ID."}}
 ]}
 </script>"""
@@ -419,6 +455,10 @@ def fields(loc):
         "google_url": REVIEWS.get("google_url", "#"), "write_review_url": REVIEWS.get("write_url", "#"),
         "review_schema": review_schema(),
         "_hoods": hoods, "_nearby": nearby,
+        "nicknames": joined(loc.get("nicknames") or []), "area_code": loc.get("area_code", ""),
+        "region_terms": joined(loc.get("region_terms") or []), "airport": loc.get("airport", ""),
+        "alt_names_schema": "".join(f',"{htmlmod.escape(n.replace("the ", ""), quote=True)}"' for n in (loc.get("nicknames") or [])),
+        "brand_links": brand_links_inline(),
         "hood_links": "\n      ".join(f'<li><a href="/{area_slug(n)}/">{htmlmod.escape(n)}</a></li>' for n in hoods) or f"<li>{city}</li>",
         "nearby_links": "\n      ".join(f'<li><a href="/{area_slug(n)}/">{htmlmod.escape(n)}</a></li>' for n in nearby) or "<li>Surrounding communities</li>",
         **pal,
@@ -427,6 +467,7 @@ def fields(loc):
     f["whatsapp_btn"] = (f'<a class="wa" href="https://wa.me/1{wa}?text=Hi%2C%20I%20need%20a%20locksmith%20in%20{city}" target="_blank" rel="noopener">WhatsApp</a>' if wa else "")
     f["reviews_section"] = reviews_section(f)
     f["gallery_section"] = gallery_section(f)
+    f["brands_section"] = brands_section(f)
     f["lead_form"] = FORM
     return f
 
@@ -463,7 +504,7 @@ def render_product(p, f):
         "schema_extra": PRODUCT_SCHEMA.format(name=htmlmod.escape(p["name"], quote=True), business=f["business"], phone=f["phone"], domain=f["domain"], city=f["city"],
                                               desc=htmlmod.escape(desc, quote=True), image=p["image"], slug=p["slug"], price=p["price"]) + faq_schema(pfaq, f),
     })
-    pf["content"] = sub(PRODUCT_TPL, pf)
+    pf["content"] = autolink_brands(sub(PRODUCT_TPL, pf))
     for k in NAV_KEYS:
         pf[f"cur_{k}"] = 'aria-current="page"' if k == "services" else ""
     out = sub(BASE, pf)
@@ -485,7 +526,7 @@ def render_page(slug, f):
         "page_title": htmlmod.escape(sub(title, f), quote=True),
         "page_desc": htmlmod.escape(sub(desc, f), quote=True),
         "path": path,
-        "content": sub(body, f),
+        "content": autolink_brands(sub(body, f)) if slug not in ("", "about") else sub(body, f),
         "schema_extra": (sub(FAQ_SCHEMA, f) if slug == "" else "") + ('<meta name="robots" content="noindex">' if slug in ("thank-you", "404") else ""),
     })
     for k in NAV_KEYS:

@@ -250,6 +250,13 @@ footer .inline-links li{padding:0;font-size:.85rem}
 .more-fields{margin:.25rem 0 .75rem}
 .more-fields summary{cursor:pointer;font-size:.9rem;color:var(--steel);font-weight:500}
 .more-fields[open] summary{margin-bottom:.5rem}
+.brandgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem 2.5rem;margin-top:1.5rem}
+.brandcol h3{font-size:1.1rem;margin:0 0 .5rem;padding-bottom:.4rem;border-bottom:2px solid var(--signal)}
+.brandcol ul{list-style:none;padding:0;margin:0}
+.brandcol li{padding:.45rem 0;border-top:1px solid var(--panel)}
+.brandcol li a{font-weight:600;text-decoration:none;border-bottom:2px solid transparent}
+.brandcol li a:hover{border-bottom-color:var(--signal)}
+.brandcol li span{display:block;font-size:.88rem;color:var(--steel)}
 </style>
 <script type="application/ld+json">
 {
@@ -257,6 +264,7 @@ footer .inline-links li{padding:0;font-size:.85rem}
   "@type": "Locksmith",
   "@id": "https://www.seattlelocksmithservice.com/#business",
   "name": "Seattle Locksmith Service",
+  "alternateName": ["Seattle Locksmith","Emerald City","Jet City","Rain City","Seatown"],
   "url": "https://www.seattlelocksmithservice.com/",
   "logo": "https://www.seattlelocksmithservice.com/img/logo.png",
   "image": "https://www.seattlelocksmithservice.com/img/logo.png",
@@ -266,7 +274,7 @@ footer .inline-links li{padding:0;font-size:.85rem}
   "priceRange": "$$",
   "address": {"@type":"PostalAddress","addressLocality":"Seattle","addressRegion":"WA","postalCode":"98122","addressCountry":"US"},
   "geo": {"@type":"GeoCoordinates","latitude":47.6131,"longitude":-122.3045},
-  "areaServed": [{"@type":"City","name":"Seattle","sameAs":"https://en.wikipedia.org/wiki/Seattle"},{"@type":"City","name":"Bellevue"},{"@type":"City","name":"Kirkland"},{"@type":"City","name":"Renton"},{"@type":"City","name":"Burien"},{"@type":"City","name":"Bothell"},{"@type":"City","name":"Lynnwood"},{"@type":"City","name":"Shoreline"}],
+  "areaServed": [{"@type":"City","name":"Seattle","sameAs":"https://en.wikipedia.org/wiki/Seattle"},{"@type":"AdministrativeArea","name":"King County"},{"@type":"Place","name":"Puget Sound region"},{"@type":"City","name":"Bellevue"},{"@type":"City","name":"Kirkland"},{"@type":"City","name":"Renton"},{"@type":"City","name":"Burien"},{"@type":"City","name":"Bothell"},{"@type":"City","name":"Lynnwood"},{"@type":"City","name":"Shoreline"}],
   "sameAs": ["https://en.wikipedia.org/wiki/Seattle","https://www.facebook.com/Seattlelocksmithservice/","https://x.com/seattlelocksm9","https://www.instagram.com/seattle_locksmith_service","https://www.youtube.com/@SEATTLELOCKSMITHSERVICE","https://www.tiktok.com/@seattlelocksmithservice"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"53","bestRating":"5"},"review":[{"@type":"Review","author":{"@type":"Person","name":"Trina Knight"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Seattle Locksmith Service provided excellent service from start to finish. They responded quickly, arrived on time, and were very professional throughout the entire process. The technician carefully assessed the situation and fixed my lock efficiently without any damage or delays. Their pricing was fair and transparent, with no hidden charges."},{"@type":"Review","author":{"@type":"Person","name":"Jayram RK"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"I had an emergency with my car lock and Seattle Locksmith saved the day. They arrived fast, unlocked my car without any scratches and were very polite and professional throughout the process. The price was fair and the service was top-notch. I highly recommend them for any car locksmith needs."},{"@type":"Review","author":{"@type":"Person","name":"Lim Kooi Hock"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"The technician arrived on time, was extremely professional, and handled the situation calmly and efficiently. He explained what he was doing and made sure not to damage the lock or door. It&#x27;s hard to find a locksmith you can truly trust but Seattle Locksmith Service exceeded my expectations."},{"@type":"Review","author":{"@type":"Person","name":"Tonya Smith"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Gary provided fast, friendly, honest, and professional service during my recent lockout experience. He called me back almost immediately and arrived at my house in ten minutes ready to work. He resolved the issue well, and was very courteous and helpful. I would use this service again."},{"@type":"Review","author":{"@type":"Person","name":"JC"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"He came over and did 12 locks in an hour. Amazing. Had old 30 year door locks in dull brown, rekeyed everything into brushed nickel. The job ended up bigger than he thought. He got it done in record time. Great effort."}],
   "openingHoursSpecification": {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"},
   "paymentAccepted": "Cash, Visa, Mastercard, American Express, Discover, Debit Card, Apple Pay, Google Pay, Zelle, Venmo, Cash App",
@@ -339,7 +347,8 @@ footer .inline-links li{padding:0;font-size:.85rem}
   <div class="wrap two">
     <div class="prose">
       <h2 id="h2a">Who we are</h2>
-      <p>Seattle Locksmith Service is a local, mobile locksmith company based in <a href="https://en.wikipedia.org/wiki/Seattle" rel="noopener">Seattle, WA</a>. Since 2010 we've opened doors, cut and programmed car keys, and rekeyed and installed locks for homeowners, drivers, landlords and businesses across the city and the Eastside. There's no storefront to drive to — the van is the shop, and it comes to you.</p>
+      <p>Seattle Locksmith Service is a local, mobile locksmith company based in <a href="https://en.wikipedia.org/wiki/Seattle" rel="noopener">Seattle, WA</a>. Since 2010 we've opened doors, cut and programmed car keys, and rekeyed and installed locks for homeowners, drivers, landlords and businesses across the city and the Eastside. There's no storefront to drive to — the van is the shop, and it comes to you anywhere in the Emerald City, Jet City, Rain City and Seatown — the 206 — and the surrounding Pacific Northwest (PNW), Puget Sound and King County communities.</p>
+      <p>We install and service hardware from <a href="https://www.schlage.com/" target="_blank" rel="noopener">Schlage</a>, <a href="https://www.kwikset.com/" target="_blank" rel="noopener">Kwikset</a>, <a href="https://www.yalehome.com/" target="_blank" rel="noopener">Yale</a>, <a href="https://august.com/" target="_blank" rel="noopener">August</a>, <a href="https://www.baldwinhardware.com/" target="_blank" rel="noopener">Baldwin</a>, <a href="https://u-tec.com/" target="_blank" rel="noopener">Ultraloq</a>, <a href="https://level.co/" target="_blank" rel="noopener">Level</a>, <a href="https://www.medeco.com/" target="_blank" rel="noopener">Medeco</a>, <a href="https://www.mul-t-lock.com/" target="_blank" rel="noopener">Mul-T-Lock</a> and the other manufacturers on our <a href="/#h-brands">brands list</a>.</p>
       <h2>How we work</h2>
       <ul>
         <li><strong>24 hours a day.</strong> Phones are answered by a dispatcher, not a voicemail, every hour of every day including holidays.</li>

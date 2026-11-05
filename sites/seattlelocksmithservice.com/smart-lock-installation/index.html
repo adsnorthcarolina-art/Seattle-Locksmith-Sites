@@ -250,6 +250,13 @@ footer .inline-links li{padding:0;font-size:.85rem}
 .more-fields{margin:.25rem 0 .75rem}
 .more-fields summary{cursor:pointer;font-size:.9rem;color:var(--steel);font-weight:500}
 .more-fields[open] summary{margin-bottom:.5rem}
+.brandgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem 2.5rem;margin-top:1.5rem}
+.brandcol h3{font-size:1.1rem;margin:0 0 .5rem;padding-bottom:.4rem;border-bottom:2px solid var(--signal)}
+.brandcol ul{list-style:none;padding:0;margin:0}
+.brandcol li{padding:.45rem 0;border-top:1px solid var(--panel)}
+.brandcol li a{font-weight:600;text-decoration:none;border-bottom:2px solid transparent}
+.brandcol li a:hover{border-bottom-color:var(--signal)}
+.brandcol li span{display:block;font-size:.88rem;color:var(--steel)}
 </style>
 <script type="application/ld+json">
 {
@@ -257,6 +264,7 @@ footer .inline-links li{padding:0;font-size:.85rem}
   "@type": "Locksmith",
   "@id": "https://www.seattlelocksmithservice.com/#business",
   "name": "Seattle Locksmith Service",
+  "alternateName": ["Seattle Locksmith","Emerald City","Jet City","Rain City","Seatown"],
   "url": "https://www.seattlelocksmithservice.com/",
   "logo": "https://www.seattlelocksmithservice.com/img/logo.png",
   "image": "https://www.seattlelocksmithservice.com/img/logo.png",
@@ -266,7 +274,7 @@ footer .inline-links li{padding:0;font-size:.85rem}
   "priceRange": "$$",
   "address": {"@type":"PostalAddress","addressLocality":"Seattle","addressRegion":"WA","postalCode":"98122","addressCountry":"US"},
   "geo": {"@type":"GeoCoordinates","latitude":47.6131,"longitude":-122.3045},
-  "areaServed": [{"@type":"City","name":"Seattle","sameAs":"https://en.wikipedia.org/wiki/Seattle"},{"@type":"City","name":"Bellevue"},{"@type":"City","name":"Kirkland"},{"@type":"City","name":"Renton"},{"@type":"City","name":"Burien"},{"@type":"City","name":"Bothell"},{"@type":"City","name":"Lynnwood"},{"@type":"City","name":"Shoreline"}],
+  "areaServed": [{"@type":"City","name":"Seattle","sameAs":"https://en.wikipedia.org/wiki/Seattle"},{"@type":"AdministrativeArea","name":"King County"},{"@type":"Place","name":"Puget Sound region"},{"@type":"City","name":"Bellevue"},{"@type":"City","name":"Kirkland"},{"@type":"City","name":"Renton"},{"@type":"City","name":"Burien"},{"@type":"City","name":"Bothell"},{"@type":"City","name":"Lynnwood"},{"@type":"City","name":"Shoreline"}],
   "sameAs": ["https://en.wikipedia.org/wiki/Seattle","https://www.facebook.com/Seattlelocksmithservice/","https://x.com/seattlelocksm9","https://www.instagram.com/seattle_locksmith_service","https://www.youtube.com/@SEATTLELOCKSMITHSERVICE","https://www.tiktok.com/@seattlelocksmithservice"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"53","bestRating":"5"},"review":[{"@type":"Review","author":{"@type":"Person","name":"Trina Knight"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Seattle Locksmith Service provided excellent service from start to finish. They responded quickly, arrived on time, and were very professional throughout the entire process. The technician carefully assessed the situation and fixed my lock efficiently without any damage or delays. Their pricing was fair and transparent, with no hidden charges."},{"@type":"Review","author":{"@type":"Person","name":"Jayram RK"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"I had an emergency with my car lock and Seattle Locksmith saved the day. They arrived fast, unlocked my car without any scratches and were very polite and professional throughout the process. The price was fair and the service was top-notch. I highly recommend them for any car locksmith needs."},{"@type":"Review","author":{"@type":"Person","name":"Lim Kooi Hock"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"The technician arrived on time, was extremely professional, and handled the situation calmly and efficiently. He explained what he was doing and made sure not to damage the lock or door. It&#x27;s hard to find a locksmith you can truly trust but Seattle Locksmith Service exceeded my expectations."},{"@type":"Review","author":{"@type":"Person","name":"Tonya Smith"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Gary provided fast, friendly, honest, and professional service during my recent lockout experience. He called me back almost immediately and arrived at my house in ten minutes ready to work. He resolved the issue well, and was very courteous and helpful. I would use this service again."},{"@type":"Review","author":{"@type":"Person","name":"JC"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"He came over and did 12 locks in an hour. Amazing. Had old 30 year door locks in dull brown, rekeyed everything into brushed nickel. The job ended up bigger than he thought. He got it done in record time. Great effort."}],
   "openingHoursSpecification": {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"},
   "paymentAccepted": "Cash, Visa, Mastercard, American Express, Discover, Debit Card, Apple Pay, Google Pay, Zelle, Venmo, Cash App",
@@ -334,7 +342,7 @@ footer .inline-links li{padding:0;font-size:.85rem}
   <div class="wrap">
     <p class="crumb"><a href="/services/">Services</a></p>
     <h1 id="h1">Smart Lock Installation in Seattle, WA</h1>
-    <p class="lede">Smart Lock Installation by <a href="https://en.wikipedia.org/wiki/Seattle" rel="noopener" style="color:inherit">Seattle</a> Locksmith Service in Seattle, WA. August, Yale, Schlage Encode, Kwikset Halo and Level smart locks installed, paired with your phone and tested at your Seattle, WA home or office. Keypad and keyless entry for homes, rentals and Airbnbs. Same day, free estimate, licensed and insured.</p>
+    <p class="lede">Smart Lock Installation by <a href="https://en.wikipedia.org/wiki/Seattle" rel="noopener" style="color:inherit">Seattle</a> Locksmith Service in Seattle, WA. <a href="https://august.com/" target="_blank" rel="noopener">August</a>, <a href="https://www.yalehome.com/" target="_blank" rel="noopener">Yale</a>, <a href="https://www.schlage.com/" target="_blank" rel="noopener">Schlage</a> Encode, <a href="https://www.kwikset.com/" target="_blank" rel="noopener">Kwikset</a> Halo and <a href="https://level.co/" target="_blank" rel="noopener">Level</a> smart locks installed, paired with your phone and tested at your Seattle, WA home or office. Keypad and keyless entry for homes, rentals and Airbnbs. Same day, free estimate, licensed and insured.</p>
     <a class="bignum" href="tel:+12063099023"><span>Call now, 24 hours a day · from $55</span>206-309-9023</a>
   </div>
   <div class="door" aria-hidden="true"><i></i><i></i></div>
@@ -360,7 +368,7 @@ footer .inline-links li{padding:0;font-size:.85rem}
       <h2>Service area</h2>
       <p>Smart Lock Installation is available 24 hours a day across all of Seattle, WA — Capitol Hill, Central District, Downtown, Belltown, Queen Anne, South Lake Union and every other neighborhood — plus Bellevue, Kirkland, Renton, Burien, Bothell, Lynnwood and Shoreline. <a href="/service-areas/">See every area we cover.</a></p>
       <h2>Smart Lock Installation – common questions</h2>
-      <details><summary>Which smart locks do you install?</summary><p>August, Yale, Schlage Encode, Kwikset Halo, Level, Ultraloq and most others. We can also recommend one that fits your door and your phone.</p></details>
+      <details><summary>Which smart locks do you install?</summary><p>August, Yale, Schlage Encode, Kwikset Halo, Level, <a href="https://u-tec.com/" target="_blank" rel="noopener">Ultraloq</a> and most others. We can also recommend one that fits your door and your phone.</p></details>
       <details><summary>Will a smart lock work on my existing door?</summary><p>Almost always. We check the door thickness, backset and alignment, and most smart locks replace a standard deadbolt without new holes.</p></details>
       <details><summary>Do you set it up with my phone and Wi-Fi?</summary><p>Yes. We install the lock, pair it with your phone, add user codes and test it before we leave.</p></details>
       <details><summary>How fast can you get to me in Seattle?</summary><p>Most calls in Seattle are reached within 20 to 40 minutes. Seattle Locksmith Service runs mobile units around the city 24 hours a day, and the dispatcher gives you an arrival time when you call 206-309-9023.</p></details>

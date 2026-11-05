@@ -217,3 +217,10 @@ footer .inline-links li{padding:0;font-size:.85rem}
 .more-fields{margin:.25rem 0 .75rem}
 .more-fields summary{cursor:pointer;font-size:.9rem;color:var(--steel);font-weight:500}
 .more-fields[open] summary{margin-bottom:.5rem}
+.brandgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem 2.5rem;margin-top:1.5rem}
+.brandcol h3{font-size:1.1rem;margin:0 0 .5rem;padding-bottom:.4rem;border-bottom:2px solid var(--signal)}
+.brandcol ul{list-style:none;padding:0;margin:0}
+.brandcol li{padding:.45rem 0;border-top:1px solid var(--panel)}
+.brandcol li a{font-weight:600;text-decoration:none;border-bottom:2px solid transparent}
+.brandcol li a:hover{border-bottom-color:var(--signal)}
+.brandcol li span{display:block;font-size:.88rem;color:var(--steel)}

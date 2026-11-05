@@ -55,6 +55,19 @@
     },
     "place_id": "ChIJ9yyC2QXuBicRqwKQfd8T2Qg",
     "sms": "206-309-9023",
-    "whatsapp": ""
+    "whatsapp": "",
+    "nicknames": [
+      "the Emerald City",
+      "Jet City",
+      "Rain City",
+      "Seatown"
+    ],
+    "area_code": "206",
+    "region_terms": [
+      "Pacific Northwest (PNW)",
+      "Puget Sound",
+      "King County"
+    ],
+    "airport": "SEA"
   }
 ]
