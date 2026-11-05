@@ -1,7 +1,71 @@
 {
   "rating": "5.0",
   "count": "6",
-  "google_url": "https://www.google.com/maps/search/?api=1&query=Bob%27s+Locksmith&query_place_id=ChIJpczpEUP9t6YRNEgmyIAhtes",
+  "google_url": "https://maps.app.goo.gl/dRCJnx7QRTFRpMu2A",
   "write_url": "https://search.google.com/local/writereview?placeid=ChIJpczpEUP9t6YRNEgmyIAhtes",
-  "reviews": []
+  "reviews": [
+    {
+      "name": "Dovid Minkowicz",
+      "stars": 5,
+      "text": "The only locksmith business I've worked with that didn't take advantage of the fact that I was locked out of my house and charge me a high price because of it. The price was excellent!!",
+      "tags": [
+        "house-lockout-service",
+        "emergency-lockout-service",
+        "residential"
+      ]
+    },
+    {
+      "name": "Toba Hayes",
+      "stars": 5,
+      "text": "The work was done faster than i expected and the technician still took the time to answer all my questions. really appreciated that!!!",
+      "tags": [
+        "lock-rekeying",
+        "lock-repair",
+        "deadbolt-lock-installation"
+      ]
+    },
+    {
+      "name": "Lenier Delgado",
+      "stars": 5,
+      "text": "It's worth mentioning when a company does a good job. I received the service I was looking for and was happy with the work.",
+      "tags": [
+        "car-key-replacement",
+        "key-fob-programming",
+        "spare-car-key"
+      ]
+    },
+    {
+      "name": "Amir",
+      "stars": 5,
+      "text": "Amazing locksmith service. Keep up the good work and transparent service",
+      "tags": [
+        "car-lockout-service",
+        "ignition-repair",
+        "key-duplication"
+      ]
+    },
+    {
+      "name": "Bryan Gonzalez",
+      "stars": 5,
+      "text": "The company took care of my request, and I was pleased with the result. I appreciate the friendly service and the effort they put in",
+      "tags": [
+        "smart-lock-installation",
+        "high-security-locks",
+        "commercial-locksmith-access-control"
+      ]
+    },
+    {
+      "name": "ihartbeer",
+      "stars": 5,
+      "text": "The locksmith technician was legit honest and trustworthy. Very happy with today service",
+      "tags": [
+        "broken-key-extraction",
+        "car-door-lock-repair",
+        "safe-opening",
+        "commercial-lockout-service",
+        "master-key-systems",
+        "panic-bar-installation"
+      ]
+    }
+  ]
 }
