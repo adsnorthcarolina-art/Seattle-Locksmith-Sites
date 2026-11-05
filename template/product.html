@@ -23,12 +23,16 @@
       </ol>
       <h2>Service area</h2>
       <p>{{p_name}} is available 24 hours a day across all of {{cityst}} — {{hoods_short}} and every other neighborhood — plus {{nearby_inline}}. <a href="/service-areas/">See every area we cover.</a></p>
+      <h2>{{p_name}} – common questions</h2>
+{{p_faq}}
     </div>
     <div>
       <div class="aside">
         <h3>{{p_name}}</h3>
         <p><b>{{business}}</b><br>{{cityst}} {{zip}}<br>Open 24 hours · Licensed &amp; insured<br>From <b>${{p_price}}</b> · Free estimate · Military discount</p>
         <a class="call" href="tel:+1{{phone_digits}}">Call {{phone}}</a>
+        <p class="cta-row"><a class="sms" href="sms:+1{{sms_digits}}?&body=Hi%2C%20I%20need%20{{p_name}}%20in%20{{city}}">Text us</a>{{whatsapp_btn}}</p>
+        <p class="rating"><span class="stars">★★★★★</span> {{rating}} · <a href="{{google_url}}" target="_blank" rel="noopener">{{review_count}} Google reviews</a></p>
       </div>
       <div class="aside" style="margin-top:1rem">
         <h3>Related services</h3>
@@ -43,3 +47,4 @@
     </div>
   </div>
 </section>
+{{p_reviews}}

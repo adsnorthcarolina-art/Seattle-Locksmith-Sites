@@ -19,6 +19,10 @@ FORM = (T / "form.html").read_text()
 LOCATIONS = json.loads((ROOT / "data" / "locations.json").read_text())
 PRODUCTS = json.loads((ROOT / "data" / "products.json").read_text())
 PRODUCT_TPL = (T / "product.html").read_text()
+REVIEWS_FILE = ROOT / "data" / "reviews.json"
+REVIEWS = json.loads(REVIEWS_FILE.read_text()) if REVIEWS_FILE.exists() else {"rating": "", "count": "", "reviews": []}
+AREA_TPL = (T / "area.html").read_text()
+FAQS = json.loads((ROOT / "data" / "faqs.json").read_text())
 IMG_DIR = T / "img"
 OUT = ROOT / "sites"
 
@@ -218,6 +222,160 @@ def render_blog(f):
 
 ROBOTS = "User-agent: *\nAllow: /\nSitemap: https://www.{domain}/sitemap.xml\n"
 
+SOCIAL_ICONS = {
+    "facebook": ("Facebook", "M14 8h3V4h-3c-2.8 0-5 2.2-5 5v2H6v4h3v9h4v-9h3l1-4h-4V9c0-.6.4-1 1-1z"),
+    "x": ("X (Twitter)", "M3 3h5l5 7 6-7h3l-7.5 8.6L21 21h-5l-5.3-7.4L4 21H1l8-9.2z"),
+    "instagram": ("Instagram", "M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm5 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm5-3.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"),
+    "youtube": ("YouTube", "M22 8.2a3 3 0 0 0-2.1-2.1C18 5.6 12 5.6 12 5.6s-6 0-7.9.5A3 3 0 0 0 2 8.2 31 31 0 0 0 1.6 12 31 31 0 0 0 2 15.8a3 3 0 0 0 2.1 2.1c1.9.5 7.9.5 7.9.5s6 0 7.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .4-3.8 31 31 0 0 0-.4-3.8zM10 15V9l5.2 3z"),
+    "tiktok": ("TikTok", "M16.5 2c.3 2.3 1.7 3.9 4 4.1v3.4c-1.5 0-2.9-.5-4-1.3v6.6a5.9 5.9 0 1 1-5.9-5.9c.3 0 .7 0 1 .1v3.5a2.5 2.5 0 1 0 1.5 2.3V2z"),
+}
+
+
+def social_html(social):
+    if not social:
+        return ""
+    out = []
+    for k, url in social.items():
+        if k not in SOCIAL_ICONS or not url:
+            continue
+        label, path = SOCIAL_ICONS[k]
+        out.append(f'<a href="{htmlmod.escape(url)}" target="_blank" rel="noopener" aria-label="{label}" title="{label}"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="{path}"/></svg></a>')
+    return '<div class="social">' + "".join(out) + "</div>"
+
+
+def stars(n):
+    return '<span class="stars" aria-label="%d out of 5 stars">%s</span>' % (n, "★" * n + "☆" * (5 - n))
+
+
+def review_cards(revs, f, limit=6):
+    cards = []
+    for r in revs[:limit]:
+        cards.append(
+            f'      <blockquote class="rev"><p>{stars(r["stars"])}</p><p class="rev-text">“{htmlmod.escape(r["text"])}”</p>'
+            f'<footer><b>{htmlmod.escape(r["name"])}</b> · Google review</footer></blockquote>')
+    return "\n".join(cards)
+
+
+def reviews_section(f, revs=None, heading=None, limit=6):
+    revs = revs if revs is not None else REVIEWS["reviews"]
+    if not revs:
+        return ""
+    heading = heading or f"What {f['city']} customers say"
+    return f"""<section class="seam reviews" aria-labelledby="h-reviews">
+  <div class="wrap">
+    <div class="rev-head">
+      <h2 id="h-reviews">{heading}</h2>
+      <p class="rating"><span class="stars">★★★★★</span> <b>{REVIEWS['rating']}</b> rating · <a href="{REVIEWS['google_url']}" target="_blank" rel="noopener">{REVIEWS['count']} Google reviews</a></p>
+    </div>
+    <div class="grid revs">
+{review_cards(revs, f, limit)}
+    </div>
+    <p class="rev-cta"><a class="more" href="{REVIEWS['write_url']}" target="_blank" rel="noopener">Leave us a review on Google</a></p>
+  </div>
+</section>"""
+
+
+def reviews_for(slug):
+    tagged = [r for r in REVIEWS["reviews"] if slug in r.get("tags", [])]
+    rest = [r for r in REVIEWS["reviews"] if r not in tagged]
+    return (tagged + rest)[:3]
+
+
+def review_schema():
+    if not REVIEWS["reviews"]:
+        return ""
+    items = ",".join(
+        '{"@type":"Review","author":{"@type":"Person","name":"%s"},"reviewRating":{"@type":"Rating","ratingValue":"%d","bestRating":"5"},"reviewBody":"%s"}'
+        % (htmlmod.escape(r["name"], quote=True), r["stars"], htmlmod.escape(r["text"], quote=True)) for r in REVIEWS["reviews"][:5])
+    return (f',"aggregateRating":{{"@type":"AggregateRating","ratingValue":"{REVIEWS["rating"]}","reviewCount":"{REVIEWS["count"]}","bestRating":"5"}},'
+            f'"review":[{items}]')
+
+
+GALLERY = [
+    ("g0.jpg", "{{business}} van on a job in {{city}}", 1400, 1050),
+    ("g6.jpg", "Keypad lock installed on a commercial door in {{city}}", 576, 1024),
+    ("g1.jpg", "Smart key programmed on site in {{city}}", 675, 1200),
+    ("g5.jpg", "New deadbolt and knob installed in {{city}}", 900, 1200),
+    ("g4.jpg", "Lock picks and bypass tools used for non-destructive entry", 1400, 1050),
+    ("g3.jpg", "Remote-head car key cut and programmed in {{city}}", 576, 1024),
+]
+
+
+def gallery_section(f):
+    if not (IMG_DIR / "gallery").exists():
+        return ""
+    items = "\n".join(
+        f'      <figure><img src="/img/gallery/{fn}" alt="{htmlmod.escape(sub(alt, f))}" loading="lazy" width="{w}" height="{h}"><figcaption>{htmlmod.escape(sub(alt, f))}</figcaption></figure>'
+        for fn, alt, w, h in GALLERY if (IMG_DIR / "gallery" / fn).exists())
+    return f"""<section class="seam" aria-labelledby="h-gallery">
+  <div class="wrap">
+    <h2 id="h-gallery">Recent work around {f['city']}</h2>
+    <div class="gallery">
+{items}
+    </div>
+  </div>
+</section>"""
+
+
+def faq_html(items, f):
+    return "\n".join(f'      <details><summary>{htmlmod.escape(sub(q, f))}</summary><p>{htmlmod.escape(sub(a, f))}</p></details>' for q, a in items)
+
+
+def faq_schema(items, f):
+    ents = ",".join('{"@type":"Question","name":"%s","acceptedAnswer":{"@type":"Answer","text":"%s"}}'
+                    % (htmlmod.escape(sub(q, f), quote=True), htmlmod.escape(sub(a, f), quote=True)) for q, a in items)
+    return '<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[%s]}</script>' % ents
+
+
+def area_slug(name):
+    return "locksmith-" + re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+
+
+def render_area(name, kind, f):
+    """kind: 'hood' (neighborhood of the city) or 'city' (nearby city)."""
+    slug = area_slug(name)
+    path = f"/{slug}/"
+    pf = dict(f)
+    hoods = [h for h in (f.get("_hoods") or []) if h != name]
+    cities = [c for c in (f.get("_nearby") or []) if c != name]
+    if kind == "hood":
+        where = f"{name}, {f['city']}"
+        intro = (f"{name} is one of the {f['city']} neighborhoods {f['business']} covers every day. Our mobile locksmiths are "
+                 f"positioned around the city, so a lockout in {name} is usually reached within 20 to 40 minutes, any hour of the day or night.")
+        nearby_links = "".join(f'<li><a href="/{area_slug(h)}/">{htmlmod.escape(h)}</a></li>' for h in hoods[:10])
+        nearby_title = f"Other {f['city']} neighborhoods we cover"
+    else:
+        where = f"{name}, {f['st']}"
+        intro = (f"{f['business']} is a mobile locksmith based in {f['city']} that also serves {name}, {f['st']}. The van carries everything needed to "
+                 f"open a door, cut and program a car key, or rekey a home on the spot, so most jobs in {name} are finished in a single visit.")
+        nearby_links = "".join(f'<li><a href="/{area_slug(c)}/">{htmlmod.escape(c)}</a></li>' for c in cities[:10])
+        nearby_title = "Nearby cities we also serve"
+    faqs = [
+        (f"How fast can a locksmith get to {name}?", f"Usually 20 to 40 minutes. {f['business']} runs mobile units around {f['city']} 24 hours a day; the dispatcher gives you an arrival time for {name} when you call {f['phone']}."),
+        (f"Do you charge extra to come to {name}?", f"No. {name} is inside our regular service area, so you pay the same rates as anywhere in {f['city']}. You get a firm price before any work starts, and the estimate is free."),
+        (f"Can you make a car key in {name} if I lost mine?", f"Yes. We cut and program transponder keys, remote-head keys and push-to-start fobs at your location in {name}, for almost every make and model, with no tow to a dealer."),
+        (f"Are you a licensed locksmith serving {name}?", f"Yes. {f['business']} is licensed and insured, in business since {f['since']}, and every technician is background-checked and shows ID on arrival."),
+    ]
+    pf.update({
+        "a_name": htmlmod.escape(name), "a_where": htmlmod.escape(where), "a_intro": htmlmod.escape(intro), "a_slug": slug,
+        "a_nearby_title": nearby_title, "a_nearby": nearby_links,
+        "a_faq": faq_html(faqs, f),
+        "a_reviews": reviews_section(f, REVIEWS["reviews"][:3], heading=f"Reviews from customers around {f['city']}", limit=3),
+        "page_title": htmlmod.escape(f"Locksmith {name} | 24 Hour Locksmith near {where} | {f['business']}", quote=True),
+        "page_desc": htmlmod.escape(f"24/7 mobile locksmith in {name}: car, home and business lockouts, car key replacement, key fob programming, rekeying and lock installation. Licensed & insured since {f['since']}. Call {f['phone']}.", quote=True),
+        "path": path,
+        "schema_extra": faq_schema(faqs, f) + '<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"Locksmith","name":"Locksmith %s","provider":{"@id":"https://www.%s/#business"},"areaServed":{"@type":"%s","name":"%s"},"url":"https://www.%s%s"}</script>'
+                        % (htmlmod.escape(name, quote=True), f["domain"], "Place" if kind == "hood" else "City", htmlmod.escape(name, quote=True), f["domain"], path),
+    })
+    pf["content"] = sub(AREA_TPL, pf)
+    for k in NAV_KEYS:
+        pf[f"cur_{k}"] = 'aria-current="page"' if k == "areas" else ""
+    out = sub(BASE, pf)
+    leftover = re.findall(r"{{\w+}}", out)
+    if leftover:
+        raise SystemExit(f"{f['domain']}{path}: unreplaced {sorted(set(leftover))}")
+    return path, out
+
 
 def wiki_url(loc):
     return loc.get("wiki") or f"https://en.wikipedia.org/wiki/{loc['city'].strip().replace(' ', '_')}"
@@ -254,8 +412,21 @@ def fields(loc):
         "mark": ('<img class="logo" src="/img/logo.png" alt="{{business}} logo" width="52" height="52">' if (IMG_DIR / "logo.png").exists() else MARK.format(signal=pal["c_signal"], ink=pal["c_ink"])),
         "favicon": "data:image/svg+xml," + MARK.format(signal=pal["c_signal"], ink=pal["c_ink"]).replace("#", "%23").replace("<", "%3C").replace(">", "%3E").replace("'", "%27"),
         "styles": STYLES,
+        "social_links": social_html(loc.get("social")),
+        "social_sameas": "".join(f',"{htmlmod.escape(u, quote=True)}"' for u in (loc.get("social") or {}).values() if u),
+        "sms_digits": re.sub(r"\D", "", loc.get("sms") or phone),
+        "rating": REVIEWS.get("rating", ""), "review_count": REVIEWS.get("count", ""),
+        "google_url": REVIEWS.get("google_url", "#"), "write_review_url": REVIEWS.get("write_url", "#"),
+        "review_schema": review_schema(),
+        "_hoods": hoods, "_nearby": nearby,
+        "hood_links": "\n      ".join(f'<li><a href="/{area_slug(n)}/">{htmlmod.escape(n)}</a></li>' for n in hoods) or f"<li>{city}</li>",
+        "nearby_links": "\n      ".join(f'<li><a href="/{area_slug(n)}/">{htmlmod.escape(n)}</a></li>' for n in nearby) or "<li>Surrounding communities</li>",
         **pal,
     }
+    wa = re.sub(r"\D", "", loc.get("whatsapp") or "")
+    f["whatsapp_btn"] = (f'<a class="wa" href="https://wa.me/1{wa}?text=Hi%2C%20I%20need%20a%20locksmith%20in%20{city}" target="_blank" rel="noopener">WhatsApp</a>' if wa else "")
+    f["reviews_section"] = reviews_section(f)
+    f["gallery_section"] = gallery_section(f)
     f["lead_form"] = FORM
     return f
 
@@ -263,7 +434,8 @@ def fields(loc):
 def sub(text, f):
     for _ in range(3):
         for k, v in f.items():
-            text = text.replace("{{" + k + "}}", v)
+            if isinstance(v, str):
+                text = text.replace("{{" + k + "}}", v)
     return text
 
 
@@ -277,7 +449,11 @@ def render_product(p, f):
     pf = dict(f)
     desc = sub(p["desc"], f)
     by_slug = {q["slug"]: q for q in PRODUCTS}
+    pfaq = [tuple(x) for x in FAQS.get(p["slug"], [])] + [tuple(x) for x in FAQS.get("_common", [])]
+    pfaq = pfaq[:6]
     pf.update({
+        "p_faq": faq_html(pfaq, f),
+        "p_reviews": reviews_section(f, reviews_for(p["slug"]), heading=f"{p['name']} reviews from {f['city']} customers", limit=3),
         "p_name": htmlmod.escape(p["name"]), "p_desc": htmlmod.escape(desc).replace(f["city"], f'<a href="{f["wiki"]}" rel="noopener" style="color:inherit">{f["city"]}</a>', 1), "p_price": str(p["price"]), "p_image": p["image"],
         "p_bullets": "\n".join(f"        <li>{htmlmod.escape(b)}</li>" for b in p["bullets"]),
         "p_related": "\n".join(f'          <li><a href="/{r}/">{htmlmod.escape(by_slug[r]["name"])}</a></li>' for r in p["related"] if r in by_slug),
@@ -285,7 +461,7 @@ def render_product(p, f):
         "page_desc": htmlmod.escape(desc[:155].rsplit(" ", 1)[0] + " Call " + f["phone"] + ".", quote=True),
         "path": path,
         "schema_extra": PRODUCT_SCHEMA.format(name=htmlmod.escape(p["name"], quote=True), business=f["business"], phone=f["phone"], domain=f["domain"], city=f["city"],
-                                              desc=htmlmod.escape(desc, quote=True), image=p["image"], slug=p["slug"], price=p["price"]),
+                                              desc=htmlmod.escape(desc, quote=True), image=p["image"], slug=p["slug"], price=p["price"]) + faq_schema(pfaq, f),
     })
     pf["content"] = sub(PRODUCT_TPL, pf)
     for k in NAV_KEYS:
@@ -337,6 +513,18 @@ def build_site(loc, today):
     for p in PRODUCTS:
         path, out = render_product(p, f)
         target = d / p["slug"] / "index.html"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(out)
+        urls.append(path)
+    for name in (loc.get("neighborhoods") or []):
+        path, out = render_area(name, "hood", f)
+        target = d / path.strip("/") / "index.html"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(out)
+        urls.append(path)
+    for name in (loc.get("nearby") or []):
+        path, out = render_area(name, "city", f)
+        target = d / path.strip("/") / "index.html"
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(out)
         urls.append(path)

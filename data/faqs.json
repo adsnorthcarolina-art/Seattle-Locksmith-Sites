@@ -1,0 +1,107 @@
+{
+  "_common": [
+    ["How fast can you get to me in {{city}}?", "Most calls in {{city}} are reached within 20 to 40 minutes. {{business}} runs mobile units around the city 24 hours a day, and the dispatcher gives you an arrival time when you call {{phone}}."],
+    ["Do I get a price before you start?", "Yes, always. The technician checks the lock or the car on arrival and quotes the whole job before touching anything. The estimate is free and there are no hidden fees."],
+    ["Are you licensed and insured?", "Yes. {{business}} is licensed and insured, in business since {{since}}, and every technician is background-checked and shows ID on arrival."]
+  ],
+  "emergency-lockout-service": [
+    ["Is there an extra charge for nights, weekends or holidays?", "We are open 24 hours and quote the same way at any hour. You hear the full price before the technician starts, so there are never surprise after-hours charges."],
+    ["Will you damage my door or car getting in?", "No. Lockouts are opened with picks, bypass tools and air wedges whenever the lock allows it. Drilling is a last resort and we tell you first."],
+    ["What do I need to show you?", "Proof that the home, business or car is yours: ID with the address, a registration or insurance card, or a lease. It protects you, and it is required by law."]
+  ],
+  "car-lockout-service": [
+    ["Can you open my car if the keys are locked inside?", "Yes. We open every make and model with manufacturer-specific tools, with no damage to the door, window or paint, usually in a few minutes once we arrive."],
+    ["Keys are locked in the trunk — can you get them?", "Yes. We open the car, then release the trunk from inside or pick the trunk lock directly, even on models that do not have a pass-through."],
+    ["Do you open cars with a slim jim?", "No. Slim jims damage modern door wiring and airbags. We use air wedges, long-reach tools and lock picks designed for each vehicle."]
+  ],
+  "car-key-replacement": [
+    ["I lost my only car key. Can you make one with nothing to copy?", "Yes. We cut a key from the vehicle's code and program the transponder on site, so the car does not need to be towed to a dealer."],
+    ["How long does a new car key take?", "Most keys are cut and programmed within 30 to 60 minutes of arrival. Some European models take longer because of dealer security systems."],
+    ["Is it cheaper than the dealer?", "Usually well under dealership pricing, and there is no tow, no appointment and no multi-day wait for a key to be ordered."]
+  ],
+  "key-fob-programming": [
+    ["Can you program a fob I bought online?", "Often yes, if it is the right part number for your car and has not been locked to another vehicle. Bring it and we will tell you before we start."],
+    ["My remote stopped working. Does it need programming or a battery?", "We check the battery first; it is the cause more often than not. If the fob is still dead after a new battery, we reprogram or replace it."],
+    ["Can you make a push-to-start smart key?", "Yes, for most makes and models, including proximity keys for Toyota, Honda, Nissan, Ford, Hyundai, Kia, BMW and more."]
+  ],
+  "ignition-repair": [
+    ["My key turns but the car doesn't start. Is it the ignition?", "It can be the ignition switch, the key chip or the immobilizer. We diagnose on site and tell you which before any repair."],
+    ["Can you repair the ignition without replacing it?", "Often yes. Worn wafers inside the cylinder can be replaced and the cylinder rekeyed to your existing key, which costs less than a new unit."],
+    ["Do I need to tow the car?", "No. Ignition repair and replacement is done at your location, wherever the car is parked."]
+  ],
+  "broken-key-extraction": [
+    ["The key snapped off inside the lock. Should I try to pull it out?", "Please don't. Pliers or glue push the piece deeper and damage the lock. We have extractors made for this and can usually remove it in minutes."],
+    ["Will the lock still work after you remove the broken key?", "Yes, in most cases. We remove the fragment, check the cylinder and cut you a fresh key on the van."],
+    ["Can you extract a broken key from a car ignition?", "Yes. Ignition extractions are one of our most common calls and are done without removing the steering column."]
+  ],
+  "lock-rekeying": [
+    ["What is the difference between rekeying and changing locks?", "Rekeying keeps your existing hardware and changes the pins inside so old keys stop working. Changing locks replaces the hardware. Rekeying is cheaper when the locks are in good shape."],
+    ["Can all my doors work on one key?", "Yes, if the locks share the same keyway (for example all Kwikset or all Schlage). We rekey every door to a single new key."],
+    ["How long does rekeying take?", "About 10 to 15 minutes per lock. A typical home with four or five locks is done in under an hour."]
+  ],
+  "deadbolt-lock-installation": [
+    ["Do you supply the locks or do I buy them?", "Either. The van carries Schlage, Kwikset and Yale deadbolts and handlesets, or we install hardware you already bought."],
+    ["Can you install a deadbolt on a door that never had one?", "Yes. We bore the door and frame, fit a reinforced strike plate and align everything so the bolt throws smoothly."],
+    ["What grade of deadbolt should I get?", "Grade 1 or 2 for exterior doors. We will show you the options and the price difference on site."]
+  ],
+  "smart-lock-installation": [
+    ["Which smart locks do you install?", "August, Yale, Schlage Encode, Kwikset Halo, Level, Ultraloq and most others. We can also recommend one that fits your door and your phone."],
+    ["Will a smart lock work on my existing door?", "Almost always. We check the door thickness, backset and alignment, and most smart locks replace a standard deadbolt without new holes."],
+    ["Do you set it up with my phone and Wi-Fi?", "Yes. We install the lock, pair it with your phone, add user codes and test it before we leave."]
+  ],
+  "commercial-locksmith-access-control": [
+    ["Can you work after business hours?", "Yes. We schedule commercial installs and rekeys at night or on weekends so you never close for a locksmith."],
+    ["Can you add keypad or card access without rewiring the building?", "Yes. Stand-alone keypad locks and battery-powered readers install on existing doors with no network or power run."],
+    ["Do you work with property managers?", "Yes. Many {{city}} property managers use us for tenant turnovers, master-keyed buildings and resident lockouts on one invoice."]
+  ],
+  "safe-opening": [
+    ["Can you open my safe without destroying it?", "In most cases yes. Dial and electronic safes are manipulated or bypassed; drilling is a last resort and is repaired afterwards so the safe keeps working."],
+    ["I forgot the combination. Can you reset it?", "Yes. After opening we reset the combination or replace the lock with a new one keyed or coded to you."],
+    ["Do you open gun safes?", "Yes, including electronic keypad safes with dead batteries or lost override keys."]
+  ],
+  "key-duplication": [
+    ["Can you copy a 'Do Not Duplicate' key?", "Only with authorization from the owner or the key system holder. For restricted keyways we need the registered owner's permission."],
+    ["Can you copy a car key?", "Yes. Plain car keys are cut on the van; chip keys are cloned or programmed so the copy starts the car."],
+    ["Can you cut a key from a photo or code?", "From a key code, yes. From a photo, not reliably; bring the key or we come to you."]
+  ],
+  "house-lockout-service": [
+    ["Locked out of my apartment — do I need the landlord?", "No. Show ID or proof you live there and we open the door. We can also rekey if the landlord asks."],
+    ["Can you open a smart lock or keypad lock?", "Yes. Dead batteries, forgotten codes and lost phones are everyday calls; most are opened without damage."],
+    ["How long does a house lockout take?", "Usually 5 to 15 minutes once the technician arrives, plus 20 to 40 minutes travel inside {{city}}."]
+  ],
+  "commercial-lockout-service": [
+    ["Can you open a storefront with an aluminum door?", "Yes. Adams Rite and other storefront locks are opened and, if needed, repaired on the spot."],
+    ["Can you rekey right after opening?", "Yes. If an ex-employee or a lost key is the reason you are locked out, we rekey every door in the same visit."],
+    ["Do you open filing cabinets, desks and padlocks?", "Yes, all of them, and we can key them alike or replace the locks."]
+  ],
+  "spare-car-key": [
+    ["Why should I get a spare before I lose the first one?", "With one working key, a spare is a quick clone. With no keys, the car has to be programmed from scratch, which costs more and takes longer."],
+    ["Can you make a spare key fob?", "Yes. We supply and program remote-head keys and smart fobs for most makes and models, typically for less than the dealer."],
+    ["Can you come to my workplace?", "Yes. We cut and program spares wherever the car is parked, including office garages."]
+  ],
+  "car-door-lock-repair": [
+    ["My key won't turn in the door. Is it the key or the lock?", "Usually the lock cylinder is worn or frozen. We repair or replace the cylinder and key it to your existing key."],
+    ["Can you fix a trunk that won't open?", "Yes. Trunk lock cylinders and latches are repaired or replaced on site."],
+    ["Will the new door lock use my current key?", "Yes. We rekey the replacement cylinder to match the key you already have."]
+  ],
+  "lock-repair": [
+    ["Is it worth repairing an old lock?", "If the hardware is a good brand and the problem is wear or misalignment, yes. If it is low-grade or damaged, we tell you honestly that replacement is the better value."],
+    ["Can you fix a door that won't latch?", "Yes. Most latching problems are strike-plate alignment or a sagging door, which we adjust on site."],
+    ["Do you repair sliding and patio door locks?", "Yes, including replacing the mortise lock and adding a secondary lock or bar."]
+  ],
+  "high-security-locks": [
+    ["What makes a lock 'high security'?", "Restricted keys that cannot be copied at a hardware store, plus hardened cylinders that resist picking, bumping and drilling. Medeco, Mul-T-Lock and Schlage Primus are the common brands."],
+    ["Can I get more keys later?", "Yes, from us, with your registered authorization. That control is the point of a restricted keyway."],
+    ["Do high-security locks fit my existing doors?", "Yes. They install in the same holes as a standard deadbolt or commercial cylinder."]
+  ],
+  "master-key-systems": [
+    ["What is a master key system?", "A keying plan where each door has its own key, while a master key opens every door and sub-masters open groups of doors. We design, install and document it for you."],
+    ["Can you add a master key system to my existing locks?", "Usually yes, if the locks share a keyway. Otherwise we replace cylinders as needed."],
+    ["How many levels can the system have?", "Two to four levels is typical for apartment buildings, schools and offices. We size it to how you want access controlled."]
+  ],
+  "panic-bar-installation": [
+    ["Does my business need a panic bar?", "Fire code requires panic hardware on many commercial exit doors, especially for assembly, retail and educational occupancies. We install to code and can advise on your doors."],
+    ["Can a panic bar be locked from outside?", "Yes, with outside trim that lets staff enter with a key while the inside always opens with a push."],
+    ["Do you repair existing exit devices?", "Yes. Von Duprin, Detex, Adams Rite and others are repaired or replaced, including alarmed exit devices."]
+  ]
+}

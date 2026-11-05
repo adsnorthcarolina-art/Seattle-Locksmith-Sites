@@ -11,8 +11,14 @@
 <meta property="og:description" content="Call Seattle Locksmith Service at 206-309-9023, 24 hours a day, for a mobile locksmith anywhere in Seattle, WA. Or send your details and we call you back within minutes.">
 <meta property="og:url" content="https://www.seattlelocksmithservice.com/contact/">
 <meta property="og:site_name" content="Seattle Locksmith Service">
-<meta property="og:image" content="https://www.seattlelocksmithservice.com/img/logo.png">
+<meta property="og:image" content="https://www.seattlelocksmithservice.com/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact Seattle Locksmith Service - Seattle, WA 98122 | 206-309-9023">
+<meta name="twitter:description" content="Call Seattle Locksmith Service at 206-309-9023, 24 hours a day, for a mobile locksmith anywhere in Seattle, WA. Or send your details and we call you back within minutes.">
+<meta name="twitter:image" content="https://www.seattlelocksmithservice.com/img/og.jpg">
 <link rel="icon" href="/img/logo.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -130,7 +136,7 @@ footer .legal{border-top:1px solid var(--ink3);padding-top:1rem;display:flex;fle
 .sticky{display:none}
 @media (max-width:640px){
   .top .call span{display:none}
-  .sticky{display:flex;position:fixed;inset:auto 0 0 0;z-index:9;justify-content:center;padding:.6rem;background:var(--ink);border-top:1px solid var(--ink3)}
+  .sticky{display:flex;gap:.5rem;position:fixed;inset:auto 0 0 0;z-index:9;justify-content:center;padding:.6rem;background:var(--ink);border-top:1px solid var(--ink3)}
   .sticky .call{width:100%;justify-content:center;font-size:1.05rem}
   body{padding-bottom:4.5rem}
 }
@@ -181,6 +187,63 @@ footer .legal{border-top:1px solid var(--ink3);padding-top:1rem;display:flex;fle
 .pimg{margin:0 0 1.5rem;max-width:520px}
 .pimg img{width:100%;height:auto;border-radius:8px;display:block}
 .pcard img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:8px;display:block;margin-bottom:.6rem}
+
+/* --- photo hero --- */
+.hero.photo{position:relative;overflow:hidden;isolation:isolate}
+.hero.photo .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:85% 50%;z-index:-2}
+.hero.photo::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--ink) 0%,color-mix(in srgb,var(--ink) 92%,transparent) 45%,color-mix(in srgb,var(--ink) 55%,transparent) 100%)}
+@media(max-width:700px){.hero.photo::before{background:linear-gradient(180deg,color-mix(in srgb,var(--ink) 88%,transparent),var(--ink) 70%)}.hero.photo .hero-img{object-position:50% 30%}}
+.hero.photo .door{display:none}
+.hero.photo .wrap{padding-bottom:3.5rem}
+/* --- ratings / reviews --- */
+.stars{color:var(--signal);letter-spacing:.05em;font-size:1.05em}
+.rating{font-weight:500}
+.rating a{color:inherit}
+.rating.badge{display:inline-flex;align-items:center;gap:.45rem;background:color-mix(in srgb,var(--white) 10%,transparent);border:1px solid color-mix(in srgb,var(--white) 25%,transparent);border-radius:999px;padding:.35rem .9rem;margin:0 0 1.2rem;font-size:.95rem;color:var(--white)}
+.rating.badge a{color:var(--ondark);text-decoration:underline}
+.reviews .rev-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.5rem 2rem;margin-bottom:1rem}
+.reviews .rev-head h2{margin:0}
+.revs{align-items:start}
+.rev{margin:0;padding:1.25rem 1.4rem;background:var(--white);border-left:4px solid var(--signal);border-radius:0 6px 6px 0;font-style:normal}
+.rev p{margin:0 0 .6rem}
+.rev .rev-text{font-size:1.02rem;line-height:1.55}
+.rev footer{font-size:.9rem;color:var(--mist);background:none;padding:0}
+.rev footer b{color:var(--ink)}
+.rev-cta{margin:1.5rem 0 0}
+/* --- gallery --- */
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;grid-auto-rows:220px;grid-auto-flow:dense}
+.gallery figure{margin:0;position:relative;overflow:hidden;border-radius:6px;background:var(--panel)}
+.gallery figure:first-child{grid-column:span 2;grid-row:span 2}
+.gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.gallery figure:hover img{transform:scale(1.04)}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:.5rem .75rem;font-size:.82rem;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+@media(max-width:600px){.gallery{grid-auto-rows:160px}.gallery figure:first-child{grid-column:span 2;grid-row:span 1}}
+/* --- CTAs --- */
+.cta-row{display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0 0}
+.cta-row a{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-weight:600;padding:.6rem 1rem;border-radius:4px;border:2px solid var(--signal);color:var(--signal);background:transparent;white-space:nowrap}
+.cta-row a.sms::before{content:"💬"}
+.cta-row a.wa{border-color:#25D366;color:#25D366}
+.cta-row a.wa::before{content:"🟢"}
+.cta-row a.ghost{border-color:var(--ondark);color:var(--ondark)}
+.cta-row a:hover{background:color-mix(in srgb,var(--signal) 15%,transparent)}
+.aside .cta-row a{color:var(--ink);border-color:var(--ink)}
+.aside .cta-row a.wa{color:#1a9c4a;border-color:#1a9c4a}
+.aside .rating{margin:.75rem 0 0;font-size:.95rem}
+.aside .rating a{color:var(--ink)}
+.sticky .sms{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;padding:.7rem 1rem;border-radius:4px;border:2px solid var(--signal);color:var(--signal);text-decoration:none;font-weight:600}
+.sticky .call{flex:1;justify-content:center}
+/* --- footer social + area links --- */
+.social{display:flex;gap:.6rem;margin:.5rem 0 1rem}
+.social a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:var(--ink3);color:var(--white)}
+.social a:hover{background:var(--signal);color:var(--signal-ink)}
+footer .inline-links{display:flex;flex-wrap:wrap;gap:.1rem .7rem;margin-bottom:1rem}
+footer .inline-links li{padding:0;font-size:.85rem}
+.aside .links{columns:2;column-gap:1rem}
+.aside .links li{border:0;padding:.2rem 0;break-inside:avoid}
+.lead.quick label{margin-bottom:.5rem}
+.more-fields{margin:.25rem 0 .75rem}
+.more-fields summary{cursor:pointer;font-size:.9rem;color:var(--steel);font-weight:500}
+.more-fields[open] summary{margin-bottom:.5rem}
 </style>
 <script type="application/ld+json">
 {
@@ -198,6 +261,7 @@ footer .legal{border-top:1px solid var(--ink3);padding-top:1rem;display:flex;fle
   "address": {"@type":"PostalAddress","addressLocality":"Seattle","addressRegion":"WA","postalCode":"98122","addressCountry":"US"},
   "geo": {"@type":"GeoCoordinates","latitude":47.6131,"longitude":-122.3045},
   "areaServed": [{"@type":"City","name":"Seattle","sameAs":"https://en.wikipedia.org/wiki/Seattle"},{"@type":"City","name":"Bellevue"},{"@type":"City","name":"Kirkland"},{"@type":"City","name":"Redmond"},{"@type":"City","name":"Mercer Island"},{"@type":"City","name":"Renton"},{"@type":"City","name":"Tukwila"},{"@type":"City","name":"Burien"},{"@type":"City","name":"SeaTac"},{"@type":"City","name":"Kent"},{"@type":"City","name":"Shoreline"},{"@type":"City","name":"Lynnwood"},{"@type":"City","name":"Edmonds"},{"@type":"City","name":"Bothell"},{"@type":"City","name":"Issaquah"},{"@type":"City","name":"Federal Way"},{"@type":"City","name":"Everett"}],
+  "sameAs": ["https://en.wikipedia.org/wiki/Seattle","https://www.facebook.com/Seattlelocksmithservice/","https://x.com/seattlelocksm9","https://www.instagram.com/seattle_locksmith_service","https://www.youtube.com/@SEATTLELOCKSMITHSERVICE","https://www.tiktok.com/@seattlelocksmithservice"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"53","bestRating":"5"},"review":[{"@type":"Review","author":{"@type":"Person","name":"Trina Knight"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Seattle Locksmith Service provided excellent service from start to finish. They responded quickly, arrived on time, and were very professional throughout the entire process. The technician carefully assessed the situation and fixed my lock efficiently without any damage or delays. Their pricing was fair and transparent, with no hidden charges."},{"@type":"Review","author":{"@type":"Person","name":"Jayram RK"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"I had an emergency with my car lock and Seattle Locksmith saved the day. They arrived fast, unlocked my car without any scratches and were very polite and professional throughout the process. The price was fair and the service was top-notch. I highly recommend them for any car locksmith needs."},{"@type":"Review","author":{"@type":"Person","name":"Lim Kooi Hock"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"The technician arrived on time, was extremely professional, and handled the situation calmly and efficiently. He explained what he was doing and made sure not to damage the lock or door. It&#x27;s hard to find a locksmith you can truly trust but Seattle Locksmith Service exceeded my expectations."},{"@type":"Review","author":{"@type":"Person","name":"Tonya Smith"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Gary provided fast, friendly, honest, and professional service during my recent lockout experience. He called me back almost immediately and arrived at my house in ten minutes ready to work. He resolved the issue well, and was very courteous and helpful. I would use this service again."},{"@type":"Review","author":{"@type":"Person","name":"JC"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"He came over and did 12 locks in an hour. Amazing. Had old 30 year door locks in dull brown, rekeyed everything into brushed nickel. The job ended up bigger than he thought. He got it done in record time. Great effort."}],
   "openingHoursSpecification": {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"},
   "paymentAccepted": "Cash, Visa, Mastercard, American Express, Discover, Debit Card, Apple Pay, Google Pay, Zelle, Venmo, Cash App",
   "hasOfferCatalog": {"@type":"OfferCatalog","name":"Locksmith services","itemListElement":[
@@ -281,16 +345,16 @@ footer .legal{border-top:1px solid var(--ink3);padding-top:1rem;display:flex;fle
     </div>
     <div>
       <h2>Or send your details</h2>
-<form class="lead" action="https://formsubmit.co/seattlelocksmithservicewa1@gmail.com" method="POST">
+<form class="lead quick" action="https://formsubmit.co/seattlelocksmithservicewa1@gmail.com" method="POST">
   <input type="hidden" name="_subject" value="New lead — Seattle Locksmith Service (Seattle, WA)">
   <input type="hidden" name="_next" value="https://www.seattlelocksmithservice.com/thank-you/">
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_template" value="table">
   <input type="hidden" name="site" value="seattlelocksmithservice.com">
+  <input type="hidden" name="page" value="/contact/">
   <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
-  <label>Your name<input type="text" name="name" required autocomplete="name"></label>
-  <label>Phone<input type="tel" name="phone" required autocomplete="tel" inputmode="tel"></label>
-  <label>Where are you? (address or neighborhood in Seattle)<input type="text" name="address" autocomplete="street-address"></label>
+  <label>Phone<input type="tel" name="phone" required autocomplete="tel" inputmode="tel" placeholder="We call back in minutes"></label>
+  <label>Name<input type="text" name="name" required autocomplete="name"></label>
   <label>What do you need?
     <select name="service" required>
       <option value="">Choose one</option>
@@ -308,10 +372,13 @@ footer .legal{border-top:1px solid var(--ink3);padding-top:1rem;display:flex;fle
       <option>Something else</option>
     </select>
   </label>
-  <label>Car year, make and model (for car keys)<input type="text" name="vehicle" placeholder="e.g. 2019 Honda Civic"></label>
-  <label>Anything else we should know?<textarea name="message" rows="3"></textarea></label>
+  <details class="more-fields"><summary>Add location, car or details (optional)</summary>
+    <label>Where are you? (address or neighborhood in Seattle)<input type="text" name="address" autocomplete="street-address"></label>
+    <label>Car year, make and model (for car keys)<input type="text" name="vehicle" placeholder="e.g. 2019 Honda Civic"></label>
+    <label>Anything else?<textarea name="message" rows="2"></textarea></label>
+  </details>
   <button class="call" type="submit">Request a call back</button>
-  <p class="form-note">We call back within minutes. Locked out right now? Phone <a href="tel:+12063099023">206-309-9023</a>.</p>
+  <p class="form-note">Locked out right now? Phone <a href="tel:+12063099023">206-309-9023</a> or <a href="sms:+12063099023">text us</a>.</p>
 </form>
 
     </div>
@@ -331,7 +398,10 @@ footer .legal{border-top:1px solid var(--ink3);padding-top:1rem;display:flex;fle
           <li><a href="mailto:seattlelocksmithservicewa1@gmail.com">seattlelocksmithservicewa1@gmail.com</a></li>
           <li>Open 24 hours, 7 days a week</li>
           <li>Licensed &amp; insured · Serving Seattle since 2010</li>
+          <li><span class="stars">★★★★★</span> 4.8 · <a href="https://www.google.com/maps/place/?q=place_id:ChIJ9yyC2QXuBicRqwKQfd8T2Qg" target="_blank" rel="noopener">53 Google reviews</a></li>
         </ul>
+        <h3>Follow us</h3>
+        <div class="social"><a href="https://www.facebook.com/Seattlelocksmithservice/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v2H6v4h3v9h4v-9h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg></a><a href="https://x.com/seattlelocksm9" target="_blank" rel="noopener" aria-label="X (Twitter)" title="X (Twitter)"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M3 3h5l5 7 6-7h3l-7.5 8.6L21 21h-5l-5.3-7.4L4 21H1l8-9.2z"/></svg></a><a href="https://www.instagram.com/seattle_locksmith_service" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm5 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm5-3.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a><a href="https://www.youtube.com/@SEATTLELOCKSMITHSERVICE" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M22 8.2a3 3 0 0 0-2.1-2.1C18 5.6 12 5.6 12 5.6s-6 0-7.9.5A3 3 0 0 0 2 8.2 31 31 0 0 0 1.6 12 31 31 0 0 0 2 15.8a3 3 0 0 0 2.1 2.1c1.9.5 7.9.5 7.9.5s6 0 7.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .4-3.8 31 31 0 0 0-.4-3.8zM10 15V9l5.2 3z"/></svg></a><a href="https://www.tiktok.com/@seattlelocksmithservice" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M16.5 2c.3 2.3 1.7 3.9 4 4.1v3.4c-1.5 0-2.9-.5-4-1.3v6.6a5.9 5.9 0 1 1-5.9-5.9c.3 0 .7 0 1 .1v3.5a2.5 2.5 0 1 0 1.5 2.3V2z"/></svg></a></div>
       </div>
       <div>
         <h3>Services</h3>
@@ -365,6 +435,50 @@ footer .legal{border-top:1px solid var(--ink3);padding-top:1rem;display:flex;fle
           <li><a href="/contact/">Contact</a></li>
           <li><a href="/#faq">Common questions</a></li>
         </ul>
+        <h3>Seattle neighborhoods</h3>
+        <ul class="inline-links">
+      <li><a href="/locksmith-capitol-hill/">Capitol Hill</a></li>
+      <li><a href="/locksmith-central-district/">Central District</a></li>
+      <li><a href="/locksmith-downtown/">Downtown</a></li>
+      <li><a href="/locksmith-belltown/">Belltown</a></li>
+      <li><a href="/locksmith-queen-anne/">Queen Anne</a></li>
+      <li><a href="/locksmith-south-lake-union/">South Lake Union</a></li>
+      <li><a href="/locksmith-first-hill/">First Hill</a></li>
+      <li><a href="/locksmith-ballard/">Ballard</a></li>
+      <li><a href="/locksmith-fremont/">Fremont</a></li>
+      <li><a href="/locksmith-wallingford/">Wallingford</a></li>
+      <li><a href="/locksmith-green-lake/">Green Lake</a></li>
+      <li><a href="/locksmith-university-district/">University District</a></li>
+      <li><a href="/locksmith-northgate/">Northgate</a></li>
+      <li><a href="/locksmith-beacon-hill/">Beacon Hill</a></li>
+      <li><a href="/locksmith-columbia-city/">Columbia City</a></li>
+      <li><a href="/locksmith-rainier-valley/">Rainier Valley</a></li>
+      <li><a href="/locksmith-mount-baker/">Mount Baker</a></li>
+      <li><a href="/locksmith-leschi/">Leschi</a></li>
+      <li><a href="/locksmith-madison-park/">Madison Park</a></li>
+      <li><a href="/locksmith-georgetown/">Georgetown</a></li>
+      <li><a href="/locksmith-west-seattle/">West Seattle</a></li>
+      <li><a href="/locksmith-magnolia/">Magnolia</a></li>
+        </ul>
+        <h3>Nearby cities</h3>
+        <ul class="inline-links">
+      <li><a href="/locksmith-bellevue/">Bellevue</a></li>
+      <li><a href="/locksmith-kirkland/">Kirkland</a></li>
+      <li><a href="/locksmith-redmond/">Redmond</a></li>
+      <li><a href="/locksmith-mercer-island/">Mercer Island</a></li>
+      <li><a href="/locksmith-renton/">Renton</a></li>
+      <li><a href="/locksmith-tukwila/">Tukwila</a></li>
+      <li><a href="/locksmith-burien/">Burien</a></li>
+      <li><a href="/locksmith-seatac/">SeaTac</a></li>
+      <li><a href="/locksmith-kent/">Kent</a></li>
+      <li><a href="/locksmith-shoreline/">Shoreline</a></li>
+      <li><a href="/locksmith-lynnwood/">Lynnwood</a></li>
+      <li><a href="/locksmith-edmonds/">Edmonds</a></li>
+      <li><a href="/locksmith-bothell/">Bothell</a></li>
+      <li><a href="/locksmith-issaquah/">Issaquah</a></li>
+      <li><a href="/locksmith-federal-way/">Federal Way</a></li>
+      <li><a href="/locksmith-everett/">Everett</a></li>
+        </ul>
       </div>
     </div>
     <div class="pay">
@@ -384,13 +498,17 @@ function close(){document.body.classList.remove('menu-open');b.setAttribute('ari
 b.addEventListener('click',open);c.addEventListener('click',close);sc.addEventListener('click',close);
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden)close()});})();
 </script>
-<div class="sticky"><a class="call" href="tel:+12063099023">Call 206-309-9023</a></div>
+<div class="sticky"><a class="call" href="tel:+12063099023">Call 206-309-9023</a><a class="sms" href="sms:+12063099023?&body=Hi%2C%20I%20need%20a%20locksmith%20in%20Seattle" aria-label="Text us">💬 Text</a></div>
 <script>
 (function(){
   var dl=window.dataLayer=window.dataLayer||[];
   document.addEventListener('click',function(e){
     var a=e.target.closest&&e.target.closest('a[href^="tel:"]');
     if(a){dl.push({event:'phone_call',phone_number:a.getAttribute('href').replace('tel:',''),site_host:location.hostname});}
+    var s=e.target.closest&&e.target.closest('a[href^="sms:"]');
+    if(s){dl.push({event:'sms_click',site_host:location.hostname});}
+    var w=e.target.closest&&e.target.closest('a[href*="wa.me"]');
+    if(w){dl.push({event:'whatsapp_click',site_host:location.hostname});}
   });
   if(location.pathname.indexOf('/thank-you')===0){dl.push({event:'lead_form_submit',site_host:location.hostname});}
 })();

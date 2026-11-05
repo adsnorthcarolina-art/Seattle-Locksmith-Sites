@@ -11,8 +11,14 @@
 <meta property="og:description" content="{{page_desc}}">
 <meta property="og:url" content="https://www.{{domain}}{{path}}">
 <meta property="og:site_name" content="{{business}}">
-<meta property="og:image" content="https://www.{{domain}}/img/logo.png">
+<meta property="og:image" content="https://www.{{domain}}/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{page_title}}">
+<meta name="twitter:description" content="{{page_desc}}">
+<meta name="twitter:image" content="https://www.{{domain}}/img/og.jpg">
 <link rel="icon" href="/img/logo.png">
 {{gtm_head}}
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,6 +43,7 @@
   "address": {"@type":"PostalAddress","addressLocality":"{{city}}","addressRegion":"{{st}}","postalCode":"{{zip}}","addressCountry":"US"},
   "geo": {"@type":"GeoCoordinates","latitude":47.6131,"longitude":-122.3045},
   "areaServed": [{"@type":"City","name":"{{city}}","sameAs":"{{wiki}}"}{{areas_schema}}],
+  "sameAs": ["{{wiki}}"{{social_sameas}}]{{review_schema}},
   "openingHoursSpecification": {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"},
   "paymentAccepted": "Cash, Visa, Mastercard, American Express, Discover, Debit Card, Apple Pay, Google Pay, Zelle, Venmo, Cash App",
   "hasOfferCatalog": {"@type":"OfferCatalog","name":"Locksmith services","itemListElement":[
@@ -111,7 +118,10 @@
           <li><a href="mailto:{{email}}">{{email}}</a></li>
           <li>Open 24 hours, 7 days a week</li>
           <li>Licensed &amp; insured · Serving {{city}} since {{since}}</li>
+          <li><span class="stars">★★★★★</span> {{rating}} · <a href="{{google_url}}" target="_blank" rel="noopener">{{review_count}} Google reviews</a></li>
         </ul>
+        <h3>Follow us</h3>
+        {{social_links}}
       </div>
       <div>
         <h3>Services</h3>
@@ -145,6 +155,14 @@
           <li><a href="/contact/">Contact</a></li>
           <li><a href="/#faq">Common questions</a></li>
         </ul>
+        <h3>{{city}} neighborhoods</h3>
+        <ul class="inline-links">
+      {{hood_links}}
+        </ul>
+        <h3>Nearby cities</h3>
+        <ul class="inline-links">
+      {{nearby_links}}
+        </ul>
       </div>
     </div>
     <div class="pay">
@@ -164,13 +182,17 @@ function close(){document.body.classList.remove('menu-open');b.setAttribute('ari
 b.addEventListener('click',open);c.addEventListener('click',close);sc.addEventListener('click',close);
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden)close()});})();
 </script>
-<div class="sticky"><a class="call" href="tel:+1{{phone_digits}}">Call {{phone}}</a></div>
+<div class="sticky"><a class="call" href="tel:+1{{phone_digits}}">Call {{phone}}</a><a class="sms" href="sms:+1{{sms_digits}}?&body=Hi%2C%20I%20need%20a%20locksmith%20in%20{{city}}" aria-label="Text us">💬 Text</a></div>
 <script>
 (function(){
   var dl=window.dataLayer=window.dataLayer||[];
   document.addEventListener('click',function(e){
     var a=e.target.closest&&e.target.closest('a[href^="tel:"]');
     if(a){dl.push({event:'phone_call',phone_number:a.getAttribute('href').replace('tel:',''),site_host:location.hostname});}
+    var s=e.target.closest&&e.target.closest('a[href^="sms:"]');
+    if(s){dl.push({event:'sms_click',site_host:location.hostname});}
+    var w=e.target.closest&&e.target.closest('a[href*="wa.me"]');
+    if(w){dl.push({event:'whatsapp_click',site_host:location.hostname});}
   });
   if(location.pathname.indexOf('/thank-you')===0){dl.push({event:'lead_form_submit',site_host:location.hostname});}
 })();
