@@ -469,7 +469,15 @@ def fields(loc):
     f["reviews_section"] = reviews_section(f)
     f["gallery_section"] = gallery_section(f)
     f["brands_section"] = brands_section(f)
-    f["lead_form"] = FORM
+    fb = loc.get("form_backend", "formsubmit")
+    if fb == "web3forms" and loc.get("web3forms_key"):
+        form = FORM.replace('action="https://formsubmit.co/{{email}}"', 'action="https://api.web3forms.com/submit"')
+        form = form.replace('<input type="hidden" name="_subject"', f'<input type="hidden" name="access_key" value="{loc["web3forms_key"]}">\n  <input type="hidden" name="from_name" value="{{{{business}}}} website">\n  <input type="hidden" name="subject"')
+        form = form.replace('name="_next"', 'name="redirect"').replace('name="_honey" class="hp"', 'name="botcheck" class="hp"')
+        form = form.replace('<input type="hidden" name="_captcha" value="false">\n', '').replace('<input type="hidden" name="_template" value="table">\n', '')
+        f["lead_form"] = form
+    else:
+        f["lead_form"] = FORM
     return f
 
 
