@@ -278,7 +278,7 @@ def render_product(p, f):
     desc = sub(p["desc"], f)
     by_slug = {q["slug"]: q for q in PRODUCTS}
     pf.update({
-        "p_name": htmlmod.escape(p["name"]), "p_desc": htmlmod.escape(desc), "p_price": str(p["price"]), "p_image": p["image"],
+        "p_name": htmlmod.escape(p["name"]), "p_desc": htmlmod.escape(desc).replace(f["city"], f'<a href="{f["wiki"]}" rel="noopener" style="color:inherit">{f["city"]}</a>', 1), "p_price": str(p["price"]), "p_image": p["image"],
         "p_bullets": "\n".join(f"        <li>{htmlmod.escape(b)}</li>" for b in p["bullets"]),
         "p_related": "\n".join(f'          <li><a href="/{r}/">{htmlmod.escape(by_slug[r]["name"])}</a></li>' for r in p["related"] if r in by_slug),
         "page_title": htmlmod.escape(f"{p['name']} {f['cityst']} | {f['business']} | {f['phone']}", quote=True),
