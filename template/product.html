@@ -1,0 +1,45 @@
+<section class="hero sub" aria-labelledby="h1">
+  <div class="wrap">
+    <p class="crumb"><a href="/services/">Services</a></p>
+    <h1 id="h1">{{p_name}} in {{cityst}}</h1>
+    <p class="lede">{{p_desc}}</p>
+    <a class="bignum" href="tel:+1{{phone_digits}}"><span>Call now, 24 hours a day · from ${{p_price}}</span>{{phone}}</a>
+  </div>
+  <div class="door" aria-hidden="true"><i></i><i></i></div>
+</section>
+<section aria-labelledby="h2a">
+  <div class="wrap two">
+    <div class="prose">
+      <figure class="pimg"><img src="/img/products/{{p_image}}" alt="{{p_name}} – {{business}}, {{cityst}}" width="1000" height="1000" loading="eager"></figure>
+      <h2 id="h2a">{{p_name}} – what's included</h2>
+      <ul>
+{{p_bullets}}
+      </ul>
+      <h2>How it works in {{city}}</h2>
+      <ol class="steps">
+        <li><div><strong>Call {{phone}}.</strong> Tell the dispatcher where you are in {{cityst}} and what you need. You get an arrival time and a price range right away.</div></li>
+        <li><div><strong>Free estimate on arrival.</strong> The {{business}} technician shows ID, checks the lock or the car, and confirms a firm price before starting.</div></li>
+        <li><div><strong>Done on the spot.</strong> Everything needed for {{p_name}} is on the van, so the job is finished in one visit, with a warranty.</div></li>
+      </ol>
+      <h2>Service area</h2>
+      <p>{{p_name}} is available 24 hours a day across all of {{cityst}} — {{hoods_short}} and every other neighborhood — plus {{nearby_inline}}. <a href="/service-areas/">See every area we cover.</a></p>
+    </div>
+    <div>
+      <div class="aside">
+        <h3>{{p_name}}</h3>
+        <p><b>{{business}}</b><br>{{cityst}} {{zip}}<br>Open 24 hours · Licensed &amp; insured<br>From <b>${{p_price}}</b> · Free estimate · Military discount</p>
+        <a class="call" href="tel:+1{{phone_digits}}">Call {{phone}}</a>
+      </div>
+      <div class="aside" style="margin-top:1rem">
+        <h3>Related services</h3>
+        <ul>
+{{p_related}}
+        </ul>
+      </div>
+      <div class="aside" style="margin-top:1rem">
+        <h3>Request a call back</h3>
+{{lead_form}}
+      </div>
+    </div>
+  </div>
+</section>

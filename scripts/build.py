@@ -17,6 +17,9 @@ BASE = (T / "base.html").read_text()
 STYLES = (T / "styles.css").read_text().strip()
 FORM = (T / "form.html").read_text()
 LOCATIONS = json.loads((ROOT / "data" / "locations.json").read_text())
+PRODUCTS = json.loads((ROOT / "data" / "products.json").read_text())
+PRODUCT_TPL = (T / "product.html").read_text()
+IMG_DIR = T / "img"
 OUT = ROOT / "sites"
 
 # (ink, signal, signal_ink, paper)
@@ -76,9 +79,7 @@ PAGES = {
     "": ("home", "home"),
     "emergency-locksmith": ("emergency", "emergency"),
     "automotive-locksmith": ("auto", "auto"),
-    "car-key-replacement": ("carkey", "carkey"),
     "residential-locksmith": ("residential", "residential"),
-    "lock-rekey": ("rekey", "rekey"),
     "commercial-locksmith": ("commercial", "commercial"),
     "services": ("services", "services"),
     "service-areas": ("areas", "areas"),
@@ -250,7 +251,7 @@ def fields(loc):
         "areas_schema": "".join(f',{{"@type":"City","name":"{htmlmod.escape(n)}"}}' for n in nearby),
         "gtm_head": GTM_HEAD.format(gtm=gtm) if gtm else "",
         "gtm_body": GTM_BODY.format(gtm=gtm) if gtm else "",
-        "mark": MARK.format(signal=pal["c_signal"], ink=pal["c_ink"]),
+        "mark": ('<img class="logo" src="/img/logo.png" alt="{{business}} logo" width="52" height="52">' if (IMG_DIR / "logo.png").exists() else MARK.format(signal=pal["c_signal"], ink=pal["c_ink"])),
         "favicon": "data:image/svg+xml," + MARK.format(signal=pal["c_signal"], ink=pal["c_ink"]).replace("#", "%23").replace("<", "%3C").replace(">", "%3E").replace("'", "%27"),
         "styles": STYLES,
         **pal,
@@ -264,6 +265,36 @@ def sub(text, f):
         for k, v in f.items():
             text = text.replace("{{" + k + "}}", v)
     return text
+
+
+PRODUCT_SCHEMA = """<script type="application/ld+json">
+{{"@context":"https://schema.org","@type":"Service","name":"{name}","serviceType":"{name}","provider":{{"@type":"Locksmith","name":"{business}","telephone":"+1-{phone}","url":"https://www.{domain}/"}},"areaServed":{{"@type":"City","name":"{city}"}},"description":"{desc}","image":"https://www.{domain}/img/products/{image}","url":"https://www.{domain}/{slug}/","offers":{{"@type":"Offer","price":"{price}","priceCurrency":"USD","priceSpecification":{{"@type":"PriceSpecification","minPrice":"{price}","priceCurrency":"USD"}}}}}}
+</script>"""
+
+
+def render_product(p, f):
+    path = f"/{p['slug']}/"
+    pf = dict(f)
+    desc = sub(p["desc"], f)
+    by_slug = {q["slug"]: q for q in PRODUCTS}
+    pf.update({
+        "p_name": htmlmod.escape(p["name"]), "p_desc": htmlmod.escape(desc), "p_price": str(p["price"]), "p_image": p["image"],
+        "p_bullets": "\n".join(f"        <li>{htmlmod.escape(b)}</li>" for b in p["bullets"]),
+        "p_related": "\n".join(f'          <li><a href="/{r}/">{htmlmod.escape(by_slug[r]["name"])}</a></li>' for r in p["related"] if r in by_slug),
+        "page_title": htmlmod.escape(f"{p['name']} {f['cityst']} | {f['business']} | {f['phone']}", quote=True),
+        "page_desc": htmlmod.escape(desc[:155].rsplit(" ", 1)[0] + " Call " + f["phone"] + ".", quote=True),
+        "path": path,
+        "schema_extra": PRODUCT_SCHEMA.format(name=htmlmod.escape(p["name"], quote=True), business=f["business"], phone=f["phone"], domain=f["domain"], city=f["city"],
+                                              desc=htmlmod.escape(desc, quote=True), image=p["image"], slug=p["slug"], price=p["price"]),
+    })
+    pf["content"] = sub(PRODUCT_TPL, pf)
+    for k in NAV_KEYS:
+        pf[f"cur_{k}"] = 'aria-current="page"' if k == "services" else ""
+    out = sub(BASE, pf)
+    leftover = re.findall(r"{{\w+}}", out)
+    if leftover:
+        raise SystemExit(f"{f['domain']}{path}: unreplaced {sorted(set(leftover))}")
+    return path, out
 
 
 def render_page(slug, f):
@@ -303,6 +334,17 @@ def build_site(loc, today):
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(out)
         urls.append(path)
+    for p in PRODUCTS:
+        path, out = render_product(p, f)
+        target = d / p["slug"] / "index.html"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(out)
+        urls.append(path)
+    if IMG_DIR.exists():
+        shutil.copytree(IMG_DIR, d / "img", dirs_exist_ok=True)
+    f["product_cards"] = "\n".join(
+        f'      <div class="svc pcard"><a href="/{p["slug"]}/"><img src="/img/products/{p["image"]}" alt="{htmlmod.escape(p["name"])} in {f["cityst"]}" loading="lazy" width="500" height="500"></a><h3><a href="/{p["slug"]}/">{htmlmod.escape(p["name"])}</a></h3><p>From ${p["price"]} · {f["cityst"]}</p><a class="more" href="/{p["slug"]}/">{htmlmod.escape(p["name"])} details</a></div>'
+        for p in PRODUCTS)
     for slug in PAGES:
         path, out = render_page(slug, f)
         target = d / "404.html" if slug == "404" else (d / slug / "index.html" if slug else d / "index.html")

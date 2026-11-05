@@ -155,3 +155,8 @@ footer .legal{border-top:1px solid var(--ink3);padding-top:1rem;display:flex;fle
 .map{position:relative;width:100%;aspect-ratio:4/3;max-width:720px}
 .map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .brand svg{width:46px;height:46px}
+.brand img.logo{width:60px;height:60px;padding:4px;border-radius:8px;background:#fff;object-fit:contain;flex:none}
+@media (max-width:640px){.brand img.logo{width:44px;height:44px;padding:3px}}
+.pimg{margin:0 0 1.5rem;max-width:520px}
+.pimg img{width:100%;height:auto;border-radius:8px;display:block}
+.pcard img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:8px;display:block;margin-bottom:.6rem}
