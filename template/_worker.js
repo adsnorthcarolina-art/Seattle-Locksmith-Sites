@@ -11,6 +11,11 @@ export default {
     }
     host = host.replace(/^www\./, "");
     const site = isPagesDev ? DEFAULT : host;
+    // Retired area pages -> service areas index
+    if (/^\/locksmith-(redmond|mercer-island|tukwila|seatac|kent|edmonds|issaquah|federal-way|everett)\/?$/.test(url.pathname)) {
+      url.pathname = "/service-areas/";
+      return Response.redirect(url.toString(), 301);
+    }
     const assetUrl = new URL(request.url);
     assetUrl.pathname = "/" + site + url.pathname;
     const res = await env.ASSETS.fetch(new Request(assetUrl.toString(), request));
