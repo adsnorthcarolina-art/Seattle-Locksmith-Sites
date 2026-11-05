@@ -254,6 +254,14 @@
     ],
     "airport": "SEA",
     "form_backend": "web3forms",
-    "web3forms_key": "c504d3e6-4db1-445c-8865-79057e5ccd50"
+    "web3forms_key": "c504d3e6-4db1-445c-8865-79057e5ccd50",
+    "gallery": [
+      [
+        "g0.jpg",
+        "{{business}} mobile locksmith serving {{city}}",
+        1400,
+        1050
+      ]
+    ]
   }
 ]
