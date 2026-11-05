@@ -21,6 +21,12 @@ export default {
       url.pathname = "/service-areas/";
       return Response.redirect(url.toString(), 301);
     }
+    // Old WordPress URLs still linked from GBP / directories
+    const OLD = { "/contact-us/": "/contact/", "/contact-us": "/contact/", "/about-us/": "/about/", "/about-us": "/about/", "/services": "/services/", "/blog": "/blog/" };
+    if (OLD[url.pathname]) {
+      url.pathname = OLD[url.pathname];
+      return Response.redirect(url.toString(), 301);
+    }
     const assetUrl = new URL(request.url);
     assetUrl.pathname = "/" + site + url.pathname;
     const res = await env.ASSETS.fetch(new Request(assetUrl.toString(), request));
