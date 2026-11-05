@@ -1,0 +1,37 @@
+{
+  "rating": "5.0",
+  "count": "3",
+  "google_url": "https://maps.google.com/maps?cid=5714505059049306935",
+  "write_url": "https://search.google.com/local/writereview?placeid=ChIJuwk9SfSM7mIRN3vODxMATk8",
+  "reviews": [
+    {
+      "name": "Samuel Eduardo Ayala Cruz",
+      "stars": 5,
+      "text": "Had to get my front door lock replaced and Seattle Locksmith Group did it all. Very professional, courteous, and stress-free. A reliable choice for those in the Seattle area.",
+      "tags": [
+        "deadbolt-lock-installation",
+        "lock-repair",
+        "residential"
+      ]
+    },
+    {
+      "name": "Claudio Casco",
+      "stars": 5,
+      "text": "Outstanding service from start to finish. The technician was very knowledgeable and efficient, and my lock feels more secure than ever.",
+      "tags": [
+        "high-security-locks",
+        "lock-rekeying",
+        "deadbolt-lock-installation"
+      ]
+    },
+    {
+      "name": "Muzammil Ahmed",
+      "stars": 5,
+      "text": "Fast service I highly recommend!",
+      "tags": [
+        "emergency-lockout-service",
+        "car-lockout-service"
+      ]
+    }
+  ]
+}

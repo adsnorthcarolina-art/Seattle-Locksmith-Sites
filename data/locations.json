@@ -72,5 +72,121 @@
     "bing_verify": "016ECD96825B160F5555EC7EB74F4D97",
     "form_backend": "web3forms",
     "web3forms_key": "c504d3e6-4db1-445c-8865-79057e5ccd50"
+  },
+  {
+    "domain": "seattlelocksmithgroup.com",
+    "business": "Seattle Locksmith Group",
+    "city": "Seattle",
+    "state": "Washington",
+    "st": "WA",
+    "zip": "98122",
+    "street": "",
+    "phone": "206-309-1138",
+    "email": "seattlelocksmithgroup1@gmail.com",
+    "since": "2012",
+    "palette": 5,
+    "gtm": "",
+    "maps_embed": "",
+    "neighborhoods": [
+      "Downtown",
+      "Ballard",
+      "Capitol Hill",
+      "Queen Anne",
+      "Fremont",
+      "Wallingford",
+      "Green Lake",
+      "University District",
+      "Northgate",
+      "Lake City",
+      "Greenwood",
+      "Phinney Ridge",
+      "Belltown",
+      "South Lake Union",
+      "Pioneer Square",
+      "International District",
+      "Beacon Hill",
+      "Columbia City",
+      "West Seattle",
+      "Magnolia",
+      "Georgetown",
+      "Rainier Beach"
+    ],
+    "nearby": [
+      "Bellevue",
+      "Kirkland",
+      "Renton",
+      "Burien",
+      "Bothell",
+      "Lynnwood",
+      "Shoreline",
+      "Everett",
+      "Tukwila",
+      "Issaquah",
+      "Newcastle",
+      "Sammamish",
+      "Snohomish",
+      "Maple Valley"
+    ],
+    "social": {
+      "facebook": "https://www.facebook.com/people/Seattle-Locksmith-Group/61579621003035/",
+      "x": "https://x.com/seattlelocksmi",
+      "instagram": "https://www.instagram.com/seattlelocksmithgroup",
+      "youtube": "https://www.youtube.com/@SeattleLocksmithGroup",
+      "tiktok": "https://www.tiktok.com/@seattlelocksmithgroup"
+    },
+    "place_id": "ChIJuwk9SfSM7mIRN3vODxMATk8",
+    "sms": "206-309-1138",
+    "whatsapp": "",
+    "nicknames": [
+      "the Emerald City",
+      "Jet City",
+      "Rain City",
+      "Seatown"
+    ],
+    "area_code": "206",
+    "region_terms": [
+      "Pacific Northwest (PNW)",
+      "Puget Sound",
+      "King County"
+    ],
+    "airport": "SEA",
+    "gallery": [
+      [
+        "g0.jpg",
+        "{{business}} technicians on a commercial call in {{city}}",
+        1000,
+        747
+      ],
+      [
+        "g13.jpg",
+        "Yale smart lock installed on a front door in {{city}}",
+        507,
+        900
+      ],
+      [
+        "g11.jpg",
+        "Key fob programmed to the car on site in {{city}}",
+        900,
+        633
+      ],
+      [
+        "g1.jpg",
+        "Commercial lever lock installed in {{city}}",
+        619,
+        1100
+      ],
+      [
+        "g18.jpg",
+        "Smart key cut and programmed in {{city}}",
+        698,
+        900
+      ],
+      [
+        "g9.jpg",
+        "Electronic safe lock opened and reset in {{city}}",
+        900,
+        631
+      ]
+    ]
   }
 ]

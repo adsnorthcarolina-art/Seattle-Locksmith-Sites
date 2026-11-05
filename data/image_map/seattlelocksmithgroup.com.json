@@ -1,0 +1,26 @@
+{
+  "hero": "g6.jpg",
+  "gallery": ["g13.jpg", "g11.jpg", "g1.jpg", "g18.jpg", "g9.jpg"],
+  "products": {
+    "emergency-lockout-service": "g7.jpg",
+    "car-lockout-service": "g15.jpg",
+    "car-key-replacement": "g18.jpg",
+    "key-fob-programming": "g11.jpg",
+    "ignition-repair": "g2.jpg",
+    "broken-key-extraction": "g5.jpg",
+    "lock-rekeying": "g12.jpg",
+    "deadbolt-lock-installation": "g1.jpg",
+    "smart-lock-installation": "g13.jpg",
+    "commercial-locksmith-access-control": "g16.jpg",
+    "safe-opening": "g9.jpg",
+    "key-duplication": "g14.jpg",
+    "house-lockout-service": "g4.jpg",
+    "commercial-lockout-service": "g8.jpg",
+    "spare-car-key": "g17.jpg",
+    "car-door-lock-repair": "g3.jpg",
+    "lock-repair": "g0.jpg",
+    "high-security-locks": "g10.jpg",
+    "master-key-systems": "g14.jpg",
+    "panic-bar-installation": "g16.jpg"
+  }
+}
