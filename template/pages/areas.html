@@ -1,0 +1,29 @@
+<!-- title: Service Areas - Locksmith {{cityst}} & Eastside | {{business}} -->
+<!-- desc: {{business}} serves every {{city}} neighborhood plus {{nearby_short}} and more. Mobile locksmith, 24 hours. Call {{phone}}. -->
+<section class="hero sub" aria-labelledby="h1">
+  <div class="wrap">
+    <h1 id="h1">Where we work</h1>
+    <p class="lede">{{business}} is a mobile locksmith based in <a href="{{wiki}}" rel="noopener" style="color:#fff">{{cityst}}</a> {{zip}}. Technicians are positioned around the city, so wherever you are on this list we can usually be there within the hour.</p>
+    <a class="bignum" href="tel:+1{{phone_digits}}"><span>Call, 24 hours a day</span>{{phone}}</a>
+  </div>
+  <div class="door" aria-hidden="true"><i></i><i></i></div>
+</section>
+<section aria-labelledby="h2a">
+  <div class="wrap">
+    <h2 id="h2a">{{city}} neighborhoods</h2>
+    <ul class="towns">
+      {{hoods_list}}
+    </ul>
+    <h2 style="margin-top:3rem">Nearby cities</h2>
+    <ul class="towns">
+      {{nearby_list}}
+    </ul>
+    <p style="margin-top:2rem">Not on the list? Call anyway — the dispatcher will tell you right away whether we can reach you today.</p>
+  </div>
+</section>
+<section class="seam" aria-label="Map">
+  <div class="wrap">
+    <h2>Find us on Google Maps</h2>
+    <div class="map"><iframe src="{{maps_embed}}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="{{business}} on Google Maps"></iframe></div>
+  </div>
+</section>
