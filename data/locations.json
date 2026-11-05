@@ -188,5 +188,70 @@
         631
       ]
     ]
+  },
+  {
+    "domain": "bobslocksmithseattle.com",
+    "business": "Bob's Locksmith",
+    "city": "Seattle",
+    "state": "Washington",
+    "st": "WA",
+    "zip": "98106",
+    "street": "",
+    "phone": "206-984-6356",
+    "email": "nicole@bobslocksmithseattle.com",
+    "since": "2014",
+    "palette": 2,
+    "gtm": "",
+    "maps_embed": "",
+    "neighborhoods": [
+      "West Seattle",
+      "Delridge",
+      "High Point",
+      "Alki",
+      "Admiral District",
+      "Fauntleroy",
+      "Morgan Junction",
+      "Arbor Heights",
+      "White Center",
+      "South Park",
+      "Georgetown",
+      "Beacon Hill",
+      "Columbia City",
+      "Rainier Valley",
+      "Downtown",
+      "Belltown",
+      "Pioneer Square",
+      "Capitol Hill",
+      "Queen Anne",
+      "Ballard",
+      "Fremont",
+      "University District"
+    ],
+    "nearby": [
+      "Burien",
+      "Renton",
+      "Bellevue",
+      "Kirkland",
+      "Shoreline",
+      "Bothell",
+      "Lynnwood"
+    ],
+    "social": {},
+    "place_id": "ChIJpczpEUP9t6YRNEgmyIAhtes",
+    "sms": "206-984-6356",
+    "whatsapp": "",
+    "nicknames": [
+      "the Emerald City",
+      "Jet City",
+      "Rain City",
+      "Seatown"
+    ],
+    "area_code": "206",
+    "region_terms": [
+      "Pacific Northwest (PNW)",
+      "Puget Sound",
+      "King County"
+    ],
+    "airport": "SEA"
   }
 ]
