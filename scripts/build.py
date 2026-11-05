@@ -459,6 +459,7 @@ def fields(loc):
         "region_terms": joined(loc.get("region_terms") or []), "airport": loc.get("airport", ""),
         "alt_names_schema": "".join(f',"{htmlmod.escape(n.replace("the ", ""), quote=True)}"' for n in (loc.get("nicknames") or [])),
         "brand_links": brand_links_inline(),
+        "verify_tags": (f'<meta name="msvalidate.01" content="{loc["bing_verify"]}">' if loc.get("bing_verify") else "") + (f'<meta name="google-site-verification" content="{loc["google_verify"]}">' if loc.get("google_verify") else ""),
         "hood_links": "\n      ".join(f'<li><a href="/{area_slug(n)}/">{htmlmod.escape(n)}</a></li>' for n in hoods) or f"<li>{city}</li>",
         "nearby_links": "\n      ".join(f'<li><a href="/{area_slug(n)}/">{htmlmod.escape(n)}</a></li>' for n in nearby) or "<li>Surrounding communities</li>",
         **pal,
