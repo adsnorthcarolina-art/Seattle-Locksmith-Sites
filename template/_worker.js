@@ -27,6 +27,11 @@ export default {
       url.pathname = OLD[url.pathname];
       return Response.redirect(url.toString(), 301);
     }
+    // Directory URLs without a trailing slash: redirect ourselves (ASSETS would redirect to the internal /<site>/ path)
+    if (!url.pathname.endsWith("/") && !/\.[a-z0-9]+$/i.test(url.pathname)) {
+      url.pathname += "/";
+      return Response.redirect(url.toString(), 301);
+    }
     const assetUrl = new URL(request.url);
     assetUrl.pathname = "/" + site + url.pathname;
     const res = await env.ASSETS.fetch(new Request(assetUrl.toString(), request));
