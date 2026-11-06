@@ -538,7 +538,7 @@ def sub(text, f):
 
 
 PRODUCT_SCHEMA = """<script type="application/ld+json">
-{{"@context":"https://schema.org","@type":"Service","name":"{name}","serviceType":"{name}","provider":{{"@type":"Locksmith","name":"{business}","telephone":"+1-{phone}","url":"https://www.{domain}/"}},"areaServed":{{"@type":"City","name":"{city}"}},"description":"{desc}","image":"https://www.{domain}/img/products/{image}","url":"https://www.{domain}/{slug}/","offers":{{"@type":"Offer","price":"{price}","priceCurrency":"USD","priceSpecification":{{"@type":"PriceSpecification","minPrice":"{price}","priceCurrency":"USD"}}}}}}
+{{"@context":"https://schema.org","@type":"Service","name":"{name}","serviceType":"{name}","provider":{{"@id":"https://www.{domain}/#business"}},"areaServed":{{"@type":"City","name":"{city}"}},"description":"{desc}","image":"https://www.{domain}/img/products/{image}","url":"https://www.{domain}/{slug}/","offers":{{"@type":"Offer","price":"{price}","priceCurrency":"USD","priceSpecification":{{"@type":"PriceSpecification","minPrice":"{price}","priceCurrency":"USD"}}}}}}
 </script>"""
 
 
