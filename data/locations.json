@@ -594,15 +594,23 @@
   "nearby": [
    "Burien",
    "Renton",
-   "Tukwila",
+   "Kent",
    "Bellevue",
    "Kirkland",
    "Redmond",
    "Bothell",
    "Lynnwood",
-   "Shoreline"
+   "Shoreline",
+   "Everett",
+   "Snohomish"
   ],
-  "social": {},
+  "social": {
+   "facebook": "https://www.facebook.com/people/Fast-Locksmith/61579840115399/",
+   "instagram": "https://www.instagram.com/fastlocksmithwa",
+   "x": "https://x.com/fastlocksmithw",
+   "tiktok": "https://www.tiktok.com/@fastlocksmithseattle",
+   "youtube": "https://www.youtube.com/@fastlocksmithseattle"
+  },
   "place_id": "",
   "sms": "206-317-4890",
   "whatsapp": "",
