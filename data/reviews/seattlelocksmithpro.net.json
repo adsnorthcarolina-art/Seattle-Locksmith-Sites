@@ -1,0 +1,44 @@
+{
+ "rating": "5.0",
+ "count": "4",
+ "google_url": "https://maps.google.com/?cid=10510910993778188009",
+ "write_url": "https://maps.google.com/?cid=10510910993778188009",
+ "reviews": [
+  {
+   "name": "Jim Ganoe",
+   "stars": 5,
+   "text": "Seattle Locksmith provided excellent service when I needed help urgently. They arrived quickly, were very professional, and handled the situation with great skill. The technician explained everything clearly and fixed the issue in no time without causing any damage. Their pricing was fair and transparent.",
+   "tags": [
+    "emergency-lockout-service",
+    "residential"
+   ]
+  },
+  {
+   "name": "James Jones",
+   "stars": 5,
+   "text": "I needed my locks changed urgently and they arrived on time and handled everything smoothly. Very professional, efficient and reasonably priced. I truly appreciate their quick response and excellent customer service.",
+   "tags": [
+    "lock-rekeying",
+    "residential"
+   ]
+  },
+  {
+   "name": "Franciela Rico Leal",
+   "stars": 5,
+   "text": "Not even gonna lie, I thought the price was gonna be absolutely insane, but honestly it ended up being really reasonable! Appreciate it, very happy with the locksmith experience I received.",
+   "tags": [
+    "lock-repair",
+    "residential"
+   ]
+  },
+  {
+   "name": "raman raman",
+   "stars": 5,
+   "text": "Seattle Locksmith provided outstanding car locksmith service. I accidentally locked my keys inside my car and they arrived quickly and unlocked it without any damage. Very professional, fast and affordable.",
+   "tags": [
+    "car-lockout-service",
+    "automotive"
+   ]
+  }
+ ]
+}
