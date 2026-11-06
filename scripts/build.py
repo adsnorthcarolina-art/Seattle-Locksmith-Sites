@@ -472,6 +472,7 @@ def fields(loc):
         "styles": STYLES,
         "js_ver": JS_VER,
         "head_extra": "",
+        "body_class": ("theme-" + loc["theme"]) if loc.get("theme") else "",
         **{"ico_" + k: v for k, v in ICONS.items()},
         "social_links": social_html(loc.get("social")),
         "social_sameas": "".join(f',"{htmlmod.escape(u, quote=True)}"' for u in (loc.get("social") or {}).values() if u),

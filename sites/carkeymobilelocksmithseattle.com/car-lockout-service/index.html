@@ -192,8 +192,8 @@ footer .legal{border-top:1px solid var(--ink3);padding-top:1rem;display:flex;fle
 .map{position:relative;width:100%;aspect-ratio:4/3;max-width:720px}
 .map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .brand svg{width:46px;height:46px}
-.brand img.logo{width:auto;min-width:60px;max-width:170px;height:60px;padding:4px;border-radius:8px;background:#fff;object-fit:contain;flex:none}
-@media (max-width:640px){.brand img.logo{min-width:44px;max-width:120px;height:44px;padding:3px}}
+.brand img.logo{width:60px;height:60px;padding:4px;border-radius:8px;background:#fff;object-fit:contain;flex:none}
+@media (max-width:640px){.brand img.logo{width:44px;height:44px;padding:3px}}
 .pimg{margin:0 0 1.5rem;max-width:520px}
 .pimg img{width:100%;height:auto;border-radius:8px;display:block}
 .pcard img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:8px;display:block;margin-bottom:.6rem}
@@ -359,6 +359,75 @@ footer .cols>div:nth-child(2) li{break-inside:avoid}
 .prose,.contact dd,.aside li,footer li{overflow-wrap:anywhere}
 @media (max-width:480px){.contact dl{grid-template-columns:1fr;gap:.15rem 0}.contact dt{margin-top:.6rem}}
 .hero.photo picture{display:contents}
+
+/* ======== theme-b (per-site variant: light header, full-bleed centered hero, pills, round icon cards) ======== */
+.theme-b{--radius:18px}
+.theme-b h1,.theme-b h2,.theme-b h3,.theme-b .brand b,.theme-b .trust b,.theme-b .offer b,.theme-b .drawer-head{font-family:Barlow,"Barlow Fallback",system-ui,sans-serif;font-weight:600;letter-spacing:-.02em;text-transform:none}
+.theme-b .brand b{font-size:1.25rem;letter-spacing:-.01em}
+.theme-b .bignum,.theme-b .steps li::before,.theme-b .rev footer .av{font-family:Barlow,"Barlow Fallback",system-ui,sans-serif;font-weight:700;letter-spacing:-.02em}
+/* header: white */
+.theme-b .top{background:var(--white);color:var(--ink);border-bottom:1px solid var(--panel);position:sticky;top:0;z-index:10}
+.theme-b .brand{color:var(--ink)}
+.theme-b .brand small{color:var(--steel)}
+.theme-b .brand img.logo{background:transparent;padding:0}
+.theme-b .burger{border-color:var(--panel)}
+.theme-b .burger span{background:var(--ink)}
+.theme-b .burger:hover{border-color:var(--signal)}
+/* buttons: pills */
+.theme-b .call,.theme-b .cta-row a,.theme-b .sticky .sms,.theme-b .lead button.call,.theme-b .svc .mini-call{border-radius:999px}
+.theme-b .call{padding:.75rem 1.3rem;box-shadow:0 6px 18px -8px color-mix(in srgb,var(--signal) 70%,transparent)}
+/* hero: full-bleed photo, centered copy, bottom gradient */
+.theme-b .hero.photo .hero-img{object-position:50% 45%}
+.theme-b .hero.photo::before{background:linear-gradient(180deg,color-mix(in srgb,var(--ink) 55%,transparent) 0%,color-mix(in srgb,var(--ink) 78%,transparent) 40%,color-mix(in srgb,var(--ink) 96%,transparent) 100%)}
+.theme-b .hero.photo .hero-img{filter:saturate(.9)}
+.theme-b .hero .lede{text-shadow:0 1px 10px rgba(0,0,0,.6)}
+.theme-b .hero.photo .wrap{padding:7rem 0 4rem;text-align:center;display:flex;flex-direction:column;align-items:center}
+.theme-b .hero.photo .wrap>*{max-width:46rem}
+.theme-b .hero h1{font-size:clamp(2.6rem,6.5vw,4.6rem);line-height:1.05;max-width:18ch}
+.theme-b .hero .lede{font-size:1.2rem;margin:1.25rem auto 1.75rem}
+.theme-b .hero .bignum{align-items:center;border-radius:999px;padding:.75rem 2rem .7rem;background:var(--white);border:0;color:var(--signal);box-shadow:0 18px 40px -18px rgba(0,0,0,.6)}
+.theme-b .hero .bignum span{color:var(--steel)}
+.theme-b .hero .cta-row{justify-content:center}
+.theme-b .hero .facts{justify-content:center;gap:.5rem .75rem}
+.theme-b .hero .facts li{background:color-mix(in srgb,var(--white) 12%,transparent);border:1px solid color-mix(in srgb,var(--white) 22%,transparent);border-radius:999px;padding:.35rem .9rem;font-size:.92rem}
+.theme-b .hero .facts li::before{width:7px;height:7px;border-radius:50%;margin-right:.45rem}
+.theme-b .hero.photo .door{display:none}
+@media (max-width:700px){
+  .theme-b .hero.photo .wrap{padding:1.25rem 0 2.5rem;margin-top:-3rem;text-align:left;align-items:flex-start}
+  .theme-b .hero .cta-row,.theme-b .hero .facts{justify-content:flex-start}
+  .theme-b .hero .bignum{width:100%;align-items:center}
+}
+/* trust strip: light-blue band with pills */
+.theme-b .trust{background:color-mix(in srgb,var(--signal) 8%,var(--white));border-bottom:0}
+.theme-b .trust li+li{border:0;padding-left:0}
+.theme-b .trust .ico{background:var(--white);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+/* section headings: accent underline, centered intro */
+.theme-b section h2{position:relative;padding-bottom:.6rem}
+.theme-b section h2::after{content:"";position:absolute;left:0;bottom:0;width:44px;height:4px;border-radius:2px;background:var(--signal)}
+.theme-b .band h2::after{background:var(--white)}
+/* cards: rounder, no top bar, round icon */
+.theme-b .svc{border-radius:var(--radius);border:1px solid var(--panel);box-shadow:0 10px 30px -22px rgba(16,41,79,.35)}
+.theme-b .svc::before{display:none}
+.theme-b .svc .ico{width:54px;height:54px;border-radius:50%;background:color-mix(in srgb,var(--signal) 12%,var(--white));color:var(--signal)}
+.theme-b .svc.pcard img{border-radius:12px}
+.theme-b .rev,.theme-b .offer div,.theme-b .aside,.theme-b .why li{border-radius:var(--radius)}
+.theme-b .rev{background:color-mix(in srgb,var(--signal) 4%,var(--white))}
+.theme-b .rev footer .av{background:var(--signal)}
+.theme-b .why li::before{background:var(--signal)}
+.theme-b .steps li::before{background:color-mix(in srgb,var(--signal) 12%,var(--white));color:var(--signal)}
+.theme-b .offer b::before{display:none}
+.theme-b .offer div{border-top:4px solid var(--signal)}
+.theme-b .brands li{border-radius:8px}
+.theme-b details{border:1px solid var(--panel);border-radius:12px;padding:.9rem 1.1rem;margin-bottom:.6rem;background:var(--white)}
+.theme-b details:last-of-type{border-bottom:1px solid var(--panel)}
+.theme-b summary::after{background:color-mix(in srgb,var(--signal) 12%,var(--white));color:var(--signal)}
+.theme-b .gallery figure{border-radius:14px}
+.theme-b .band{background:linear-gradient(135deg,var(--ink),color-mix(in srgb,var(--ink) 70%,var(--signal)))}
+.theme-b .seam{background:var(--white)}
+.theme-b .seam+.seam{background:var(--paper)}
+.theme-b footer{background:color-mix(in srgb,var(--ink) 92%,black)}
+.theme-b .sticky{background:var(--white);border-top:1px solid var(--panel)}
+.theme-b .sticky .sms{color:var(--signal)}
 </style>
 <script type="application/ld+json">
 {
@@ -394,7 +463,7 @@ footer .cols>div:nth-child(2) li{break-inside:avoid}
 {"@context":"https://schema.org","@type":"Service","name":"Car Lockout Service","serviceType":"Car Lockout Service","provider":{"@id":"https://www.carkeymobilelocksmithseattle.com/#business"},"areaServed":{"@type":"City","name":"Seattle"},"description":"Car Lockout Service by Car Key Mobile Locksmith in Seattle, WA. Keys locked in the car or trunk? Our mobile automotive locksmiths open any make and model at your location in Seattle, WA using manufacturer-specific tools, with no damage to the door, window or paint. 24/7, free estimate, licensed and insured.","image":"https://www.carkeymobilelocksmithseattle.com/img/products/car-lockout-service.jpg?v=f4893e67","url":"https://www.carkeymobilelocksmithseattle.com/car-lockout-service/","offers":{"@type":"Offer","price":"65","priceCurrency":"USD","priceSpecification":{"@type":"PriceSpecification","minPrice":"65","priceCurrency":"USD"}}}
 </script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can you open my car if the keys are locked inside?","acceptedAnswer":{"@type":"Answer","text":"Yes. We open every make and model with manufacturer-specific tools, with no damage to the door, window or paint, usually in a few minutes once we arrive."}},{"@type":"Question","name":"Keys are locked in the trunk — can you get them?","acceptedAnswer":{"@type":"Answer","text":"Yes. We open the car, then release the trunk from inside or pick the trunk lock directly, even on models that do not have a pass-through."}},{"@type":"Question","name":"Do you open cars with a slim jim?","acceptedAnswer":{"@type":"Answer","text":"No. Slim jims damage modern door wiring and airbags. We use air wedges, long-reach tools and lock picks designed for each vehicle."}},{"@type":"Question","name":"How fast can you get to me in Seattle?","acceptedAnswer":{"@type":"Answer","text":"Most calls in Seattle are reached within 20 to 40 minutes. Car Key Mobile Locksmith runs mobile units around the city 24 hours a day, and the dispatcher gives you an arrival time when you call 206-759-7493."}},{"@type":"Question","name":"Do I get a price before you start?","acceptedAnswer":{"@type":"Answer","text":"Yes, always. The technician checks the lock or the car on arrival and quotes the whole job before touching anything. The estimate is free and there are no hidden fees."}},{"@type":"Question","name":"Are you licensed and insured?","acceptedAnswer":{"@type":"Answer","text":"Yes. Car Key Mobile Locksmith is licensed and insured, in business since 2013, and every technician is background-checked and shows ID on arrival."}}]}</script>
 </head>
-<body>
+<body class="theme-b">
 
 <header class="top">
   <div class="wrap">
