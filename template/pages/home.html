@@ -3,7 +3,7 @@
 <section class="hero photo" aria-labelledby="h1">
   <picture><source media="(max-width:700px)" srcset="/img/gallery/g0-640.webp"><img class="hero-img" src="/img/gallery/g0.webp" alt="{{business}} van on a lockout call in {{city}}" width="1400" height="1050" fetchpriority="high" decoding="sync"></picture>
   <div class="wrap">
-    <p class="rating badge"><span class="stars">★★★★★</span> <b>{{rating}}</b> · <a href="{{google_url}}" target="_blank" rel="noopener">{{review_count}} Google reviews</a></p>
+    {{hero_badge}}
     <h1 id="h1">24-hour locksmith in <a href="{{wiki}}" rel="noopener" style="color:inherit;text-decoration:none">{{city}}</a>, {{st}}</h1>
     <p class="lede">Locked out of your car, home or office? Lost your only car key? A {{business}} technician is on the road across {{city}} right now, with the tools on the van to open the door, cut and program the key, or change the lock on the spot.</p>
     <a class="bignum" href="tel:+1{{phone_digits}}"><span>Call now, 24 hours a day</span>{{phone}}</a>
@@ -22,7 +22,7 @@
 <section class="trust" aria-label="Why customers trust {{business}}">
   <div class="wrap">
     <ul>
-      <li><span class="ico">{{ico_star}}</span><div><b>{{rating}} on Google</b><span>{{review_count}} verified reviews</span></div></li>
+      {{trust_rating_li}}
       <li><span class="ico">{{ico_clock}}</span><div><b>24 hours, 7 days</b><span>Real dispatcher, every call</span></div></li>
       <li><span class="ico">{{ico_shield}}</span><div><b>Licensed &amp; insured</b><span>Serving {{city}} since {{since}}</span></div></li>
       <li><span class="ico">{{ico_tag}}</span><div><b>Free estimate</b><span>Firm price before any work</span></div></li>

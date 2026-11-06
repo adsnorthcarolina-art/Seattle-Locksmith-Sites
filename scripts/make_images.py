@@ -22,6 +22,14 @@ logo = Image.open(inc / "logo.png").convert("RGBA")
 # trim transparent/white margins of the logo
 bbox = Image.eval(logo.split()[3], lambda a: 255 if a > 10 else 0).getbbox() or logo.getbbox()
 logo = logo.crop(bbox)
+if logo.split()[3].getextrema()[0] > 200:  # no transparency (e.g. GBP avatar JPEG): trim the white margins too
+    from PIL import ImageChops
+    rgb = logo.convert("RGB")
+    diff = ImageChops.difference(rgb, Image.new("RGB", rgb.size, (255, 255, 255))).convert("L").point(lambda v: 255 if v > 25 else 0)
+    bb = diff.getbbox()
+    if bb:
+        pad = max(8, logo.width // 60)
+        logo = logo.crop((max(0, bb[0] - pad), max(0, bb[1] - pad), min(logo.width, bb[2] + pad), min(logo.height, bb[3] + pad)))
 logo.save(out / "logo.png")
 
 

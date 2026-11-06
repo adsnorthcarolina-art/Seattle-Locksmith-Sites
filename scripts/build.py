@@ -95,6 +95,7 @@ PALETTES = [
     ("#2B1D14", "#E39A4F", "#2B1D14", "#F6F2EC"),  # espresso + copper
     ("#0B2A5B", "#E0282E", "#FFFFFF", "#F3F5F9"),  # navy + red (logo colors red/blue)
     ("#10294F", "#0E7AC9", "#FFFFFF", "#F2F6FB"),  # navy + blue (Car Key Mobile Locksmith logo)
+    ("#0B2545", "#1BA3E0", "#0B2545", "#F2F6FA"),  # navy + sky blue (Master Locksmith Seattle logo)
 ]
 
 
@@ -466,7 +467,7 @@ def fields(loc):
         "areas_schema": "".join(f',{{"@type":"City","name":"{htmlmod.escape(n)}"}}' for n in nearby),
         "gtm_head": (GTM_HEAD.replace("{gtm}", gtm) if gtm else "") + (GA4_HEAD.replace("{ga4}", loc["ga4"]) if loc.get("ga4") else ""),
         "gtm_body": GTM_BODY.replace("{gtm}", gtm) if gtm else "",
-        "mark": ('<img class="logo" src="/img/logo-104.png" alt="{{business}} logo" width="52" height="52">' if (IMG_DIR / "logo.png").exists() else MARK.format(signal=pal["c_signal"], ink=pal["c_ink"])),
+        "mark": ('<img class="logo" src="/img/logo-104.png" alt="{{business}} logo" width="%d" height="52">' % logo_header_width() if (IMG_DIR / "logo.png").exists() else MARK.format(signal=pal["c_signal"], ink=pal["c_ink"])),
         "favicon": "data:image/svg+xml," + MARK.format(signal=pal["c_signal"], ink=pal["c_ink"]).replace("#", "%23").replace("<", "%3C").replace(">", "%3E").replace("'", "%27"),
         "styles": STYLES,
         "js_ver": JS_VER,
@@ -476,6 +477,7 @@ def fields(loc):
         "social_sameas": "".join(f',"{htmlmod.escape(u, quote=True)}"' for u in (loc.get("social") or {}).values() if u),
         "sms_digits": re.sub(r"\D", "", loc.get("sms") or phone),
         "rating": REVIEWS.get("rating", ""), "review_count": REVIEWS.get("count", ""),
+        **rating_blocks(loc),
         "google_url": REVIEWS.get("google_url", "#"), "write_review_url": REVIEWS.get("write_url", "#"),
         "review_schema": review_schema(),
         "_hoods": hoods, "_nearby": nearby,
@@ -622,6 +624,31 @@ def render_page(slug, f):
 ALL_POSTS = POSTS
 DEFAULT_GALLERY = GALLERY
 DEFAULT_IMG_DIR = IMG_DIR
+def logo_header_width():
+    from PIL import Image
+    w, h = Image.open(IMG_DIR / "logo.png").size
+    return max(52, round(52 * w / h))
+
+
+def rating_blocks(loc):
+    """Hero badge / trust-strip item / footer line. With no reviews yet (new profile) fall back to an
+    ownership or licensing line instead of printing an empty star rating."""
+    since = loc.get("since", "")
+    owned = loc.get("owned", "")  # e.g. "Women-owned", "Veteran-owned"
+    if REVIEWS.get("reviews"):
+        return {
+            "hero_badge": f'<p class="rating badge"><span class="stars">★★★★★</span> <b>{REVIEWS["rating"]}</b> · <a href="{REVIEWS["google_url"]}" target="_blank" rel="noopener">{REVIEWS["count"]} Google reviews</a></p>',
+            "trust_rating_li": f'<li><span class="ico">{ICONS["star"]}</span><div><b>{REVIEWS["rating"]} on Google</b><span>{REVIEWS["count"]} verified reviews</span></div></li>',
+            "footer_rating_li": f'<li><span class="stars">★★★★★</span> {REVIEWS["rating"]} · <a href="{REVIEWS["google_url"]}" target="_blank" rel="noopener">{REVIEWS["count"]} Google reviews</a></li>',
+        }
+    label = f"{owned} · " if owned else ""
+    return {
+        "hero_badge": f'<p class="rating badge">{label}Licensed &amp; insured · Since {since}</p>',
+        "trust_rating_li": f'<li><span class="ico">{ICONS["star"]}</span><div><b>{owned or "Local"} business</b><span>Based in {loc["city"]}, since {since}</span></div></li>',
+        "footer_rating_li": f'<li>{owned} business</li>' if owned else "",
+    }
+
+
 DEFAULT_REVIEWS = REVIEWS
 
 
@@ -673,14 +700,18 @@ def write_icons(logo, d):
     from PIL import Image
     im = Image.open(logo).convert("RGBA")
     w, h = im.size
-    side = max(w, h)
-    sq = Image.new("RGBA", (side, side), (255, 255, 255, 255))
-    sq.paste(im, ((side - w) // 2, (side - h) // 2), im)
-    sq = sq.convert("RGB")
+    if w > h * 1.6:
+        # wide wordmark logo: the square icon shows the left-hand mark (key bow / emblem) instead of a tiny strip
+        sq = im.crop((0, 0, h, h)).convert("RGB")
+    else:
+        side = max(w, h)
+        sq = Image.new("RGBA", (side, side), (255, 255, 255, 255))
+        sq.paste(im, ((side - w) // 2, (side - h) // 2), im)
+        sq = sq.convert("RGB")
     for n in (192, 512):
         sq.resize((n, n), Image.LANCZOS).save(d / "img" / f"icon-{n}.png", optimize=True)
     sq.resize((48, 48), Image.LANCZOS).save(d / "favicon.ico", sizes=[(48, 48), (32, 32), (16, 16)])
-    im.resize((104, 104), Image.LANCZOS).save(d / "img" / "logo-104.png", optimize=True)
+    im.resize((max(104, round(104 * w / h)), 104), Image.LANCZOS).save(d / "img" / "logo-104.png", optimize=True)
 
 
 def write_webp(d):
