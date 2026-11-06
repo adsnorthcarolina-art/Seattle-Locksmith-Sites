@@ -232,7 +232,7 @@ def render_blog(f):
         content = POST_TPL.format(title=htmlmod.escape(sub(p["title"], f)), desc=htmlmod.escape(sub(p["desc"], f)), datefmt=datefmt(p["date"]),
                                   business=f["business"], body=sub(p["body"], f), city=f["city"], phone=f["phone"], phone_digits=f["phone_digits"], others=others)
         pf.update({
-            "page_title": htmlmod.escape(sub(p["title"], f) + f" - {f['cityst']} | " + f["business"], quote=True),
+            "page_title": htmlmod.escape(sub(p["title"], f) + " | " + f["business"], quote=True),
             "page_desc": htmlmod.escape(sub(p["desc"], f), quote=True),
             "path": f"/blog/{p['slug']}/",
             "content": content,
@@ -241,7 +241,7 @@ def render_blog(f):
         })
         for k in NAV_KEYS:
             pf[f"cur_{k}"] = 'aria-current="page"' if k == "blog" else ""
-        out.append((f"/blog/{p['slug']}/", sub(BASE, pf)))
+        out.append((f"/blog/{p['slug']}/", sub(BASE, fit_meta(pf))))
         cards.append(card(p, f))
     pf = dict(f)
     pf.update({
@@ -253,7 +253,7 @@ def render_blog(f):
     })
     for k in NAV_KEYS:
         pf[f"cur_{k}"] = 'aria-current="page"' if k == "blog" else ""
-    out.append(("/blog/", sub(BASE, pf)))
+    out.append(("/blog/", sub(BASE, fit_meta(pf))))
     return out
 
 
@@ -398,8 +398,8 @@ def render_area(name, kind, f):
         "a_nearby_title": nearby_title, "a_nearby": nearby_links,
         "a_faq": faq_html(faqs, f),
         "a_reviews": reviews_section(f, REVIEWS["reviews"][:3], heading=f"Reviews from customers around {f['city']}", limit=3),
-        "page_title": htmlmod.escape(f"Locksmith {name} | 24 Hour Locksmith near {where} | {f['business']}", quote=True),
-        "page_desc": htmlmod.escape(f"24/7 mobile locksmith in {name}: car, home and business lockouts, car key replacement, key fob programming, rekeying and lock installation. Licensed & insured since {f['since']}. Call {f['phone']}.", quote=True),
+        "page_title": htmlmod.escape(f"{name} Locksmith 24/7 | {f['business']}", quote=True),
+        "page_desc": htmlmod.escape(f"24/7 mobile locksmith in {name}: car, home and business lockouts, car keys, fob programming, rekeying and lock installation. Call {f['phone']}.", quote=True),
         "path": path,
         "schema_extra": faq_schema(faqs, f) + '<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"Locksmith","name":"Locksmith %s","provider":{"@id":"https://www.%s/#business"},"areaServed":{"@type":"%s","name":"%s"},"url":"https://www.%s%s"}</script>'
                         % (htmlmod.escape(name, quote=True), f["domain"], "Place" if kind == "hood" else "City", htmlmod.escape(name, quote=True), f["domain"], path),
@@ -407,7 +407,7 @@ def render_area(name, kind, f):
     pf["content"] = sub(AREA_TPL, pf)
     for k in NAV_KEYS:
         pf[f"cur_{k}"] = 'aria-current="page"' if k == "areas" else ""
-    out = sub(BASE, pf)
+    out = sub(BASE, fit_meta(pf))
     leftover = re.findall(r"{{\w+}}", out)
     if leftover:
         raise SystemExit(f"{f['domain']}{path}: unreplaced {sorted(set(leftover))}")
@@ -483,6 +483,50 @@ def fields(loc):
     return f
 
 
+def _ulen(s):
+    return len(htmlmod.unescape(s))
+
+
+def fit_title(t, phone="", limit=60):
+    """Trim an 'A | B | C' title to ~60 chars: drop the phone segment, then middle segments."""
+    if _ulen(t) <= limit:
+        return t
+    parts = re.split(r"( \| | - )", t)
+    segs = parts[0::2]
+    seps = parts[1::2]
+    if phone in segs and len(segs) > 1:
+        i = segs.index(phone)
+        segs.pop(i)
+        seps.pop(i - 1 if i > 0 else 0)
+    while _ulen("".join(x for pair in zip(segs, seps + [""]) for x in pair)) > limit and len(segs) > 2:
+        segs.pop(1)
+        seps.pop(0)
+    return "".join(x for pair in zip(segs, seps + [""]) for x in pair)
+
+
+def fit_desc(d, limit=158, min_len=80):
+    """Cut a meta description within the limit: at a sentence end, else a clause end, else a word."""
+    if _ulen(d) <= limit:
+        return d
+    u = htmlmod.unescape(d)
+    sents = [m.end() for m in re.finditer(r"[.!?](?=\s)", u) if m.end() <= limit]
+    good = [e for e in sents if e >= min_len]
+    if good:
+        return htmlmod.escape(u[: good[-1]], quote=True)
+    clauses = [m.start() for m in re.finditer(r"[,;:](?=\s)(?!\s[A-Z]{2}\b)", u) if min_len <= m.start() <= limit - 1]
+    if clauses:
+        return htmlmod.escape(u[: clauses[-1]] + ".", quote=True)
+    if sents and sents[-1] >= 40:
+        return htmlmod.escape(u[: sents[-1]], quote=True)
+    return htmlmod.escape(u[:limit - 1].rsplit(" ", 1)[0] + ".", quote=True)
+
+
+def fit_meta(pf):
+    pf["page_title"] = fit_title(pf["page_title"], pf.get("phone", ""))
+    pf["page_desc"] = fit_desc(pf["page_desc"])
+    return pf
+
+
 def sub(text, f):
     for _ in range(3):
         for k, v in f.items():
@@ -509,8 +553,8 @@ def render_product(p, f):
         "p_name": htmlmod.escape(p["name"]), "p_desc": htmlmod.escape(desc).replace(f["city"], f'<a href="{f["wiki"]}" rel="noopener" style="color:inherit">{f["city"]}</a>', 1), "p_price": str(p["price"]), "p_image": p["image"],
         "p_bullets": "\n".join(f"        <li>{htmlmod.escape(b)}</li>" for b in p["bullets"]),
         "p_related": "\n".join(f'          <li><a href="/{r}/">{htmlmod.escape(by_slug[r]["name"])}</a></li>' for r in p["related"] if r in by_slug),
-        "page_title": htmlmod.escape(f"{p['name']} {f['cityst']} | {f['business']} | {f['phone']}", quote=True),
-        "page_desc": htmlmod.escape(desc[:155].rsplit(" ", 1)[0] + " Call " + f["phone"] + ".", quote=True),
+        "page_title": htmlmod.escape(f"{p['name']} {f['cityst']} | {f['business']}", quote=True),
+        "page_desc": fit_desc(htmlmod.escape(re.sub(r"^[^.]*\. ", "", desc, count=1), quote=True), 138, 60) + " Call " + f["phone"] + ".",
         "path": path,
         "schema_extra": PRODUCT_SCHEMA.format(name=htmlmod.escape(p["name"], quote=True), business=f["business"], phone=f["phone"], domain=f["domain"], city=f["city"],
                                               desc=htmlmod.escape(desc, quote=True), image=p["image"], slug=p["slug"], price=p["price"]) + faq_schema(pfaq, f),
@@ -518,7 +562,7 @@ def render_product(p, f):
     pf["content"] = autolink_brands(sub(PRODUCT_TPL, pf))
     for k in NAV_KEYS:
         pf[f"cur_{k}"] = 'aria-current="page"' if k == "services" else ""
-    out = sub(BASE, pf)
+    out = sub(BASE, fit_meta(pf))
     leftover = re.findall(r"{{\w+}}", out)
     if leftover:
         raise SystemExit(f"{f['domain']}{path}: unreplaced {sorted(set(leftover))}")
@@ -542,7 +586,7 @@ def render_page(slug, f):
     })
     for k in NAV_KEYS:
         pf[f"cur_{k}"] = 'aria-current="page"' if k == nav_key else ""
-    out = sub(BASE, pf)
+    out = sub(BASE, fit_meta(pf))
     leftover = re.findall(r"{{\w+}}", out)
     if leftover:
         raise SystemExit(f"{f['domain']}{path}: unreplaced {sorted(set(leftover))}")
