@@ -611,6 +611,30 @@ def select_site_assets(loc):
     POSTS = [p for p in ALL_POSTS if p["slug"] in loc["blog"]] if loc.get("blog") else ALL_POSTS
 
 
+def version_images(site_dir):
+    """Append ?v=<content hash> to every /img/... reference in the site's HTML so browsers and CDNs
+    re-fetch an image as soon as its file changes (otherwise a replaced photo can stay cached for hours)."""
+    import hashlib
+    cache = {}
+
+    def ver(path):
+        if path not in cache:
+            fp = site_dir / path.lstrip("/")
+            cache[path] = hashlib.md5(fp.read_bytes()).hexdigest()[:8] if fp.exists() else None
+        return cache[path]
+
+    def repl(m):
+        v = ver(m.group(2))
+        return f"{m.group(1)}{m.group(2)}?v={v}" if v else m.group(0)
+
+    pat = re.compile(r'((?:https://www\.[a-z0-9.-]+)?)(/img/[A-Za-z0-9_./-]+\.(?:jpg|jpeg|png|webp|svg))(?![?\w])')
+    for html_file in site_dir.rglob("*.html"):
+        txt = html_file.read_text()
+        new = pat.sub(repl, txt)
+        if new != txt:
+            html_file.write_text(new)
+
+
 def build_site(loc, today):
     select_site_assets(loc)
     f = fields(loc)
@@ -655,6 +679,7 @@ def build_site(loc, today):
         target.write_text(out)
         if slug not in ("thank-you", "404"):
             urls.append(path)
+    version_images(d)
     (d / "robots.txt").write_text(ROBOTS.format(domain=f["domain"]))
     (d / "logo.svg").write_text(LOGO.format(business=htmlmod.escape(f["business"]), city=htmlmod.escape(f["city"].upper()), since=f["since"],
                                            cityst=htmlmod.escape(f["cityst"].upper()), phone=f["phone"], ink=f["c_ink"], signal=f["c_signal"], mist=f["c_mist"]))
