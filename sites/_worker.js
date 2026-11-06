@@ -46,6 +46,9 @@ export default {
     h.set("Referrer-Policy", "strict-origin-when-cross-origin");
     h.set("Cross-Origin-Opener-Policy", "same-origin");
     h.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+    if (url.pathname.startsWith("/fonts/")) {
+      h.set("Cache-Control", "public, max-age=31536000, immutable");
+    }
     if (url.pathname.startsWith("/img/")) {
       // public images: allow cross-origin reads (used when uploading product photos to Google Business Profile); versioned (?v=) so cache hard
       h.set("Access-Control-Allow-Origin", "*");

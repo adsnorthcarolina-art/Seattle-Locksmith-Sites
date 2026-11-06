@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 T = ROOT / "template"
 BASE = (T / "base.html").read_text()
-STYLES = (T / "styles.css").read_text().strip()
+STYLES = (T / "fonts" / "fonts.css").read_text().strip() + "\n" + (T / "styles.css").read_text().strip()
 FORM = (T / "form.html").read_text()
 LOCATIONS = json.loads((ROOT / "data" / "locations.json").read_text())
 PRODUCTS = json.loads((ROOT / "data" / "products.json").read_text())
@@ -706,6 +706,8 @@ def build_site(loc, today):
     if IMG_DIR.exists():
         shutil.copytree(IMG_DIR, d / "img", dirs_exist_ok=True)
         write_icons(IMG_DIR / "logo.png", d)
+        shutil.copytree(T / "fonts", d / "fonts", dirs_exist_ok=True)
+        (d / "fonts" / "fonts.css").unlink(missing_ok=True)
         write_webp(d)
     f["product_cards"] = "\n".join(
         f'      <div class="svc pcard"><a href="/{p["slug"]}/"><img src="/img/products/{p["image"].rsplit(".", 1)[0]}.webp" alt="{htmlmod.escape(p["name"])} in {f["cityst"]}" loading="lazy" decoding="async" fetchpriority="low" width="500" height="500"></a><h3><a href="/{p["slug"]}/">{htmlmod.escape(p["name"])}</a></h3><p>From ${p["price"]} · {f["cityst"]}</p><a class="more" href="/{p["slug"]}/">{htmlmod.escape(p["name"])} details</a></div>'
