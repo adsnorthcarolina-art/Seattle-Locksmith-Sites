@@ -30,6 +30,12 @@ export default {
     const assetUrl = new URL(request.url);
     assetUrl.pathname = "/" + site + url.pathname;
     const res = await env.ASSETS.fetch(new Request(assetUrl.toString(), request));
+    if (res.ok && url.pathname.startsWith("/img/")) {
+      // public images: allow cross-origin reads (used when uploading product photos to Google Business Profile)
+      const h = new Headers(res.headers);
+      h.set("Access-Control-Allow-Origin", "*");
+      return new Response(res.body, { status: res.status, headers: h });
+    }
     if (res.status === 404) {
       const nf = await env.ASSETS.fetch(new Request(new URL("/" + site + "/404.html", request.url).toString(), request));
       if (nf.ok) return new Response(nf.body, { status: 404, headers: nf.headers });
