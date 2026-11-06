@@ -28,6 +28,24 @@ FAQS = json.loads((ROOT / "data" / "faqs.json").read_text())
 BRANDS = json.loads((ROOT / "data" / "brands.json").read_text())
 
 
+# Inline SVG icons (24px, stroke) used by home.html cards and the trust strip. {{ico_<name>}} in templates.
+_I = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">%s</svg>'
+ICONS = {
+    "emergency": _I % '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    "auto": _I % '<path d="M5 17h14M6 17l1.5-5h9L18 17M4 17v2h3v-2M17 17v2h3v-2"/><path d="M7.5 12 9 8h6l1.5 4"/><circle cx="8" cy="17" r="1"/><circle cx="16" cy="17" r="1"/>',
+    "key": _I % '<circle cx="8" cy="12" r="4"/><path d="M12 12h9M17 12v3M20 12v2"/>',
+    "home": _I % '<path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>',
+    "rekey": _I % '<circle cx="9" cy="14" r="4"/><path d="M12.5 11 20 3.5M17 7l2 2M15 9l2 2"/>',
+    "commercial": _I % '<rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 7h3M13 7h3M8 11h3M13 11h3M8 15h3M13 15h3M10 21v-3h4v3"/>',
+    "star": _I % '<path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z" fill="currentColor" stroke="none"/>',
+    "shield": _I % '<path d="M12 3 20 6v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="m9 12 2 2 4-4"/>',
+    "clock": _I % '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    "van": _I % '<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17" r="1.5"/><circle cx="17" cy="17" r="1.5"/>',
+    "tag": _I % '<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.5"/>',
+    "phone": _I % '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.7a2 2 0 0 1 1.7 2z"/>',
+}
+
+
 def brands_section(f):
     cats = []
     for b in BRANDS:
@@ -290,7 +308,7 @@ def review_cards(revs, f, limit=6):
     for r in revs[:limit]:
         cards.append(
             f'      <blockquote class="rev"><p>{stars(r["stars"])}</p><p class="rev-text">“{htmlmod.escape(r["text"])}”</p>'
-            f'<footer><b>{htmlmod.escape(r["name"])}</b> · Google review</footer></blockquote>')
+            f'<footer><span class="av" aria-hidden="true">{htmlmod.escape(r["name"].strip()[:1].upper())}</span><span><b>{htmlmod.escape(r["name"])}</b><br><small>Google review</small></span></footer></blockquote>')
     return "\n".join(cards)
 
 
@@ -451,6 +469,7 @@ def fields(loc):
         "favicon": "data:image/svg+xml," + MARK.format(signal=pal["c_signal"], ink=pal["c_ink"]).replace("#", "%23").replace("<", "%3C").replace(">", "%3E").replace("'", "%27"),
         "styles": STYLES,
         "js_ver": JS_VER,
+        **{"ico_" + k: v for k, v in ICONS.items()},
         "social_links": social_html(loc.get("social")),
         "social_sameas": "".join(f',"{htmlmod.escape(u, quote=True)}"' for u in (loc.get("social") or {}).values() if u),
         "sms_digits": re.sub(r"\D", "", loc.get("sms") or phone),

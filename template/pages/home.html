@@ -20,16 +20,27 @@
   <div class="door" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 </section>
 
+<section class="trust" aria-label="Why customers trust {{business}}">
+  <div class="wrap">
+    <ul>
+      <li><span class="ico">{{ico_star}}</span><div><b>{{rating}} on Google</b><span>{{review_count}} verified reviews</span></div></li>
+      <li><span class="ico">{{ico_clock}}</span><div><b>24 hours, 7 days</b><span>Real dispatcher, every call</span></div></li>
+      <li><span class="ico">{{ico_shield}}</span><div><b>Licensed &amp; insured</b><span>Serving {{city}} since {{since}}</span></div></li>
+      <li><span class="ico">{{ico_tag}}</span><div><b>Free estimate</b><span>Firm price before any work</span></div></li>
+    </ul>
+  </div>
+</section>
+
 <section id="services" aria-labelledby="h-services">
   <div class="wrap">
     <h2 id="h-services">Locksmith services in {{city}}</h2>
     <div class="grid">
-      <div class="svc"><h3>Emergency lockout, 24/7</h3><p>Locked out of your car, house or business at any hour. Non-destructive entry in most cases — we open the lock, we don't break it.</p><a class="more" href="/emergency-locksmith/">Emergency lockout in {{city}}</a></div>
-      <div class="svc"><h3>Automotive locksmith</h3><p>Car lockouts, lost keys, ignition repair, broken key extraction. All makes and models, right where the car is parked.</p><a class="more" href="/automotive-locksmith/">Car locksmith in {{city}}</a></div>
-      <div class="svc"><h3>Car key replacement &amp; key fobs</h3><p>Transponder keys, remote-head keys, smart keys and push-to-start fobs cut and programmed on site, usually for far less than the dealer.</p><a class="more" href="/car-key-replacement/">Car keys in {{city}}</a></div>
-      <div class="svc"><h3>Residential locksmith</h3><p>House lockouts, lock rekeying, deadbolt and smart lock installation, lock repair, patio and garage door locks.</p><a class="more" href="/residential-locksmith/">Home locksmith in {{city}}</a></div>
-      <div class="svc"><h3>Lock rekeying</h3><p>Just moved in, lost a key, or an ex-roommate still has one? We rekey every lock to one new key, in one visit, without replacing the hardware.</p><a class="more" href="/lock-rekeying/">Rekeying in {{city}}</a></div>
-      <div class="svc"><h3>Commercial locksmith</h3><p>Master key systems, high-security locks, panic bars, access control, storefront and office lockouts, mailbox and cabinet locks.</p><a class="more" href="/commercial-locksmith/">Business locksmith in {{city}}</a></div>
+      <div class="svc"><span class="ico">{{ico_emergency}}</span><h3>Emergency lockout, 24/7</h3><p>Locked out of your car, house or business at any hour. Non-destructive entry in most cases — we open the lock, we don't break it.</p><a class="more" href="/emergency-locksmith/">Emergency lockout in {{city}}</a><a class="mini-call" href="tel:+1{{phone_digits}}">{{ico_phone}} Call</a></div>
+      <div class="svc"><span class="ico">{{ico_auto}}</span><h3>Automotive locksmith</h3><p>Car lockouts, lost keys, ignition repair, broken key extraction. All makes and models, right where the car is parked.</p><a class="more" href="/automotive-locksmith/">Car locksmith in {{city}}</a><a class="mini-call" href="tel:+1{{phone_digits}}">{{ico_phone}} Call</a></div>
+      <div class="svc"><span class="ico">{{ico_key}}</span><h3>Car key replacement &amp; key fobs</h3><p>Transponder keys, remote-head keys, smart keys and push-to-start fobs cut and programmed on site, usually for far less than the dealer.</p><a class="more" href="/car-key-replacement/">Car keys in {{city}}</a><a class="mini-call" href="tel:+1{{phone_digits}}">{{ico_phone}} Call</a></div>
+      <div class="svc"><span class="ico">{{ico_home}}</span><h3>Residential locksmith</h3><p>House lockouts, lock rekeying, deadbolt and smart lock installation, lock repair, patio and garage door locks.</p><a class="more" href="/residential-locksmith/">Home locksmith in {{city}}</a><a class="mini-call" href="tel:+1{{phone_digits}}">{{ico_phone}} Call</a></div>
+      <div class="svc"><span class="ico">{{ico_rekey}}</span><h3>Lock rekeying</h3><p>Just moved in, lost a key, or an ex-roommate still has one? We rekey every lock to one new key, in one visit, without replacing the hardware.</p><a class="more" href="/lock-rekeying/">Rekeying in {{city}}</a><a class="mini-call" href="tel:+1{{phone_digits}}">{{ico_phone}} Call</a></div>
+      <div class="svc"><span class="ico">{{ico_commercial}}</span><h3>Commercial locksmith</h3><p>Master key systems, high-security locks, panic bars, access control, storefront and office lockouts, mailbox and cabinet locks.</p><a class="more" href="/commercial-locksmith/">Business locksmith in {{city}}</a><a class="mini-call" href="tel:+1{{phone_digits}}">{{ico_phone}} Call</a></div>
     </div>
     <p style="margin-top:1.5rem"><a class="more" href="/services/" style="font-weight:600;text-decoration:none;border-bottom:2px solid var(--signal)">See all 20 services</a></p>
   </div>
