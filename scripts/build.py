@@ -518,9 +518,10 @@ def fit_desc(d, limit=158, min_len=80):
     clauses = [m.start() for m in re.finditer(r"[,;:](?=\s)(?!\s[A-Z]{2}\b)", u) if min_len <= m.start() <= limit - 1]
     if clauses:
         return htmlmod.escape(u[: clauses[-1]] + ".", quote=True)
-    if sents and sents[-1] >= 40:
-        return htmlmod.escape(u[: sents[-1]], quote=True)
-    return htmlmod.escape(u[:limit - 1].rsplit(" ", 1)[0] + ".", quote=True)
+    cut = u[:limit - 1].rsplit(" ", 1)[0].rstrip(",;: ")
+    # don't end on a dangling function word ("... in Seattle, WA using.")
+    cut = re.sub(r"(\s+(using|with|and|or|for|to|the|a|an|in|at|of|on|by|from|your|our|is|are))+$", "", cut, flags=re.I)
+    return htmlmod.escape(cut + ".", quote=True)
 
 
 def fit_meta(pf):
@@ -556,7 +557,7 @@ def render_product(p, f):
         "p_bullets": "\n".join(f"        <li>{htmlmod.escape(b)}</li>" for b in p["bullets"]),
         "p_related": "\n".join(f'          <li><a href="/{r}/">{htmlmod.escape(by_slug[r]["name"])}</a></li>' for r in p["related"] if r in by_slug),
         "page_title": htmlmod.escape(f"{p['name']} {f['cityst']} | {f['business']}", quote=True),
-        "page_desc": fit_desc(htmlmod.escape(re.sub(r"^[^.]*\. ", "", desc, count=1), quote=True), 138, 60) + " Call " + f["phone"] + ".",
+        "page_desc": fit_desc(htmlmod.escape(re.sub(r"^[^.]*\. ", "", desc, count=1), quote=True), 138, 100) + " Call " + f["phone"] + ".",
         "path": path,
         "schema_extra": PRODUCT_SCHEMA.format(name=htmlmod.escape(p["name"], quote=True), business=f["business"], phone=f["phone"], domain=f["domain"], city=f["city"],
                                               desc=htmlmod.escape(desc, quote=True), image=p["image"], slug=p["slug"], price=p["price"]) + faq_schema(pfaq, f),
