@@ -1,8 +1,7 @@
 <!-- title: {{business}} | Locksmith {{cityst}} {{zip}} -->
 <!-- desc: {{business}}: 24/7 mobile locksmith in {{cityst}}. Car, home and business lockouts, car keys, fob programming, rekeying and locks. Call {{phone}}. -->
 <section class="hero photo" aria-labelledby="h1">
-  <link rel="preload" as="image" href="/img/gallery/g0.webp" imagesrcset="/img/gallery/g0-640.webp 640w, /img/gallery/g0.webp 1000w" imagesizes="100vw" fetchpriority="high">
-  <img class="hero-img" src="/img/gallery/g0.webp" srcset="/img/gallery/g0-640.webp 640w, /img/gallery/g0.webp 1000w" sizes="100vw" alt="{{business}} van on a lockout call in {{city}}" width="1400" height="1050" fetchpriority="high">
+  <picture><source media="(max-width:700px)" srcset="/img/gallery/g0-640.webp"><img class="hero-img" src="/img/gallery/g0.webp" alt="{{business}} van on a lockout call in {{city}}" width="1400" height="1050" fetchpriority="high" decoding="sync"></picture>
   <div class="wrap">
     <p class="rating badge"><span class="stars">★★★★★</span> <b>{{rating}}</b> · <a href="{{google_url}}" target="_blank" rel="noopener">{{review_count}} Google reviews</a></p>
     <h1 id="h1">24-hour locksmith in <a href="{{wiki}}" rel="noopener" style="color:inherit;text-decoration:none">{{city}}</a>, {{st}}</h1>

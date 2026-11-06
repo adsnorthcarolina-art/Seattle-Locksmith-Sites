@@ -469,6 +469,7 @@ def fields(loc):
         "favicon": "data:image/svg+xml," + MARK.format(signal=pal["c_signal"], ink=pal["c_ink"]).replace("#", "%23").replace("<", "%3C").replace(">", "%3E").replace("'", "%27"),
         "styles": STYLES,
         "js_ver": JS_VER,
+        "head_extra": "",
         **{"ico_" + k: v for k, v in ICONS.items()},
         "social_links": social_html(loc.get("social")),
         "social_sameas": "".join(f',"{htmlmod.escape(u, quote=True)}"' for u in (loc.get("social") or {}).values() if u),
@@ -604,6 +605,8 @@ def render_page(slug, f):
         "page_desc": htmlmod.escape(sub(desc, f), quote=True),
         "path": path,
         "content": autolink_brands(sub(body, f)) if slug not in ("", "about") else sub(body, f),
+        "head_extra": ('<link rel="preload" as="image" href="/img/gallery/g0-640.webp" media="(max-width:700px)" fetchpriority="high">'
+                       '<link rel="preload" as="image" href="/img/gallery/g0.webp" media="(min-width:701px)" fetchpriority="high">') if slug == "" else "",
         "schema_extra": (sub(FAQ_SCHEMA, f) if slug == "" else "") + ('<meta name="robots" content="noindex">' if slug in ("thank-you", "404") else ""),
     })
     for k in NAV_KEYS:
