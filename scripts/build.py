@@ -663,7 +663,7 @@ def write_webp(d):
     for jpg in list((d / "img").rglob("*.jpg")):
         wp = jpg.with_suffix(".webp")
         if not wp.exists() or wp.stat().st_mtime < jpg.stat().st_mtime:
-            Image.open(jpg).convert("RGB").save(wp, "WEBP", quality=78, method=6)
+            Image.open(jpg).convert("RGB").save(wp, "WEBP", quality=62 if jpg.name == "g0.jpg" else 68, method=6)
 
 
 def build_site(loc, today):
