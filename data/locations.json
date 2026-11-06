@@ -717,16 +717,14 @@
       "West Seattle"
     ],
     "nearby": [
-      "Shoreline",
-      "Lynnwood",
-      "Bothell",
-      "Kirkland",
-      "Redmond",
-      "Bellevue",
-      "Renton",
-      "Burien"
+      "Shoreline"
     ],
-    "social": {},
+    "social": {
+      "facebook": "https://www.facebook.com/Seattlelocksmithwa1",
+      "instagram": "https://www.instagram.com/seattlelocksmithwa/",
+      "x": "https://x.com/SeattleLocks25",
+      "youtube": "https://www.youtube.com/@Seattlelocksmithwa"
+    },
     "place_id": "",
     "sms": "206-202-7127",
     "whatsapp": "",
