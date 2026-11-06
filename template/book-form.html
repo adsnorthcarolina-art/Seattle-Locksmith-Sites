@@ -1,0 +1,57 @@
+<form class="lead book" action="https://formsubmit.co/{{email}}" method="POST">
+  <input type="hidden" name="_subject" value="Online booking — {{business}} ({{cityst}})">
+  <input type="hidden" name="_next" value="https://www.{{domain}}/thank-you/">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="site" value="{{domain}}">
+  <input type="hidden" name="page" value="{{path}}">
+  <input type="hidden" name="form" value="online booking">
+  <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" aria-label="Leave this field empty">
+  <label>Service
+    <select name="service" required>
+      <option value="">Choose a service</option>
+      <option>24/7 Emergency Lockout Service</option>
+      <option>Car Lockout Service</option>
+      <option>Car Key Replacement</option>
+      <option>Key Fob & Transponder Programming</option>
+      <option>Ignition Repair & Replacement</option>
+      <option>Broken Key Extraction</option>
+      <option>Lock Rekeying</option>
+      <option>Deadbolt & Lock Installation</option>
+      <option>Smart Lock Installation</option>
+      <option>Commercial Locksmith & Access Control</option>
+      <option>Safe Opening & Safe Lockout</option>
+      <option>Key Duplication & Cutting</option>
+      <option>House Lockout Service</option>
+      <option>Commercial Lockout Service</option>
+      <option>Spare Car Key Duplication</option>
+      <option>Car Door & Trunk Lock Repair</option>
+      <option>Lock Repair</option>
+      <option>High-Security Lock Installation</option>
+      <option>Master Key Systems</option>
+      <option>Panic Bar & Exit Device Installation</option>
+      <option>Something else</option>
+    </select>
+  </label>
+  <div class="two-up">
+    <label>Preferred date<input type="date" name="date" required></label>
+    <label>Preferred time
+      <select name="time" required>
+        <option value="">Choose a window</option>
+        <option>As soon as possible</option>
+        <option>Morning (8am–12pm)</option>
+        <option>Afternoon (12pm–5pm)</option>
+        <option>Evening (5pm–10pm)</option>
+        <option>Overnight (10pm–8am)</option>
+      </select>
+    </label>
+  </div>
+  <label>Name<input type="text" name="name" required autocomplete="name"></label>
+  <label>Phone<input type="tel" name="phone" required autocomplete="tel" inputmode="tel" placeholder="We confirm by call or text"></label>
+  <label>Email (optional)<input type="email" name="email" autocomplete="email"></label>
+  <label>Service address in {{city}} or nearby<input type="text" name="address" required autocomplete="street-address" placeholder="Street address, or where the car is parked"></label>
+  <label>Car year, make and model (for car keys / lockouts)<input type="text" name="vehicle" placeholder="e.g. 2019 Honda Civic"></label>
+  <label>Anything we should know?<textarea name="message" rows="3" placeholder="Gate code, number of locks, what happened…"></textarea></label>
+  <button class="call" type="submit">Book this service</button>
+  <p class="form-note">We confirm every booking by phone or text within minutes. Locked out right now? Call <a href="tel:+1{{phone_digits}}">{{phone}}</a> — 24 hours.</p>
+</form>

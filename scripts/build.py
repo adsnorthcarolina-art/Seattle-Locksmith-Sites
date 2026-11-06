@@ -18,6 +18,7 @@ import hashlib
 JS_VER = hashlib.md5(b"".join(sorted(p.read_bytes() for p in (T / "js").glob("*.js")))).hexdigest()[:8]  # cache-busts /js/*.js
 STYLES = (T / "fonts" / "fonts.css").read_text().strip() + "\n" + (T / "styles.css").read_text().strip()
 FORM = (T / "form.html").read_text()
+BOOK_FORM = (T / "book-form.html").read_text()
 LOCATIONS = json.loads((ROOT / "data" / "locations.json").read_text())
 PRODUCTS = json.loads((ROOT / "data" / "products.json").read_text())
 PRODUCT_TPL = (T / "product.html").read_text()
@@ -147,6 +148,7 @@ PAGES = {
     "service-areas": ("areas", "areas"),
     "about": ("about", "about"),
     "contact": ("contact", "contact"),
+    "book": ("book", "contact"),
     "thank-you": ("thankyou", "contact"),
     "404": ("404", "home"),
 }
@@ -497,16 +499,28 @@ def fields(loc):
     f["reviews_section"] = reviews_section(f)
     f["gallery_section"] = gallery_section(f)
     f["brands_section"] = brands_section(f)
+    f["lead_form"] = backend_form(FORM, loc)
+    f["book_form"] = backend_form(BOOK_FORM, loc)
+    return f
+
+
+LEAD_CC = "allemailsfromwebsites@gmail.com"  # Raz 2026-11-06: every website lead is also sent here
+
+
+def backend_form(form, loc):
+    """Point a form at the location's backend (Web3Forms or FormSubmit) and CC every lead to LEAD_CC."""
     fb = loc.get("form_backend", "formsubmit")
+    cc = loc.get("lead_cc", LEAD_CC)
     if fb == "web3forms" and loc.get("web3forms_key"):
-        form = FORM.replace('action="https://formsubmit.co/{{email}}"', 'action="https://api.web3forms.com/submit"')
-        form = form.replace('<input type="hidden" name="_subject"', f'<input type="hidden" name="access_key" value="{loc["web3forms_key"]}">\n  <input type="hidden" name="from_name" value="{{{{business}}}} website">\n  <input type="hidden" name="subject"')
+        form = form.replace('action="https://formsubmit.co/{{email}}"', 'action="https://api.web3forms.com/submit"')
+        form = form.replace('<input type="hidden" name="_subject"', f'<input type="hidden" name="access_key" value="{loc["web3forms_key"]}">\n  <input type="hidden" name="from_name" value="{{{{business}}}} website">\n'
+                            + (f'  <input type="hidden" name="ccemail" value="{cc}">\n' if cc else '') + '  <input type="hidden" name="subject"')
         form = form.replace('name="_next"', 'name="redirect"').replace('name="_honey" class="hp"', 'name="botcheck" class="hp"')
         form = form.replace('<input type="hidden" name="_captcha" value="false">\n', '').replace('<input type="hidden" name="_template" value="table">\n', '')
-        f["lead_form"] = form
-    else:
-        f["lead_form"] = FORM
-    return f
+        return form
+    if cc:
+        form = form.replace('<input type="hidden" name="_subject"', f'<input type="hidden" name="_cc" value="{cc}">\n  <input type="hidden" name="_subject"')
+    return form
 
 
 def _ulen(s):

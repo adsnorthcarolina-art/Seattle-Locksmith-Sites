@@ -391,3 +391,6 @@ footer .cols>div:nth-child(2) li{break-inside:avoid}
 .theme-b footer{background:color-mix(in srgb,var(--ink) 92%,black)}
 .theme-b .sticky{background:var(--white);border-top:1px solid var(--panel)}
 .theme-b .sticky .sms{color:var(--signal)}
+.lead.book{max-width:38rem}
+.lead .two-up{display:grid;gap:.9rem;grid-template-columns:1fr 1fr}
+@media (max-width:520px){.lead .two-up{grid-template-columns:1fr}}
