@@ -149,6 +149,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','{gtm}');</script>
 <!-- End Google Tag Manager -->"""
+GA4_HEAD = """<script async src="https://www.googletagmanager.com/gtag/js?id={ga4}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','{ga4}');</script>"""
 GTM_BODY = """<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={gtm}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>"""
 
 BLOG_DIR = T / "blog"
@@ -444,7 +446,7 @@ def fields(loc):
         "hoods_short": ", ".join(hoods[:6]) if hoods else "every neighborhood",
         "hoods_list": "\n      ".join(f"<li>{htmlmod.escape(n)}</li>" for n in hoods) or f"<li>{city}</li>",
         "areas_schema": "".join(f',{{"@type":"City","name":"{htmlmod.escape(n)}"}}' for n in nearby),
-        "gtm_head": GTM_HEAD.replace("{gtm}", gtm) if gtm else "",
+        "gtm_head": (GTM_HEAD.replace("{gtm}", gtm) if gtm else "") + (GA4_HEAD.replace("{ga4}", loc["ga4"]) if loc.get("ga4") else ""),
         "gtm_body": GTM_BODY.replace("{gtm}", gtm) if gtm else "",
         "mark": ('<img class="logo" src="/img/logo-104.png" alt="{{business}} logo" width="52" height="52">' if (IMG_DIR / "logo.png").exists() else MARK.format(signal=pal["c_signal"], ink=pal["c_ink"])),
         "favicon": "data:image/svg+xml," + MARK.format(signal=pal["c_signal"], ink=pal["c_ink"]).replace("#", "%23").replace("<", "%3C").replace(">", "%3E").replace("'", "%27"),
