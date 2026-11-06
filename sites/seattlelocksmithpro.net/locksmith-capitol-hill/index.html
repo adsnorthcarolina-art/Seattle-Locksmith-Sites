@@ -722,7 +722,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden)c
 (function(){
   var dl=window.dataLayer=window.dataLayer||[];
   // GTM sites: dataLayer event. gtag-only sites (no GTM): send the same event straight to GA4.
-  function track(n,p){p=p||{};p.site_host=location.hostname;var o={event:n};for(var k in p)o[k]=p[k];dl.push(o);if(typeof window.gtag==='function'&&!window.google_tag_manager){window.gtag('event',n,p);}}
+  function track(n,p){p=p||{};p.site_host=location.hostname;var o={event:n};for(var k in p)o[k]=p[k];dl.push(o);if(typeof window.gtag==='function'&&!window.__hasGTM){window.gtag('event',n,p);}}
   window.__track=track;
   document.addEventListener('click',function(e){
     var a=e.target.closest&&e.target.closest('a[href^="tel:"]');

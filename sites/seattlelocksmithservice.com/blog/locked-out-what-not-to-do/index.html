@@ -24,7 +24,7 @@
 <link rel="apple-touch-icon" href="/img/icon-192.png?v=5863de98">
 <meta name="msvalidate.01" content="016ECD96825B160F5555EC7EB74F4D97">
 <!-- Google Tag Manager (deferred until first interaction or 5 s, keeps it off the LCP path) -->
-<script>window.dataLayer=window.dataLayer||[];(function(w,d,i){var done=false;function go(){if(done)return;done=true;w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j)}
+<script>window.__hasGTM=true;window.dataLayer=window.dataLayer||[];(function(w,d,i){var done=false;function go(){if(done)return;done=true;w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j)}
 ['scroll','touchstart','mousemove','keydown','click'].forEach(function(e){w.addEventListener(e,go,{once:true,passive:true})});w.addEventListener('load',function(){setTimeout(go,5000)})})(window,document,'GTM-WFKJRKMG');</script>
 <!-- End Google Tag Manager -->
 
@@ -666,7 +666,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden)c
 (function(){
   var dl=window.dataLayer=window.dataLayer||[];
   // GTM sites: dataLayer event. gtag-only sites (no GTM): send the same event straight to GA4.
-  function track(n,p){p=p||{};p.site_host=location.hostname;var o={event:n};for(var k in p)o[k]=p[k];dl.push(o);if(typeof window.gtag==='function'&&!window.google_tag_manager){window.gtag('event',n,p);}}
+  function track(n,p){p=p||{};p.site_host=location.hostname;var o={event:n};for(var k in p)o[k]=p[k];dl.push(o);if(typeof window.gtag==='function'&&!window.__hasGTM){window.gtag('event',n,p);}}
   window.__track=track;
   document.addEventListener('click',function(e){
     var a=e.target.closest&&e.target.closest('a[href^="tel:"]');
