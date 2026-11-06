@@ -504,7 +504,7 @@ def fields(loc):
     return f
 
 
-LEAD_CC = "allemailsfromwebsites@gmail.com"  # Raz 2026-11-06: every website lead is also sent here
+LEAD_CC = ""  # Raz 2026-11-06 15:12: leads go ONLY to allemailsfromwebsites@gmail.com (Web3Forms key 70f90148… is registered on that address); no CC
 
 
 def backend_form(form, loc):
