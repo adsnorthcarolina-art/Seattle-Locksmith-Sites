@@ -14,6 +14,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 T = ROOT / "template"
 BASE = (T / "base.html").read_text()
+import hashlib
+JS_VER = hashlib.md5(b"".join(sorted(p.read_bytes() for p in (T / "js").glob("*.js")))).hexdigest()[:8]  # cache-busts /js/*.js
 STYLES = (T / "fonts" / "fonts.css").read_text().strip() + "\n" + (T / "styles.css").read_text().strip()
 FORM = (T / "form.html").read_text()
 LOCATIONS = json.loads((ROOT / "data" / "locations.json").read_text())
@@ -448,6 +450,7 @@ def fields(loc):
         "mark": ('<img class="logo" src="/img/logo-104.png" alt="{{business}} logo" width="52" height="52">' if (IMG_DIR / "logo.png").exists() else MARK.format(signal=pal["c_signal"], ink=pal["c_ink"])),
         "favicon": "data:image/svg+xml," + MARK.format(signal=pal["c_signal"], ink=pal["c_ink"]).replace("#", "%23").replace("<", "%3C").replace(">", "%3E").replace("'", "%27"),
         "styles": STYLES,
+        "js_ver": JS_VER,
         "social_links": social_html(loc.get("social")),
         "social_sameas": "".join(f',"{htmlmod.escape(u, quote=True)}"' for u in (loc.get("social") or {}).values() if u),
         "sms_digits": re.sub(r"\D", "", loc.get("sms") or phone),
@@ -715,6 +718,7 @@ def build_site(loc, today):
         shutil.copytree(T / "fonts", d / "fonts", dirs_exist_ok=True)
         (d / "fonts" / "fonts.css").unlink(missing_ok=True)
         write_webp(d)
+    shutil.copytree(T / "js", d / "js", dirs_exist_ok=True)
     f["product_cards"] = "\n".join(
         f'      <div class="svc pcard"><a href="/{p["slug"]}/"><img src="/img/products/{p["image"].rsplit(".", 1)[0]}.webp" alt="{htmlmod.escape(p["name"])} in {f["cityst"]}" loading="lazy" decoding="async" fetchpriority="low" width="500" height="500"></a><h3><a href="/{p["slug"]}/">{htmlmod.escape(p["name"])}</a></h3><p>From ${p["price"]} · {f["cityst"]}</p><a class="more" href="/{p["slug"]}/">{htmlmod.escape(p["name"])} details</a></div>'
         for p in PRODUCTS)

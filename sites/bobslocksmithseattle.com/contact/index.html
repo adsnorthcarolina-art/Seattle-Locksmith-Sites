@@ -267,6 +267,15 @@ footer .inline-links a{display:inline-block;padding:.35rem .2rem;min-height:24px
 
 main p a:not(.btn):not(.more):not(.ghost):not(.sms),main li a:not(.btn):not(.more){text-decoration:underline;text-underline-offset:2px}
 a[href*="wikipedia.org"]{text-decoration:underline;text-underline-offset:2px}
+
+/* --- motion (template/js/animate.js) --- */
+.svc,.rev,.gallery figure{transition:box-shadow .25s ease}
+.svc:hover,.rev:hover{box-shadow:0 12px 28px -12px rgba(0,0,0,.35)}
+a.call,.cta-row a,.bignum,.lead button.call{transition:transform .15s ease,background-color .2s ease,color .2s ease,border-color .2s ease}
+a.call:active,.cta-row a:active,.bignum:active,.lead button.call:active{transform:scale(.97)}
+.more{transition:color .2s ease,border-color .2s ease}
+details summary{transition:color .2s ease}
+@media (prefers-reduced-motion:reduce){.svc,.rev,.gallery figure,a.call,.cta-row a,.bignum,.lead button.call,.more,.gallery img{transition:none}a.call:active,.cta-row a:active,.bignum:active{transform:none}}
 </style>
 <script type="application/ld+json">
 {
@@ -529,5 +538,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden)c
   if(location.pathname.indexOf('/thank-you')===0){dl.push({event:'lead_form_submit',site_host:location.hostname});}
 })();
 </script>
+<script src="/js/motion.min.js?v=cc08aa24" defer></script>
+<script src="/js/animate.js?v=cc08aa24" defer></script>
 </body>
 </html>
