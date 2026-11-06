@@ -1,0 +1,36 @@
+{
+ "rating": "5.0",
+ "count": "3",
+ "google_url": "https://maps.google.com/?cid=6321392001872026830",
+ "write_url": "https://maps.google.com/?cid=6321392001872026830",
+ "reviews": [
+  {
+   "name": "Esther Brons",
+   "stars": 5,
+   "text": "I found them on Google and honestly I was a little worried about how the work would be done and what the final price would be. I'm always a bit cautious when working with people I don't know, but I can honestly say that my decision was absolutely the right one.",
+   "tags": [
+    "lock-rekeying",
+    "residential"
+   ]
+  },
+  {
+   "name": "Yaneth",
+   "stars": 5,
+   "text": "Literally lived up to the name. They arrived faster than I expected and got me back in my house with zero damage.",
+   "tags": [
+    "house-lockout-service",
+    "emergency-lockout-service",
+    "residential"
+   ]
+  },
+  {
+   "name": "Muniraju S",
+   "stars": 5,
+   "text": "Excellent service!",
+   "tags": [
+    "car-key-replacement",
+    "automotive"
+   ]
+  }
+ ]
+}
