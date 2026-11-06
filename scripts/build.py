@@ -94,6 +94,7 @@ PALETTES = [
     ("#2A1E4A", "#FFB347", "#2A1E4A", "#F4F2F8"),  # royal purple + amber
     ("#2B1D14", "#E39A4F", "#2B1D14", "#F6F2EC"),  # espresso + copper
     ("#0B2A5B", "#E0282E", "#FFFFFF", "#F3F5F9"),  # navy + red (logo colors red/blue)
+    ("#10294F", "#0E7AC9", "#FFFFFF", "#F2F6FB"),  # navy + blue (Car Key Mobile Locksmith logo)
 ]
 
 
