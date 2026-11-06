@@ -703,7 +703,7 @@ def build_site(loc, today):
         write_icons(IMG_DIR / "logo.png", d)
         write_webp(d)
     f["product_cards"] = "\n".join(
-        f'      <div class="svc pcard"><a href="/{p["slug"]}/"><img src="/img/products/{p["image"].rsplit(".", 1)[0]}.webp" alt="{htmlmod.escape(p["name"])} in {f["cityst"]}" loading="lazy" width="500" height="500"></a><h3><a href="/{p["slug"]}/">{htmlmod.escape(p["name"])}</a></h3><p>From ${p["price"]} · {f["cityst"]}</p><a class="more" href="/{p["slug"]}/">{htmlmod.escape(p["name"])} details</a></div>'
+        f'      <div class="svc pcard"><a href="/{p["slug"]}/"><img src="/img/products/{p["image"].rsplit(".", 1)[0]}.webp" alt="{htmlmod.escape(p["name"])} in {f["cityst"]}" loading="lazy" decoding="async" fetchpriority="low" width="500" height="500"></a><h3><a href="/{p["slug"]}/">{htmlmod.escape(p["name"])}</a></h3><p>From ${p["price"]} · {f["cityst"]}</p><a class="more" href="/{p["slug"]}/">{htmlmod.escape(p["name"])} details</a></div>'
         for p in PRODUCTS)
     for slug in PAGES:
         path, out = render_page(slug, f)
