@@ -34,17 +34,25 @@ export default {
     }
     const assetUrl = new URL(request.url);
     assetUrl.pathname = "/" + site + url.pathname;
-    const res = await env.ASSETS.fetch(new Request(assetUrl.toString(), request));
-    if (res.ok && url.pathname.startsWith("/img/")) {
-      // public images: allow cross-origin reads (used when uploading product photos to Google Business Profile)
-      const h = new Headers(res.headers);
-      h.set("Access-Control-Allow-Origin", "*");
-      return new Response(res.body, { status: res.status, headers: h });
-    }
+    let res = await env.ASSETS.fetch(new Request(assetUrl.toString(), request));
     if (res.status === 404) {
       const nf = await env.ASSETS.fetch(new Request(new URL("/" + site + "/404.html", request.url).toString(), request));
-      if (nf.ok) return new Response(nf.body, { status: 404, headers: nf.headers });
+      if (nf.ok) res = new Response(nf.body, { status: 404, headers: nf.headers });
     }
-    return res;
+    const h = new Headers(res.headers);
+    h.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload");
+    h.set("X-Content-Type-Options", "nosniff");
+    h.set("X-Frame-Options", "SAMEORIGIN");
+    h.set("Referrer-Policy", "strict-origin-when-cross-origin");
+    h.set("Cross-Origin-Opener-Policy", "same-origin");
+    h.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+    if (url.pathname.startsWith("/img/")) {
+      // public images: allow cross-origin reads (used when uploading product photos to Google Business Profile); versioned (?v=) so cache hard
+      h.set("Access-Control-Allow-Origin", "*");
+      h.set("Cache-Control", "public, max-age=31536000, immutable");
+    } else if (/\.(ico|png|svg|webp|jpg|css|js)$/.test(url.pathname)) {
+      h.set("Cache-Control", "public, max-age=604800");
+    }
+    return new Response(res.body, { status: res.status, headers: h });
   },
 };

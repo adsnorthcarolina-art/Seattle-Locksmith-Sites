@@ -734,7 +734,6 @@ def main():
         pages += build_site(loc, today)
         n += 1
     shutil.copy(T / "_worker.js", OUT / "_worker.js")
-    shutil.copy(T / "_headers", OUT / "_headers")
     (OUT / "index.html").write_text(f'<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/{LOCATIONS[0]["domain"]}/">')
     print(f"built {n} site(s), {pages} pages, into {OUT}")
 
