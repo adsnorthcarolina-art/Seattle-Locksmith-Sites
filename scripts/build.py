@@ -142,15 +142,12 @@ FAQ_SCHEMA = """<script type="application/ld+json">
 ]}
 </script>"""
 
-GTM_HEAD = """<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','{gtm}');</script>
+GTM_HEAD = """<!-- Google Tag Manager (deferred until first interaction or 3 s, keeps it off the LCP path) -->
+<script>window.dataLayer=window.dataLayer||[];(function(w,d,i){var done=false;function go(){if(done)return;done=true;w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j)}
+['scroll','touchstart','mousemove','keydown','click'].forEach(function(e){w.addEventListener(e,go,{once:true,passive:true})});w.addEventListener('load',function(){setTimeout(go,3000)})})(window,document,'{gtm}');</script>
 <!-- End Google Tag Manager -->"""
-GA4_HEAD = """<script async src="https://www.googletagmanager.com/gtag/js?id={ga4}"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','{ga4}');</script>"""
+GA4_HEAD = """<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','{ga4}');(function(w,d,i){var done=false;function go(){if(done)return;done=true;var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtag/js?id='+i;d.head.appendChild(j)}
+['scroll','touchstart','mousemove','keydown','click'].forEach(function(e){w.addEventListener(e,go,{once:true,passive:true})});w.addEventListener('load',function(){setTimeout(go,3000)})})(window,document,'{ga4}');</script>"""
 GTM_BODY = """<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={gtm}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>"""
 
 BLOG_DIR = T / "blog"
@@ -667,7 +664,13 @@ def write_webp(d):
         wp = jpg.with_suffix(".webp")
         if not wp.exists() or wp.stat().st_mtime < jpg.stat().st_mtime:
             im = Image.open(jpg).convert("RGB")
-            im.save(wp, "WEBP", quality=62 if jpg.name == "g0.jpg" else 68, method=6)
+            if jpg.parent.name == "products":
+                im.thumbnail((500, 500))
+            elif jpg.name == "g0.jpg":
+                im.thumbnail((1000, 1000))
+            else:
+                im.thumbnail((800, 800))
+            im.save(wp, "WEBP", quality=58 if jpg.parent.name == "products" else (62 if jpg.name == "g0.jpg" else 66), method=6)
             if jpg.name == "g0.jpg":
                 small = im.copy()
                 small.thumbnail((640, 640))
