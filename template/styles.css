@@ -318,3 +318,6 @@ section h2{margin-bottom:1.75rem}
 /* footer: tidier service list */
 footer .cols>div:nth-child(2) ul{columns:2;column-gap:1.5rem}
 footer .cols>div:nth-child(2) li{break-inside:avoid}
+/* mobile: long emails/URLs must wrap */
+.prose,.contact dd,.aside li,footer li{overflow-wrap:anywhere}
+@media (max-width:480px){.contact dl{grid-template-columns:1fr;gap:.15rem 0}.contact dt{margin-top:.6rem}}
