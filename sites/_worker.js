@@ -22,7 +22,7 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
     // Old WordPress URLs still linked from GBP / directories
-    const OLD = { "/contact-us/": "/contact/", "/contact-us": "/contact/", "/about-us/": "/about/", "/about-us": "/about/", "/services": "/services/", "/blog": "/blog/" };
+    const OLD = { "/contact-us/": "/contact/", "/contact-us": "/contact/", "/about-us/": "/about/", "/about-us": "/about/", "/services": "/services/", "/blog": "/blog/", "/car-locksmith": "/automotive-locksmith/", "/car-locksmith/": "/automotive-locksmith/", "/automotive": "/automotive-locksmith/", "/residential": "/residential-locksmith/", "/commercial": "/commercial-locksmith/", "/emergency": "/emergency-locksmith/" };
     if (OLD[url.pathname]) {
       url.pathname = OLD[url.pathname];
       return Response.redirect(url.toString(), 301);

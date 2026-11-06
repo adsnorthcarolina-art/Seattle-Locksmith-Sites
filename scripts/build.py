@@ -635,6 +635,22 @@ def version_images(site_dir):
             html_file.write_text(new)
 
 
+def write_icons(logo, d):
+    """favicon.ico + square PNG icons from the logo (Google wants a square favicon, multiples of 48px)."""
+    if not logo.exists():
+        return
+    from PIL import Image
+    im = Image.open(logo).convert("RGBA")
+    w, h = im.size
+    side = max(w, h)
+    sq = Image.new("RGBA", (side, side), (255, 255, 255, 255))
+    sq.paste(im, ((side - w) // 2, (side - h) // 2), im)
+    sq = sq.convert("RGB")
+    for n in (192, 512):
+        sq.resize((n, n), Image.LANCZOS).save(d / "img" / f"icon-{n}.png", optimize=True)
+    sq.resize((48, 48), Image.LANCZOS).save(d / "favicon.ico", sizes=[(48, 48), (32, 32), (16, 16)])
+
+
 def build_site(loc, today):
     select_site_assets(loc)
     f = fields(loc)
@@ -669,6 +685,7 @@ def build_site(loc, today):
         urls.append(path)
     if IMG_DIR.exists():
         shutil.copytree(IMG_DIR, d / "img", dirs_exist_ok=True)
+        write_icons(IMG_DIR / "logo.png", d)
     f["product_cards"] = "\n".join(
         f'      <div class="svc pcard"><a href="/{p["slug"]}/"><img src="/img/products/{p["image"]}" alt="{htmlmod.escape(p["name"])} in {f["cityst"]}" loading="lazy" width="500" height="500"></a><h3><a href="/{p["slug"]}/">{htmlmod.escape(p["name"])}</a></h3><p>From ${p["price"]} · {f["cityst"]}</p><a class="more" href="/{p["slug"]}/">{htmlmod.escape(p["name"])} details</a></div>'
         for p in PRODUCTS)
