@@ -97,6 +97,7 @@ PALETTES = [
     ("#0B2A5B", "#E0282E", "#FFFFFF", "#F3F5F9"),  # navy + red (logo colors red/blue)
     ("#10294F", "#0E7AC9", "#FFFFFF", "#F2F6FB"),  # navy + blue (Car Key Mobile Locksmith logo)
     ("#0B2545", "#1BA3E0", "#0B2545", "#F2F6FA"),  # navy + sky blue (Master Locksmith Seattle logo)
+    ("#0E2F36", "#12DCE4", "#0E2F36", "#EEF9FA"),  # dark teal + cyan (Seattle Locksmith GBP logo)
 ]
 
 
