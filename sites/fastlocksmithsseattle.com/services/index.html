@@ -714,15 +714,18 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden)c
 <script>
 (function(){
   var dl=window.dataLayer=window.dataLayer||[];
+  // GTM sites: dataLayer event. gtag-only sites (no GTM): send the same event straight to GA4.
+  function track(n,p){p=p||{};p.site_host=location.hostname;var o={event:n};for(var k in p)o[k]=p[k];dl.push(o);if(typeof window.gtag==='function'&&!window.google_tag_manager){window.gtag('event',n,p);}}
+  window.__track=track;
   document.addEventListener('click',function(e){
     var a=e.target.closest&&e.target.closest('a[href^="tel:"]');
-    if(a){dl.push({event:'phone_call',phone_number:a.getAttribute('href').replace('tel:',''),site_host:location.hostname});}
+    if(a){track('phone_call',{phone_number:a.getAttribute('href').replace('tel:','')});}
     var s=e.target.closest&&e.target.closest('a[href^="sms:"]');
-    if(s){dl.push({event:'sms_click',site_host:location.hostname});}
+    if(s){track('sms_click');}
     var w=e.target.closest&&e.target.closest('a[href*="wa.me"]');
-    if(w){dl.push({event:'whatsapp_click',site_host:location.hostname});}
+    if(w){track('whatsapp_click');}
   });
-  if(location.pathname.indexOf('/thank-you')===0){dl.push({event:'lead_form_submit',site_host:location.hostname});}
+  if(location.pathname.indexOf('/thank-you')===0){track('lead_form_submit');}
 })();
 </script>
 <script src="/js/motion.min.js?v=cc08aa24" defer></script>
