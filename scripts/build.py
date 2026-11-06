@@ -162,12 +162,12 @@ FAQ_SCHEMA = """<script type="application/ld+json">
 ]}
 </script>"""
 
-GTM_HEAD = """<!-- Google Tag Manager (deferred until first interaction or 3 s, keeps it off the LCP path) -->
+GTM_HEAD = """<!-- Google Tag Manager (deferred until first interaction or 5 s, keeps it off the LCP path) -->
 <script>window.dataLayer=window.dataLayer||[];(function(w,d,i){var done=false;function go(){if(done)return;done=true;w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j)}
-['scroll','touchstart','mousemove','keydown','click'].forEach(function(e){w.addEventListener(e,go,{once:true,passive:true})});w.addEventListener('load',function(){setTimeout(go,3000)})})(window,document,'{gtm}');</script>
+['scroll','touchstart','mousemove','keydown','click'].forEach(function(e){w.addEventListener(e,go,{once:true,passive:true})});w.addEventListener('load',function(){setTimeout(go,5000)})})(window,document,'{gtm}');</script>
 <!-- End Google Tag Manager -->"""
 GA4_HEAD = """<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','{ga4}');(function(w,d,i){var done=false;function go(){if(done)return;done=true;var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtag/js?id='+i;d.head.appendChild(j)}
-['scroll','touchstart','mousemove','keydown','click'].forEach(function(e){w.addEventListener(e,go,{once:true,passive:true})});w.addEventListener('load',function(){setTimeout(go,3000)})})(window,document,'{ga4}');</script>"""
+['scroll','touchstart','mousemove','keydown','click'].forEach(function(e){w.addEventListener(e,go,{once:true,passive:true})});w.addEventListener('load',function(){setTimeout(go,5000)})})(window,document,'{ga4}');</script>"""
 GTM_BODY = """<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={gtm}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>"""
 
 BLOG_DIR = T / "blog"
