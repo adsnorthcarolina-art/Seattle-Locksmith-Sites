@@ -16,8 +16,8 @@ export default {
     }
     host = host.replace(/^www\./, "");
     const site = isPagesDev ? DEFAULT : host;
-    // Retired area pages -> service areas index
-    if (/^\/locksmith-(redmond|mercer-island|tukwila|seatac|kent|edmonds|issaquah|federal-way|everett)\/?$/.test(url.pathname)) {
+    // Retired area pages (seattlelocksmithservice.com only) -> service areas index
+    if (site === DEFAULT && /^\/locksmith-(redmond|mercer-island|tukwila|seatac|kent|edmonds|issaquah|federal-way|everett)\/?$/.test(url.pathname)) {
       url.pathname = "/service-areas/";
       return Response.redirect(url.toString(), 301);
     }
