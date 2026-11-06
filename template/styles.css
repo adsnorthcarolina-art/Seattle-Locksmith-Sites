@@ -6,7 +6,7 @@
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{margin:0;font-family:Barlow,"Barlow Fallback",system-ui,sans-serif;font-size:17px;line-height:1.55;color:var(--ink);background:var(--paper)}
-h1,h2,h3{font-family:"Barlow Condensed","Barlow Condensed Fallback","Barlow Condensed Fallback",sans-serif;font-weight:700;line-height:1.02;margin:0;letter-spacing:-.005em}
+h1,h2,h3{font-family:"Barlow Condensed","Barlow Condensed Fallback",sans-serif;font-weight:700;line-height:1.02;margin:0;letter-spacing:-.005em}
 p{margin:0 0 1em;max-width:var(--measure)}
 ul.plain{max-width:var(--measure)}
 a{color:inherit}
