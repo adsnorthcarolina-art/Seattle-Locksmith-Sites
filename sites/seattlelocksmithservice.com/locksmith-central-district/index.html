@@ -38,6 +38,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 @font-face{font-family:"Barlow";font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/barlow-600.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 @font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/barlowcondensed-600.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 @font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/barlowcondensed-700.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Barlow Fallback";src:local("Arial"),local("Helvetica");size-adjust:96%;ascent-override:95%;descent-override:22%;line-gap-override:0%}
+@font-face{font-family:"Barlow Condensed Fallback";src:local("Arial Narrow"),local("Arial"),local("Helvetica");size-adjust:82%;ascent-override:100%;descent-override:22%;line-gap-override:0%}
 :root{
   --ink:#0D1F3C;--ink2:#1E2F4A;--ink3:#34435B;--steel:#425067;--mist:#8B93A1;--panel:#E1E5EC;--paper:#F1F4F9;--white:#fff;
   --signal:#FFD166;--signal-hover:#FFD77B;--signal-ink:#0D1F3C;--ondark:#CACED4;--measure:64ch;
@@ -45,8 +47,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;font-family:Barlow,system-ui,sans-serif;font-size:17px;line-height:1.55;color:var(--ink);background:var(--paper)}
-h1,h2,h3{font-family:"Barlow Condensed",Barlow,sans-serif;font-weight:700;line-height:1.02;margin:0;letter-spacing:-.005em}
+body{margin:0;font-family:Barlow,"Barlow Fallback",system-ui,sans-serif;font-size:17px;line-height:1.55;color:var(--ink);background:var(--paper)}
+h1,h2,h3{font-family:"Barlow Condensed","Barlow Condensed Fallback","Barlow Condensed Fallback",sans-serif;font-weight:700;line-height:1.02;margin:0;letter-spacing:-.005em}
 p{margin:0 0 1em;max-width:var(--measure)}
 ul.plain{max-width:var(--measure)}
 a{color:inherit}
@@ -60,9 +62,9 @@ a{color:inherit}
 .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--white)}
 .brand svg{width:44px;height:44px;flex:none}
 .brand .wm{line-height:1}
-.brand b{display:block;font-family:"Barlow Condensed";font-weight:700;font-size:1.5rem;letter-spacing:.01em;text-transform:uppercase}
+.brand b{display:block;font-family:"Barlow Condensed","Barlow Condensed Fallback";font-weight:700;font-size:1.5rem;letter-spacing:.01em;text-transform:uppercase}
 .brand b em{font-style:normal;color:var(--signal)}
-.brand small{display:block;font-family:Barlow;font-weight:500;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);margin-top:.3rem}
+.brand small{display:block;font-family:Barlow,"Barlow Fallback";font-weight:500;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);margin-top:.3rem}
 @media (max-width:640px){.brand b{font-size:1.15rem}.brand small{display:none}.brand svg{width:36px;height:36px}}
 .call{display:inline-flex;align-items:center;gap:.6rem;background:var(--signal);color:var(--signal-ink);text-decoration:none;font-weight:600;padding:.7rem 1.1rem;border-radius:4px;white-space:nowrap}
 .call svg{width:18px;height:18px}
@@ -73,8 +75,8 @@ a{color:inherit}
 .hero h1{font-size:clamp(2.6rem,7vw,5.2rem);max-width:15ch}
 .hero.sub h1{font-size:clamp(2.2rem,5.5vw,4rem)}
 .hero .lede{font-size:1.15rem;color:var(--ondark);max-width:54ch;margin:1.25rem 0 2rem}
-.bignum{display:block;text-decoration:none;font-family:"Barlow Condensed";font-weight:700;font-size:clamp(2.4rem,8vw,5rem);line-height:1;color:var(--signal);letter-spacing:.01em}
-.bignum span{display:block;font-family:Barlow;font-weight:500;font-size:1rem;color:var(--ondark);letter-spacing:.02em;margin-bottom:.35rem}
+.bignum{display:block;text-decoration:none;font-family:"Barlow Condensed","Barlow Condensed Fallback";font-weight:700;font-size:clamp(2.4rem,8vw,5rem);line-height:1;color:var(--signal);letter-spacing:.01em}
+.bignum span{display:block;font-family:Barlow,"Barlow Fallback";font-weight:500;font-size:1rem;color:var(--ondark);letter-spacing:.02em;margin-bottom:.35rem}
 .facts{display:flex;flex-wrap:wrap;gap:.6rem 2rem;margin:2rem 0 0;padding:0;list-style:none;color:var(--ondark);font-weight:500}
 .facts li::before{content:"";display:inline-block;width:10px;height:10px;background:var(--signal);margin-right:.55rem;transform:translateY(-1px)}
 .door{margin-top:3rem;display:grid;grid-template-rows:repeat(4,22px);gap:6px;background:var(--ink)}
@@ -95,14 +97,14 @@ section h3{font-size:1.45rem;margin:1.6rem 0 .4rem}
 @media (max-width:820px){.two{grid-template-columns:1fr}}
 .steps{list-style:none;margin:0;padding:0;counter-reset:s}
 .steps li{counter-increment:s;display:grid;grid-template-columns:3.2rem 1fr;gap:.75rem;align-items:start;padding:1rem 0;border-top:2px solid var(--panel)}
-.steps li::before{content:counter(s);font-family:"Barlow Condensed";font-weight:700;font-size:2.4rem;line-height:1;color:var(--mist)}
+.steps li::before{content:counter(s);font-family:"Barlow Condensed","Barlow Condensed Fallback";font-weight:700;font-size:2.4rem;line-height:1;color:var(--mist)}
 .steps strong{display:block;font-size:1.15rem;font-weight:600}
 .why{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.5rem 2rem}
 .why li{padding:.7rem 0;border-top:2px solid var(--panel);font-weight:500}
 .why li b{display:block;font-weight:600;color:var(--ink)}
 .why li span{color:var(--steel);font-weight:400}
 .brands{display:flex;flex-wrap:wrap;gap:.5rem .75rem;list-style:none;padding:0;margin:1rem 0 0}
-.brands li{background:var(--white);border:2px solid var(--panel);padding:.35rem .8rem;font-weight:600;font-family:"Barlow Condensed";font-size:1.15rem;letter-spacing:.01em}
+.brands li{background:var(--white);border:2px solid var(--panel);padding:.35rem .8rem;font-weight:600;font-family:"Barlow Condensed","Barlow Condensed Fallback";font-size:1.15rem;letter-spacing:.01em}
 .towns{columns:3;column-gap:2rem;list-style:none;padding:0;margin:0;max-width:60ch}
 @media (max-width:640px){.towns{columns:2}}
 .towns li{padding:.3rem 0;border-top:1px solid var(--panel);break-inside:avoid}
@@ -114,13 +116,13 @@ section h3{font-size:1.45rem;margin:1.6rem 0 .4rem}
 .band .bignum{margin-top:1.5rem}
 .offer{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
 .offer div{background:var(--white);border-top:6px solid var(--signal);padding:1.1rem 1.2rem}
-.offer b{display:block;font-family:"Barlow Condensed";font-size:1.5rem;font-weight:700}
+.offer b{display:block;font-family:"Barlow Condensed","Barlow Condensed Fallback";font-size:1.5rem;font-weight:700}
 .offer span{color:var(--steel)}
 details{border-top:2px solid var(--panel);padding:.9rem 0}
 details:last-of-type{border-bottom:2px solid var(--panel)}
 summary{cursor:pointer;font-weight:600;font-size:1.1rem;list-style:none;display:flex;justify-content:space-between;gap:1rem}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-family:"Barlow Condensed";font-size:1.6rem;line-height:1;color:var(--mist)}
+summary::after{content:"+";font-family:"Barlow Condensed","Barlow Condensed Fallback";font-size:1.6rem;line-height:1;color:var(--mist)}
 details[open] summary::after{content:"–"}
 details p{margin:.6rem 0 0;color:var(--steel)}
 .contact dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.25rem}
@@ -172,13 +174,13 @@ footer .legal{border-top:1px solid var(--ink3);padding-top:1rem;display:flex;fle
 .menu-open .scrim{opacity:1}
 .menu-open .drawer{transform:none}
 @media (prefers-reduced-motion:reduce){.drawer,.scrim{transition:none}}
-.drawer-head{display:flex;align-items:center;justify-content:space-between;min-height:76px;font-family:"Barlow Condensed";font-weight:700;font-size:1.5rem;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid var(--ink3);margin-bottom:.5rem}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;min-height:76px;font-family:"Barlow Condensed","Barlow Condensed Fallback";font-weight:700;font-size:1.5rem;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid var(--ink3);margin-bottom:.5rem}
 .drawer .close{background:transparent;border:2px solid var(--ink3);color:var(--white);width:42px;height:42px;border-radius:4px;font-size:1.6rem;line-height:1;cursor:pointer}
 .drawer .close:hover{border-color:var(--signal)}
 .drawer a{display:block;padding:.75rem .5rem;text-decoration:none;font-weight:500;font-size:1.05rem;border-bottom:1px solid var(--ink3);color:var(--ondark)}
 .drawer a:hover{color:var(--signal)}
 .drawer a[aria-current]{color:var(--signal);box-shadow:inset 4px 0 0 var(--signal);padding-left:.9rem}
-.drawer .group{margin:1.1rem 0 .2rem .5rem;font-family:"Barlow Condensed";font-weight:700;font-size:1.1rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mist)}
+.drawer .group{margin:1.1rem 0 .2rem .5rem;font-family:"Barlow Condensed","Barlow Condensed Fallback";font-weight:700;font-size:1.1rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mist)}
 .drawer a.call{display:flex;justify-content:center;margin:1.5rem 0 1rem;border:0;color:var(--signal-ink);font-size:1.1rem}
 .drawer-note{color:var(--mist);font-size:.85rem;margin:0 .5rem}
 
@@ -309,7 +311,7 @@ a[href*="wikipedia.org"]{text-decoration:underline;text-underline-offset:2px}
       <img class="logo" src="/img/logo-104.png?v=5b192726" alt="Seattle Locksmith Service logo" width="52" height="52">
       <span class="wm"><b><em>Seattle</em> Locksmith Service</b><small>Since 2010 · Seattle, WA · 24 hours</small></span>
     </a>
-    <a class="call" href="tel:+12063099023"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.7a2 2 0 0 1 1.7 2z"/></svg><span>206-309-9023</span></a>
+    <a class="call" href="tel:+12063099023" aria-label="Call 206-309-9023"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.7a2 2 0 0 1 1.7 2z"/></svg><span>206-309-9023</span></a>
     <button class="burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </header>
