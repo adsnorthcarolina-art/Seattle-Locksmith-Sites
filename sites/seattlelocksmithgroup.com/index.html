@@ -26,7 +26,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap"></noscript>
 <style>
 :root{
   --ink:#0F3A3F;--ink2:#20484C;--ink3:#355A5E;--steel:#446569;--mist:#8CA0A3;--panel:#DFE8E8;--paper:#EFF5F5;--white:#fff;
@@ -199,7 +200,7 @@ footer .legal{border-top:1px solid var(--ink3);padding-top:1rem;display:flex;fle
 .hero.photo .door{display:none}
 .hero.photo .wrap{padding-bottom:3.5rem}
 /* --- ratings / reviews --- */
-.stars{color:var(--signal);letter-spacing:.05em;font-size:1.05em}
+.stars{color:var(--signal);letter-spacing:.05em;font-size:1.05em;-webkit-text-stroke:.6px var(--ink2);paint-order:stroke fill}
 .rating{font-weight:500}
 .rating a{color:inherit}
 .rating.badge{display:inline-flex;align-items:center;gap:.45rem;background:color-mix(in srgb,var(--white) 10%,transparent);border:1px solid color-mix(in srgb,var(--white) 25%,transparent);border-radius:999px;padding:.35rem .9rem;margin:0 0 1.2rem;font-size:.95rem;color:var(--white)}
@@ -210,7 +211,7 @@ footer .legal{border-top:1px solid var(--ink3);padding-top:1rem;display:flex;fle
 .rev{margin:0;padding:1.25rem 1.4rem;background:var(--white);border-left:4px solid var(--signal);border-radius:0 6px 6px 0;font-style:normal}
 .rev p{margin:0 0 .6rem}
 .rev .rev-text{font-size:1.02rem;line-height:1.55}
-.rev footer{font-size:.9rem;color:var(--mist);background:none;padding:0}
+.rev footer{font-size:.9rem;color:var(--steel);background:none;padding:0}
 .rev footer b{color:var(--ink)}
 .rev-cta{margin:1.5rem 0 0}
 /* --- gallery --- */
@@ -239,8 +240,9 @@ footer .legal{border-top:1px solid var(--ink3);padding-top:1rem;display:flex;fle
 .social{display:flex;gap:.6rem;margin:.5rem 0 1rem}
 .social a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:var(--ink3);color:var(--white)}
 .social a:hover{background:var(--signal);color:var(--signal-ink)}
-footer .inline-links{display:flex;flex-wrap:wrap;gap:.1rem .7rem;margin-bottom:1rem}
+footer .inline-links{display:flex;flex-wrap:wrap;gap:.15rem .9rem;margin-bottom:1rem}
 footer .inline-links li{padding:0;font-size:.85rem}
+footer .inline-links a{display:inline-block;padding:.35rem .2rem;min-height:24px}
 .aside .links{columns:2;column-gap:1rem}
 .aside .links li{border:0;padding:.2rem 0;break-inside:avoid}
 .lead.quick label{margin-bottom:.5rem}
@@ -254,6 +256,8 @@ footer .inline-links li{padding:0;font-size:.85rem}
 .brandcol li a{font-weight:600;text-decoration:none;border-bottom:2px solid transparent}
 .brandcol li a:hover{border-bottom-color:var(--signal)}
 .brandcol li span{display:block;font-size:.88rem;color:var(--steel)}
+
+main p a:not(.btn):not(.more):not(.ghost):not(.sms),main li a:not(.btn):not(.more){text-decoration:underline;text-underline-offset:2px}
 </style>
 <script type="application/ld+json">
 {
@@ -302,7 +306,7 @@ footer .inline-links li{padding:0;font-size:.85rem}
 <header class="top">
   <div class="wrap">
     <a class="brand" href="/" aria-label="Seattle Locksmith Group home">
-      <img class="logo" src="/img/logo.png?v=c601944c" alt="Seattle Locksmith Group logo" width="52" height="52">
+      <img class="logo" src="/img/logo-104.png?v=9fc2593d" alt="Seattle Locksmith Group logo" width="52" height="52">
       <span class="wm"><b><em>Seattle</em> Locksmith Group</b><small>Since 2012 · Seattle, WA · 24 hours</small></span>
     </a>
     <a class="call" href="tel:+12063091138"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.7a2 2 0 0 1 1.7 2z"/></svg><span>206-309-1138</span></a>
@@ -344,7 +348,7 @@ footer .inline-links li{padding:0;font-size:.85rem}
 
 <main>
 <section class="hero photo" aria-labelledby="h1">
-  <img class="hero-img" src="/img/gallery/g0.jpg?v=5e618f5d" alt="Seattle Locksmith Group van on a lockout call in Seattle" width="1400" height="1050" fetchpriority="high">
+  <img class="hero-img" src="/img/gallery/g0.webp?v=ee82ac57" alt="Seattle Locksmith Group van on a lockout call in Seattle" width="1400" height="1050" fetchpriority="high">
   <div class="wrap">
     <p class="rating badge"><span class="stars">★★★★★</span> <b>5.0</b> · <a href="https://maps.google.com/maps?cid=5714505059049306935" target="_blank" rel="noopener">3 Google reviews</a></p>
     <h1 id="h1">24-hour locksmith in <a href="https://en.wikipedia.org/wiki/Seattle" rel="noopener" style="color:inherit;text-decoration:none">Seattle</a>, WA</h1>
@@ -381,26 +385,26 @@ footer .inline-links li{padding:0;font-size:.85rem}
   <div class="wrap">
     <h2 id="h-products">Popular services and starting prices</h2>
     <div class="grid">
-      <div class="svc pcard"><a href="/emergency-lockout-service/"><img src="/img/products/emergency-lockout-service.jpg?v=48eb3358" alt="24/7 Emergency Lockout Service in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/emergency-lockout-service/">24/7 Emergency Lockout Service</a></h3><p>From $65 · Seattle, WA</p><a class="more" href="/emergency-lockout-service/">24/7 Emergency Lockout Service details</a></div>
-      <div class="svc pcard"><a href="/car-lockout-service/"><img src="/img/products/car-lockout-service.jpg?v=b3240d0a" alt="Car Lockout Service in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/car-lockout-service/">Car Lockout Service</a></h3><p>From $65 · Seattle, WA</p><a class="more" href="/car-lockout-service/">Car Lockout Service details</a></div>
-      <div class="svc pcard"><a href="/car-key-replacement/"><img src="/img/products/car-key-replacement.jpg?v=d6c3d6b2" alt="Car Key Replacement in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/car-key-replacement/">Car Key Replacement</a></h3><p>From $85 · Seattle, WA</p><a class="more" href="/car-key-replacement/">Car Key Replacement details</a></div>
-      <div class="svc pcard"><a href="/key-fob-programming/"><img src="/img/products/key-fob-programming.jpg?v=9da0dee1" alt="Key Fob &amp; Transponder Programming in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/key-fob-programming/">Key Fob &amp; Transponder Programming</a></h3><p>From $85 · Seattle, WA</p><a class="more" href="/key-fob-programming/">Key Fob &amp; Transponder Programming details</a></div>
-      <div class="svc pcard"><a href="/ignition-repair/"><img src="/img/products/ignition-repair.jpg?v=ce281b3c" alt="Ignition Repair &amp; Replacement in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/ignition-repair/">Ignition Repair &amp; Replacement</a></h3><p>From $95 · Seattle, WA</p><a class="more" href="/ignition-repair/">Ignition Repair &amp; Replacement details</a></div>
-      <div class="svc pcard"><a href="/broken-key-extraction/"><img src="/img/products/broken-key-extraction.jpg?v=ff36129d" alt="Broken Key Extraction in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/broken-key-extraction/">Broken Key Extraction</a></h3><p>From $35 · Seattle, WA</p><a class="more" href="/broken-key-extraction/">Broken Key Extraction details</a></div>
-      <div class="svc pcard"><a href="/lock-rekeying/"><img src="/img/products/lock-rekeying.jpg?v=1e9fc1eb" alt="Lock Rekeying in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/lock-rekeying/">Lock Rekeying</a></h3><p>From $35 · Seattle, WA</p><a class="more" href="/lock-rekeying/">Lock Rekeying details</a></div>
-      <div class="svc pcard"><a href="/deadbolt-lock-installation/"><img src="/img/products/deadbolt-lock-installation.jpg?v=7867be53" alt="Deadbolt &amp; Lock Installation in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/deadbolt-lock-installation/">Deadbolt &amp; Lock Installation</a></h3><p>From $65 · Seattle, WA</p><a class="more" href="/deadbolt-lock-installation/">Deadbolt &amp; Lock Installation details</a></div>
-      <div class="svc pcard"><a href="/smart-lock-installation/"><img src="/img/products/smart-lock-installation.jpg?v=34f4b747" alt="Smart Lock Installation in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/smart-lock-installation/">Smart Lock Installation</a></h3><p>From $55 · Seattle, WA</p><a class="more" href="/smart-lock-installation/">Smart Lock Installation details</a></div>
-      <div class="svc pcard"><a href="/commercial-locksmith-access-control/"><img src="/img/products/commercial-locksmith-access-control.jpg?v=75f1edff" alt="Commercial Locksmith &amp; Access Control in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/commercial-locksmith-access-control/">Commercial Locksmith &amp; Access Control</a></h3><p>From $65 · Seattle, WA</p><a class="more" href="/commercial-locksmith-access-control/">Commercial Locksmith &amp; Access Control details</a></div>
-      <div class="svc pcard"><a href="/safe-opening/"><img src="/img/products/safe-opening.jpg?v=81b08de8" alt="Safe Opening &amp; Safe Lockout in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/safe-opening/">Safe Opening &amp; Safe Lockout</a></h3><p>From $75 · Seattle, WA</p><a class="more" href="/safe-opening/">Safe Opening &amp; Safe Lockout details</a></div>
-      <div class="svc pcard"><a href="/key-duplication/"><img src="/img/products/key-duplication.jpg?v=61789500" alt="Key Duplication &amp; Cutting in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/key-duplication/">Key Duplication &amp; Cutting</a></h3><p>From $25 · Seattle, WA</p><a class="more" href="/key-duplication/">Key Duplication &amp; Cutting details</a></div>
-      <div class="svc pcard"><a href="/house-lockout-service/"><img src="/img/products/house-lockout-service.jpg?v=a18430d1" alt="House Lockout Service in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/house-lockout-service/">House Lockout Service</a></h3><p>From $65 · Seattle, WA</p><a class="more" href="/house-lockout-service/">House Lockout Service details</a></div>
-      <div class="svc pcard"><a href="/commercial-lockout-service/"><img src="/img/products/commercial-lockout-service.jpg?v=94560d26" alt="Commercial Lockout Service in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/commercial-lockout-service/">Commercial Lockout Service</a></h3><p>From $75 · Seattle, WA</p><a class="more" href="/commercial-lockout-service/">Commercial Lockout Service details</a></div>
-      <div class="svc pcard"><a href="/spare-car-key/"><img src="/img/products/spare-car-key.jpg?v=37c4fe51" alt="Spare Car Key Duplication in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/spare-car-key/">Spare Car Key Duplication</a></h3><p>From $45 · Seattle, WA</p><a class="more" href="/spare-car-key/">Spare Car Key Duplication details</a></div>
-      <div class="svc pcard"><a href="/car-door-lock-repair/"><img src="/img/products/car-door-lock-repair.jpg?v=e90d280c" alt="Car Door &amp; Trunk Lock Repair in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/car-door-lock-repair/">Car Door &amp; Trunk Lock Repair</a></h3><p>From $85 · Seattle, WA</p><a class="more" href="/car-door-lock-repair/">Car Door &amp; Trunk Lock Repair details</a></div>
-      <div class="svc pcard"><a href="/lock-repair/"><img src="/img/products/lock-repair.jpg?v=7388c2b2" alt="Lock Repair in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/lock-repair/">Lock Repair</a></h3><p>From $55 · Seattle, WA</p><a class="more" href="/lock-repair/">Lock Repair details</a></div>
-      <div class="svc pcard"><a href="/high-security-locks/"><img src="/img/products/high-security-locks.jpg?v=e9629c51" alt="High-Security Lock Installation in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/high-security-locks/">High-Security Lock Installation</a></h3><p>From $145 · Seattle, WA</p><a class="more" href="/high-security-locks/">High-Security Lock Installation details</a></div>
-      <div class="svc pcard"><a href="/master-key-systems/"><img src="/img/products/master-key-systems.jpg?v=61789500" alt="Master Key Systems in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/master-key-systems/">Master Key Systems</a></h3><p>From $95 · Seattle, WA</p><a class="more" href="/master-key-systems/">Master Key Systems details</a></div>
-      <div class="svc pcard"><a href="/panic-bar-installation/"><img src="/img/products/panic-bar-installation.jpg?v=75f1edff" alt="Panic Bar &amp; Exit Device Installation in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/panic-bar-installation/">Panic Bar &amp; Exit Device Installation</a></h3><p>From $225 · Seattle, WA</p><a class="more" href="/panic-bar-installation/">Panic Bar &amp; Exit Device Installation details</a></div>
+      <div class="svc pcard"><a href="/emergency-lockout-service/"><img src="/img/products/emergency-lockout-service.webp?v=80f80548" alt="24/7 Emergency Lockout Service in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/emergency-lockout-service/">24/7 Emergency Lockout Service</a></h3><p>From $65 · Seattle, WA</p><a class="more" href="/emergency-lockout-service/">24/7 Emergency Lockout Service details</a></div>
+      <div class="svc pcard"><a href="/car-lockout-service/"><img src="/img/products/car-lockout-service.webp?v=3d2d4577" alt="Car Lockout Service in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/car-lockout-service/">Car Lockout Service</a></h3><p>From $65 · Seattle, WA</p><a class="more" href="/car-lockout-service/">Car Lockout Service details</a></div>
+      <div class="svc pcard"><a href="/car-key-replacement/"><img src="/img/products/car-key-replacement.webp?v=dc979ebb" alt="Car Key Replacement in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/car-key-replacement/">Car Key Replacement</a></h3><p>From $85 · Seattle, WA</p><a class="more" href="/car-key-replacement/">Car Key Replacement details</a></div>
+      <div class="svc pcard"><a href="/key-fob-programming/"><img src="/img/products/key-fob-programming.webp?v=edb0d8d8" alt="Key Fob &amp; Transponder Programming in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/key-fob-programming/">Key Fob &amp; Transponder Programming</a></h3><p>From $85 · Seattle, WA</p><a class="more" href="/key-fob-programming/">Key Fob &amp; Transponder Programming details</a></div>
+      <div class="svc pcard"><a href="/ignition-repair/"><img src="/img/products/ignition-repair.webp?v=3873dd56" alt="Ignition Repair &amp; Replacement in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/ignition-repair/">Ignition Repair &amp; Replacement</a></h3><p>From $95 · Seattle, WA</p><a class="more" href="/ignition-repair/">Ignition Repair &amp; Replacement details</a></div>
+      <div class="svc pcard"><a href="/broken-key-extraction/"><img src="/img/products/broken-key-extraction.webp?v=86cf83ca" alt="Broken Key Extraction in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/broken-key-extraction/">Broken Key Extraction</a></h3><p>From $35 · Seattle, WA</p><a class="more" href="/broken-key-extraction/">Broken Key Extraction details</a></div>
+      <div class="svc pcard"><a href="/lock-rekeying/"><img src="/img/products/lock-rekeying.webp?v=5c68aba2" alt="Lock Rekeying in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/lock-rekeying/">Lock Rekeying</a></h3><p>From $35 · Seattle, WA</p><a class="more" href="/lock-rekeying/">Lock Rekeying details</a></div>
+      <div class="svc pcard"><a href="/deadbolt-lock-installation/"><img src="/img/products/deadbolt-lock-installation.webp?v=972db150" alt="Deadbolt &amp; Lock Installation in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/deadbolt-lock-installation/">Deadbolt &amp; Lock Installation</a></h3><p>From $65 · Seattle, WA</p><a class="more" href="/deadbolt-lock-installation/">Deadbolt &amp; Lock Installation details</a></div>
+      <div class="svc pcard"><a href="/smart-lock-installation/"><img src="/img/products/smart-lock-installation.webp?v=3ebd610e" alt="Smart Lock Installation in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/smart-lock-installation/">Smart Lock Installation</a></h3><p>From $55 · Seattle, WA</p><a class="more" href="/smart-lock-installation/">Smart Lock Installation details</a></div>
+      <div class="svc pcard"><a href="/commercial-locksmith-access-control/"><img src="/img/products/commercial-locksmith-access-control.webp?v=3ff093be" alt="Commercial Locksmith &amp; Access Control in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/commercial-locksmith-access-control/">Commercial Locksmith &amp; Access Control</a></h3><p>From $65 · Seattle, WA</p><a class="more" href="/commercial-locksmith-access-control/">Commercial Locksmith &amp; Access Control details</a></div>
+      <div class="svc pcard"><a href="/safe-opening/"><img src="/img/products/safe-opening.webp?v=0c27b290" alt="Safe Opening &amp; Safe Lockout in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/safe-opening/">Safe Opening &amp; Safe Lockout</a></h3><p>From $75 · Seattle, WA</p><a class="more" href="/safe-opening/">Safe Opening &amp; Safe Lockout details</a></div>
+      <div class="svc pcard"><a href="/key-duplication/"><img src="/img/products/key-duplication.webp?v=13c722c0" alt="Key Duplication &amp; Cutting in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/key-duplication/">Key Duplication &amp; Cutting</a></h3><p>From $25 · Seattle, WA</p><a class="more" href="/key-duplication/">Key Duplication &amp; Cutting details</a></div>
+      <div class="svc pcard"><a href="/house-lockout-service/"><img src="/img/products/house-lockout-service.webp?v=b8c1e18b" alt="House Lockout Service in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/house-lockout-service/">House Lockout Service</a></h3><p>From $65 · Seattle, WA</p><a class="more" href="/house-lockout-service/">House Lockout Service details</a></div>
+      <div class="svc pcard"><a href="/commercial-lockout-service/"><img src="/img/products/commercial-lockout-service.webp?v=b2928e8f" alt="Commercial Lockout Service in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/commercial-lockout-service/">Commercial Lockout Service</a></h3><p>From $75 · Seattle, WA</p><a class="more" href="/commercial-lockout-service/">Commercial Lockout Service details</a></div>
+      <div class="svc pcard"><a href="/spare-car-key/"><img src="/img/products/spare-car-key.webp?v=2e69b6ea" alt="Spare Car Key Duplication in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/spare-car-key/">Spare Car Key Duplication</a></h3><p>From $45 · Seattle, WA</p><a class="more" href="/spare-car-key/">Spare Car Key Duplication details</a></div>
+      <div class="svc pcard"><a href="/car-door-lock-repair/"><img src="/img/products/car-door-lock-repair.webp?v=b4b7e6eb" alt="Car Door &amp; Trunk Lock Repair in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/car-door-lock-repair/">Car Door &amp; Trunk Lock Repair</a></h3><p>From $85 · Seattle, WA</p><a class="more" href="/car-door-lock-repair/">Car Door &amp; Trunk Lock Repair details</a></div>
+      <div class="svc pcard"><a href="/lock-repair/"><img src="/img/products/lock-repair.webp?v=f202a7cb" alt="Lock Repair in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/lock-repair/">Lock Repair</a></h3><p>From $55 · Seattle, WA</p><a class="more" href="/lock-repair/">Lock Repair details</a></div>
+      <div class="svc pcard"><a href="/high-security-locks/"><img src="/img/products/high-security-locks.webp?v=e116fe01" alt="High-Security Lock Installation in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/high-security-locks/">High-Security Lock Installation</a></h3><p>From $145 · Seattle, WA</p><a class="more" href="/high-security-locks/">High-Security Lock Installation details</a></div>
+      <div class="svc pcard"><a href="/master-key-systems/"><img src="/img/products/master-key-systems.webp?v=13c722c0" alt="Master Key Systems in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/master-key-systems/">Master Key Systems</a></h3><p>From $95 · Seattle, WA</p><a class="more" href="/master-key-systems/">Master Key Systems details</a></div>
+      <div class="svc pcard"><a href="/panic-bar-installation/"><img src="/img/products/panic-bar-installation.webp?v=3ff093be" alt="Panic Bar &amp; Exit Device Installation in Seattle, WA" loading="lazy" width="500" height="500"></a><h3><a href="/panic-bar-installation/">Panic Bar &amp; Exit Device Installation</a></h3><p>From $225 · Seattle, WA</p><a class="more" href="/panic-bar-installation/">Panic Bar &amp; Exit Device Installation details</a></div>
     </div>
   </div>
 </section>
@@ -412,9 +416,9 @@ footer .inline-links li{padding:0;font-size:.85rem}
       <p class="rating"><span class="stars">★★★★★</span> <b>5.0</b> rating · <a href="https://maps.google.com/maps?cid=5714505059049306935" target="_blank" rel="noopener">3 Google reviews</a></p>
     </div>
     <div class="grid revs">
-      <blockquote class="rev"><p><span class="stars" aria-label="5 out of 5 stars">★★★★★</span></p><p class="rev-text">“Had to get my front door lock replaced and Seattle Locksmith Group did it all. Very professional, courteous, and stress-free. A reliable choice for those in the Seattle area.”</p><footer><b>Samuel Eduardo Ayala Cruz</b> · Google review</footer></blockquote>
-      <blockquote class="rev"><p><span class="stars" aria-label="5 out of 5 stars">★★★★★</span></p><p class="rev-text">“Outstanding service from start to finish. The technician was very knowledgeable and efficient, and my lock feels more secure than ever.”</p><footer><b>Claudio Casco</b> · Google review</footer></blockquote>
-      <blockquote class="rev"><p><span class="stars" aria-label="5 out of 5 stars">★★★★★</span></p><p class="rev-text">“Fast service I highly recommend!”</p><footer><b>Muzammil Ahmed</b> · Google review</footer></blockquote>
+      <blockquote class="rev"><p><span class="stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></span></p><p class="rev-text">“Had to get my front door lock replaced and Seattle Locksmith Group did it all. Very professional, courteous, and stress-free. A reliable choice for those in the Seattle area.”</p><footer><b>Samuel Eduardo Ayala Cruz</b> · Google review</footer></blockquote>
+      <blockquote class="rev"><p><span class="stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></span></p><p class="rev-text">“Outstanding service from start to finish. The technician was very knowledgeable and efficient, and my lock feels more secure than ever.”</p><footer><b>Claudio Casco</b> · Google review</footer></blockquote>
+      <blockquote class="rev"><p><span class="stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></span></p><p class="rev-text">“Fast service I highly recommend!”</p><footer><b>Muzammil Ahmed</b> · Google review</footer></blockquote>
     </div>
     <p class="rev-cta"><a class="more" href="https://search.google.com/local/writereview?placeid=ChIJuwk9SfSM7mIRN3vODxMATk8" target="_blank" rel="noopener">Leave us a review on Google</a></p>
   </div>
@@ -476,12 +480,12 @@ footer .inline-links li{padding:0;font-size:.85rem}
   <div class="wrap">
     <h2 id="h-gallery">Recent work around Seattle</h2>
     <div class="gallery">
-      <figure><img src="/img/gallery/g0.jpg?v=5e618f5d" alt="Seattle Locksmith Group technicians on a commercial call in Seattle" loading="lazy" width="1000" height="747"><figcaption>Seattle Locksmith Group technicians on a commercial call in Seattle</figcaption></figure>
-      <figure><img src="/img/gallery/g13.jpg?v=8d919138" alt="Yale smart lock installed on a front door in Seattle" loading="lazy" width="507" height="900"><figcaption>Yale smart lock installed on a front door in Seattle</figcaption></figure>
-      <figure><img src="/img/gallery/g11.jpg?v=e07e5706" alt="Key fob programmed to the car on site in Seattle" loading="lazy" width="900" height="633"><figcaption>Key fob programmed to the car on site in Seattle</figcaption></figure>
-      <figure><img src="/img/gallery/g1.jpg?v=14392789" alt="Commercial lever lock installed in Seattle" loading="lazy" width="619" height="1100"><figcaption>Commercial lever lock installed in Seattle</figcaption></figure>
-      <figure><img src="/img/gallery/g18.jpg?v=bec61d70" alt="Smart key cut and programmed in Seattle" loading="lazy" width="698" height="900"><figcaption>Smart key cut and programmed in Seattle</figcaption></figure>
-      <figure><img src="/img/gallery/g9.jpg?v=ffa6a552" alt="Electronic safe lock opened and reset in Seattle" loading="lazy" width="900" height="631"><figcaption>Electronic safe lock opened and reset in Seattle</figcaption></figure>
+      <figure><img src="/img/gallery/g0.webp?v=ee82ac57" alt="Seattle Locksmith Group technicians on a commercial call in Seattle" loading="lazy" width="1000" height="747"><figcaption>Seattle Locksmith Group technicians on a commercial call in Seattle</figcaption></figure>
+      <figure><img src="/img/gallery/g13.webp?v=24718dd4" alt="Yale smart lock installed on a front door in Seattle" loading="lazy" width="507" height="900"><figcaption>Yale smart lock installed on a front door in Seattle</figcaption></figure>
+      <figure><img src="/img/gallery/g11.webp?v=2d6c71cf" alt="Key fob programmed to the car on site in Seattle" loading="lazy" width="900" height="633"><figcaption>Key fob programmed to the car on site in Seattle</figcaption></figure>
+      <figure><img src="/img/gallery/g1.webp?v=b252ab7f" alt="Commercial lever lock installed in Seattle" loading="lazy" width="619" height="1100"><figcaption>Commercial lever lock installed in Seattle</figcaption></figure>
+      <figure><img src="/img/gallery/g18.webp?v=e2c72fa5" alt="Smart key cut and programmed in Seattle" loading="lazy" width="698" height="900"><figcaption>Smart key cut and programmed in Seattle</figcaption></figure>
+      <figure><img src="/img/gallery/g9.webp?v=31827b09" alt="Electronic safe lock opened and reset in Seattle" loading="lazy" width="900" height="631"><figcaption>Electronic safe lock opened and reset in Seattle</figcaption></figure>
     </div>
   </div>
 </section>
@@ -539,7 +543,7 @@ footer .inline-links li{padding:0;font-size:.85rem}
   <input type="hidden" name="_template" value="table">
   <input type="hidden" name="site" value="seattlelocksmithgroup.com">
   <input type="hidden" name="page" value="/">
-  <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
+  <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" aria-label="Leave this field empty">
   <label>Phone<input type="tel" name="phone" required autocomplete="tel" inputmode="tel" placeholder="We call back in minutes"></label>
   <label>Name<input type="text" name="name" required autocomplete="name"></label>
   <label>What do you need?
@@ -565,7 +569,7 @@ footer .inline-links li{padding:0;font-size:.85rem}
     <label>Anything else?<textarea name="message" rows="2"></textarea></label>
   </details>
   <button class="call" type="submit">Request a call back</button>
-  <p class="form-note">Locked out right now? Phone <a href="tel:+12063091138">206-309-1138</a> or <a href="sms:+12063091138">text us</a>.</p>
+  <p class="form-note">Locked out right now? Phone <a href="tel:+12063091138">206-309-1138</a> or <a href="sms:+12063091138?&body=Hi%2C%20I%20need%20a%20locksmith%20in%20Seattle">text us</a>.</p>
 </form>
 
     </div>

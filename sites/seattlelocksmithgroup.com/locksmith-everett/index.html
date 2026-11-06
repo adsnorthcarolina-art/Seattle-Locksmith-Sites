@@ -26,7 +26,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap"></noscript>
 <style>
 :root{
   --ink:#0F3A3F;--ink2:#20484C;--ink3:#355A5E;--steel:#446569;--mist:#8CA0A3;--panel:#DFE8E8;--paper:#EFF5F5;--white:#fff;
@@ -199,7 +200,7 @@ footer .legal{border-top:1px solid var(--ink3);padding-top:1rem;display:flex;fle
 .hero.photo .door{display:none}
 .hero.photo .wrap{padding-bottom:3.5rem}
 /* --- ratings / reviews --- */
-.stars{color:var(--signal);letter-spacing:.05em;font-size:1.05em}
+.stars{color:var(--signal);letter-spacing:.05em;font-size:1.05em;-webkit-text-stroke:.6px var(--ink2);paint-order:stroke fill}
 .rating{font-weight:500}
 .rating a{color:inherit}
 .rating.badge{display:inline-flex;align-items:center;gap:.45rem;background:color-mix(in srgb,var(--white) 10%,transparent);border:1px solid color-mix(in srgb,var(--white) 25%,transparent);border-radius:999px;padding:.35rem .9rem;margin:0 0 1.2rem;font-size:.95rem;color:var(--white)}
@@ -210,7 +211,7 @@ footer .legal{border-top:1px solid var(--ink3);padding-top:1rem;display:flex;fle
 .rev{margin:0;padding:1.25rem 1.4rem;background:var(--white);border-left:4px solid var(--signal);border-radius:0 6px 6px 0;font-style:normal}
 .rev p{margin:0 0 .6rem}
 .rev .rev-text{font-size:1.02rem;line-height:1.55}
-.rev footer{font-size:.9rem;color:var(--mist);background:none;padding:0}
+.rev footer{font-size:.9rem;color:var(--steel);background:none;padding:0}
 .rev footer b{color:var(--ink)}
 .rev-cta{margin:1.5rem 0 0}
 /* --- gallery --- */
@@ -239,8 +240,9 @@ footer .legal{border-top:1px solid var(--ink3);padding-top:1rem;display:flex;fle
 .social{display:flex;gap:.6rem;margin:.5rem 0 1rem}
 .social a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:var(--ink3);color:var(--white)}
 .social a:hover{background:var(--signal);color:var(--signal-ink)}
-footer .inline-links{display:flex;flex-wrap:wrap;gap:.1rem .7rem;margin-bottom:1rem}
+footer .inline-links{display:flex;flex-wrap:wrap;gap:.15rem .9rem;margin-bottom:1rem}
 footer .inline-links li{padding:0;font-size:.85rem}
+footer .inline-links a{display:inline-block;padding:.35rem .2rem;min-height:24px}
 .aside .links{columns:2;column-gap:1rem}
 .aside .links li{border:0;padding:.2rem 0;break-inside:avoid}
 .lead.quick label{margin-bottom:.5rem}
@@ -254,6 +256,8 @@ footer .inline-links li{padding:0;font-size:.85rem}
 .brandcol li a{font-weight:600;text-decoration:none;border-bottom:2px solid transparent}
 .brandcol li a:hover{border-bottom-color:var(--signal)}
 .brandcol li span{display:block;font-size:.88rem;color:var(--steel)}
+
+main p a:not(.btn):not(.more):not(.ghost):not(.sms),main li a:not(.btn):not(.more){text-decoration:underline;text-underline-offset:2px}
 </style>
 <script type="application/ld+json">
 {
@@ -292,7 +296,7 @@ footer .inline-links li{padding:0;font-size:.85rem}
 <header class="top">
   <div class="wrap">
     <a class="brand" href="/" aria-label="Seattle Locksmith Group home">
-      <img class="logo" src="/img/logo.png?v=c601944c" alt="Seattle Locksmith Group logo" width="52" height="52">
+      <img class="logo" src="/img/logo-104.png?v=9fc2593d" alt="Seattle Locksmith Group logo" width="52" height="52">
       <span class="wm"><b><em>Seattle</em> Locksmith Group</b><small>Since 2012 · Seattle, WA · 24 hours</small></span>
     </a>
     <a class="call" href="tel:+12063091138"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.7a2 2 0 0 1 1.7 2z"/></svg><span>206-309-1138</span></a>
@@ -387,7 +391,7 @@ footer .inline-links li{padding:0;font-size:.85rem}
   <input type="hidden" name="_template" value="table">
   <input type="hidden" name="site" value="seattlelocksmithgroup.com">
   <input type="hidden" name="page" value="/locksmith-everett/">
-  <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
+  <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" aria-label="Leave this field empty">
   <label>Phone<input type="tel" name="phone" required autocomplete="tel" inputmode="tel" placeholder="We call back in minutes"></label>
   <label>Name<input type="text" name="name" required autocomplete="name"></label>
   <label>What do you need?
@@ -413,7 +417,7 @@ footer .inline-links li{padding:0;font-size:.85rem}
     <label>Anything else?<textarea name="message" rows="2"></textarea></label>
   </details>
   <button class="call" type="submit">Request a call back</button>
-  <p class="form-note">Locked out right now? Phone <a href="tel:+12063091138">206-309-1138</a> or <a href="sms:+12063091138">text us</a>.</p>
+  <p class="form-note">Locked out right now? Phone <a href="tel:+12063091138">206-309-1138</a> or <a href="sms:+12063091138?&body=Hi%2C%20I%20need%20a%20locksmith%20in%20Seattle">text us</a>.</p>
 </form>
 
       </div>
@@ -428,9 +432,9 @@ footer .inline-links li{padding:0;font-size:.85rem}
       <p class="rating"><span class="stars">★★★★★</span> <b>5.0</b> rating · <a href="https://maps.google.com/maps?cid=5714505059049306935" target="_blank" rel="noopener">3 Google reviews</a></p>
     </div>
     <div class="grid revs">
-      <blockquote class="rev"><p><span class="stars" aria-label="5 out of 5 stars">★★★★★</span></p><p class="rev-text">“Had to get my front door lock replaced and Seattle Locksmith Group did it all. Very professional, courteous, and stress-free. A reliable choice for those in the Seattle area.”</p><footer><b>Samuel Eduardo Ayala Cruz</b> · Google review</footer></blockquote>
-      <blockquote class="rev"><p><span class="stars" aria-label="5 out of 5 stars">★★★★★</span></p><p class="rev-text">“Outstanding service from start to finish. The technician was very knowledgeable and efficient, and my lock feels more secure than ever.”</p><footer><b>Claudio Casco</b> · Google review</footer></blockquote>
-      <blockquote class="rev"><p><span class="stars" aria-label="5 out of 5 stars">★★★★★</span></p><p class="rev-text">“Fast service I highly recommend!”</p><footer><b>Muzammil Ahmed</b> · Google review</footer></blockquote>
+      <blockquote class="rev"><p><span class="stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></span></p><p class="rev-text">“Had to get my front door lock replaced and Seattle Locksmith Group did it all. Very professional, courteous, and stress-free. A reliable choice for those in the Seattle area.”</p><footer><b>Samuel Eduardo Ayala Cruz</b> · Google review</footer></blockquote>
+      <blockquote class="rev"><p><span class="stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></span></p><p class="rev-text">“Outstanding service from start to finish. The technician was very knowledgeable and efficient, and my lock feels more secure than ever.”</p><footer><b>Claudio Casco</b> · Google review</footer></blockquote>
+      <blockquote class="rev"><p><span class="stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></span></p><p class="rev-text">“Fast service I highly recommend!”</p><footer><b>Muzammil Ahmed</b> · Google review</footer></blockquote>
     </div>
     <p class="rev-cta"><a class="more" href="https://search.google.com/local/writereview?placeid=ChIJuwk9SfSM7mIRN3vODxMATk8" target="_blank" rel="noopener">Leave us a review on Google</a></p>
   </div>

@@ -281,7 +281,7 @@ def social_html(social):
 
 
 def stars(n):
-    return '<span class="stars" aria-label="%d out of 5 stars">%s</span>' % (n, "★" * n + "☆" * (5 - n))
+    return '<span class="stars" role="img" aria-label="%d out of 5 stars"><span aria-hidden="true">%s</span></span>' % (n, "★" * n + "☆" * (5 - n))
 
 
 def review_cards(revs, f, limit=6):
@@ -446,7 +446,7 @@ def fields(loc):
         "areas_schema": "".join(f',{{"@type":"City","name":"{htmlmod.escape(n)}"}}' for n in nearby),
         "gtm_head": GTM_HEAD.replace("{gtm}", gtm) if gtm else "",
         "gtm_body": GTM_BODY.replace("{gtm}", gtm) if gtm else "",
-        "mark": ('<img class="logo" src="/img/logo.png" alt="{{business}} logo" width="52" height="52">' if (IMG_DIR / "logo.png").exists() else MARK.format(signal=pal["c_signal"], ink=pal["c_ink"])),
+        "mark": ('<img class="logo" src="/img/logo-104.png" alt="{{business}} logo" width="52" height="52">' if (IMG_DIR / "logo.png").exists() else MARK.format(signal=pal["c_signal"], ink=pal["c_ink"])),
         "favicon": "data:image/svg+xml," + MARK.format(signal=pal["c_signal"], ink=pal["c_ink"]).replace("#", "%23").replace("<", "%3C").replace(">", "%3E").replace("'", "%27"),
         "styles": STYLES,
         "social_links": social_html(loc.get("social")),
@@ -628,9 +628,14 @@ def version_images(site_dir):
         return f"{m.group(1)}{m.group(2)}?v={v}" if v else m.group(0)
 
     pat = re.compile(r'((?:https://www\.[a-z0-9.-]+)?)(/img/[A-Za-z0-9_./-]+\.(?:jpg|jpeg|png|webp|svg))(?![?\w])')
+    webp = re.compile(r'(src="|srcset=")(/img/[A-Za-z0-9_./-]+)\.jpg')
+
+    def to_webp(m):
+        return m.group(1) + m.group(2) + ".webp" if (site_dir / (m.group(2).lstrip("/") + ".webp")).exists() else m.group(0)
+
     for html_file in site_dir.rglob("*.html"):
         txt = html_file.read_text()
-        new = pat.sub(repl, txt)
+        new = pat.sub(repl, webp.sub(to_webp, txt))
         if new != txt:
             html_file.write_text(new)
 
@@ -649,6 +654,16 @@ def write_icons(logo, d):
     for n in (192, 512):
         sq.resize((n, n), Image.LANCZOS).save(d / "img" / f"icon-{n}.png", optimize=True)
     sq.resize((48, 48), Image.LANCZOS).save(d / "favicon.ico", sizes=[(48, 48), (32, 32), (16, 16)])
+    im.resize((104, 104), Image.LANCZOS).save(d / "img" / "logo-104.png", optimize=True)
+
+
+def write_webp(d):
+    """WebP copies of gallery/product JPEGs (JPEGs stay for GBP uploads and og:image)."""
+    from PIL import Image
+    for jpg in list((d / "img").rglob("*.jpg")):
+        wp = jpg.with_suffix(".webp")
+        if not wp.exists() or wp.stat().st_mtime < jpg.stat().st_mtime:
+            Image.open(jpg).convert("RGB").save(wp, "WEBP", quality=78, method=6)
 
 
 def build_site(loc, today):
@@ -686,8 +701,9 @@ def build_site(loc, today):
     if IMG_DIR.exists():
         shutil.copytree(IMG_DIR, d / "img", dirs_exist_ok=True)
         write_icons(IMG_DIR / "logo.png", d)
+        write_webp(d)
     f["product_cards"] = "\n".join(
-        f'      <div class="svc pcard"><a href="/{p["slug"]}/"><img src="/img/products/{p["image"]}" alt="{htmlmod.escape(p["name"])} in {f["cityst"]}" loading="lazy" width="500" height="500"></a><h3><a href="/{p["slug"]}/">{htmlmod.escape(p["name"])}</a></h3><p>From ${p["price"]} · {f["cityst"]}</p><a class="more" href="/{p["slug"]}/">{htmlmod.escape(p["name"])} details</a></div>'
+        f'      <div class="svc pcard"><a href="/{p["slug"]}/"><img src="/img/products/{p["image"].rsplit(".", 1)[0]}.webp" alt="{htmlmod.escape(p["name"])} in {f["cityst"]}" loading="lazy" width="500" height="500"></a><h3><a href="/{p["slug"]}/">{htmlmod.escape(p["name"])}</a></h3><p>From ${p["price"]} · {f["cityst"]}</p><a class="more" href="/{p["slug"]}/">{htmlmod.escape(p["name"])} details</a></div>'
         for p in PRODUCTS)
     for slug in PAGES:
         path, out = render_page(slug, f)
@@ -718,6 +734,7 @@ def main():
         pages += build_site(loc, today)
         n += 1
     shutil.copy(T / "_worker.js", OUT / "_worker.js")
+    shutil.copy(T / "_headers", OUT / "_headers")
     (OUT / "index.html").write_text(f'<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/{LOCATIONS[0]["domain"]}/">')
     print(f"built {n} site(s), {pages} pages, into {OUT}")
 
