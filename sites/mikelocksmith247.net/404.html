@@ -452,6 +452,31 @@ footer .legal a{color:inherit}
 @supports (animation-timeline:scroll()){.progress{animation:progress-grow linear both;animation-timeline:scroll(root)}}
 @keyframes progress-grow{to{transform:scaleX(1)}}
 @media (prefers-reduced-motion:reduce){.progress{display:none}}
+
+/* ======== theme-c (per-site variant: white header + labelled section bar, soft cards) ======== */
+.subnav{background:var(--ink);border-bottom:3px solid var(--signal);position:sticky;top:0;z-index:9}
+.subnav .wrap{display:flex;gap:.25rem;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:.45rem 0}
+.subnav .wrap::-webkit-scrollbar{display:none}
+.subnav a{flex:none;color:var(--ondark);text-decoration:none;font-weight:600;font-size:.95rem;padding:.5rem .85rem;border-radius:999px;white-space:nowrap}
+.subnav a:hover{color:var(--signal)}
+.subnav a[aria-current]{background:var(--signal);color:var(--signal-ink)}
+.theme-c .top{background:var(--white);color:var(--ink);border-bottom:1px solid var(--panel)}
+.theme-c .brand{color:var(--ink)}
+.theme-c .brand small{color:var(--steel)}
+.theme-c .brand img.logo{background:transparent;padding:0}
+.theme-c .burger{border-color:var(--panel)}
+.theme-c .burger span{background:var(--ink)}
+@media (min-width:1000px){.theme-c .burger{display:none}.subnav .wrap{justify-content:center}}
+.theme-c{--radius:14px}
+.theme-c h1,.theme-c h2{letter-spacing:-.01em}
+.theme-c section h2{border-left:6px solid var(--signal);padding-left:.75rem}
+.theme-c .svc{border-radius:var(--radius);box-shadow:0 12px 28px -20px rgba(0,0,0,.45)}
+.theme-c .svc::before{height:0}
+.theme-c .svc.pcard img,.theme-c .gallery figure{border-radius:12px}
+.theme-c .rev,.theme-c .offer div,.theme-c .aside,.theme-c .why li{border-radius:var(--radius)}
+.theme-c .call,.theme-c .cta-row a,.theme-c .lead button.call{border-radius:12px}
+.theme-c details{border:1px solid var(--panel);border-radius:12px;padding:.9rem 1.1rem;margin-bottom:.6rem;background:var(--white)}
+.theme-c .band{background:linear-gradient(120deg,var(--ink) 0%,var(--ink) 55%,color-mix(in srgb,var(--signal) 35%,var(--ink)) 100%)}
 </style>
 <script type="application/ld+json">
 {
@@ -485,7 +510,7 @@ footer .legal a{color:inherit}
 </script>
 <meta name="robots" content="noindex">
 </head>
-<body class="">
+<body class="theme-c">
 <div class="progress" aria-hidden="true"></div>
 
 <header class="top">
@@ -498,6 +523,20 @@ footer .legal a{color:inherit}
     <button class="burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </header>
+<nav class="subnav" aria-label="Sections">
+  <div class="wrap">
+    <a href="/" aria-current="page">Home</a>
+    <a href="/emergency-locksmith/" >Emergency</a>
+    <a href="/automotive-locksmith/" >Car</a>
+    <a href="/car-key-replacement/" >Car keys</a>
+    <a href="/residential-locksmith/" >Home &amp; rekey</a>
+    <a href="/commercial-locksmith/" >Business</a>
+    <a href="/services/" >All services</a>
+    <a href="/service-areas/" >Areas</a>
+    <a href="/about/" >About</a>
+    <a href="/contact/" >Contact</a>
+  </div>
+</nav>
 <div class="scrim" hidden></div>
 <nav class="drawer" id="menu" aria-label="Main" hidden>
   <div class="drawer-head">

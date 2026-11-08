@@ -452,6 +452,31 @@ footer .legal a{color:inherit}
 @supports (animation-timeline:scroll()){.progress{animation:progress-grow linear both;animation-timeline:scroll(root)}}
 @keyframes progress-grow{to{transform:scaleX(1)}}
 @media (prefers-reduced-motion:reduce){.progress{display:none}}
+
+/* ======== theme-c (per-site variant: white header + labelled section bar, soft cards) ======== */
+.subnav{background:var(--ink);border-bottom:3px solid var(--signal);position:sticky;top:0;z-index:9}
+.subnav .wrap{display:flex;gap:.25rem;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:.45rem 0}
+.subnav .wrap::-webkit-scrollbar{display:none}
+.subnav a{flex:none;color:var(--ondark);text-decoration:none;font-weight:600;font-size:.95rem;padding:.5rem .85rem;border-radius:999px;white-space:nowrap}
+.subnav a:hover{color:var(--signal)}
+.subnav a[aria-current]{background:var(--signal);color:var(--signal-ink)}
+.theme-c .top{background:var(--white);color:var(--ink);border-bottom:1px solid var(--panel)}
+.theme-c .brand{color:var(--ink)}
+.theme-c .brand small{color:var(--steel)}
+.theme-c .brand img.logo{background:transparent;padding:0}
+.theme-c .burger{border-color:var(--panel)}
+.theme-c .burger span{background:var(--ink)}
+@media (min-width:1000px){.theme-c .burger{display:none}.subnav .wrap{justify-content:center}}
+.theme-c{--radius:14px}
+.theme-c h1,.theme-c h2{letter-spacing:-.01em}
+.theme-c section h2{border-left:6px solid var(--signal);padding-left:.75rem}
+.theme-c .svc{border-radius:var(--radius);box-shadow:0 12px 28px -20px rgba(0,0,0,.45)}
+.theme-c .svc::before{height:0}
+.theme-c .svc.pcard img,.theme-c .gallery figure{border-radius:12px}
+.theme-c .rev,.theme-c .offer div,.theme-c .aside,.theme-c .why li{border-radius:var(--radius)}
+.theme-c .call,.theme-c .cta-row a,.theme-c .lead button.call{border-radius:12px}
+.theme-c details{border:1px solid var(--panel);border-radius:12px;padding:.9rem 1.1rem;margin-bottom:.6rem;background:var(--white)}
+.theme-c .band{background:linear-gradient(120deg,var(--ink) 0%,var(--ink) 55%,color-mix(in srgb,var(--signal) 35%,var(--ink)) 100%)}
 </style>
 <script type="application/ld+json">
 {
@@ -487,7 +512,7 @@ footer .legal a{color:inherit}
 {"@context":"https://schema.org","@type":"Service","name":"Car Door &amp; Trunk Lock Repair","serviceType":"Car Door &amp; Trunk Lock Repair","provider":{"@id":"https://www.mikelocksmith247.net/#business"},"areaServed":{"@type":"City","name":"Seattle"},"description":"Car Door &amp; Trunk Lock Repair by Mike Locksmith 247 in Seattle, WA. Key won&#x27;t turn in the door, lock is frozen or worn, or the trunk won&#x27;t open? We repair or replace door and trunk lock cylinders at your location in Seattle, WA and key them to your existing key. 24/7, free estimate, licensed and insured.","image":"https://www.mikelocksmith247.net/img/products/car-door-lock-repair.jpg?v=27d0b32d","url":"https://www.mikelocksmith247.net/car-door-lock-repair/","offers":{"@type":"Offer","price":"85","priceCurrency":"USD","priceSpecification":{"@type":"PriceSpecification","minPrice":"85","priceCurrency":"USD"}}}
 </script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"My key won&#x27;t turn in the door. Is it the key or the lock?","acceptedAnswer":{"@type":"Answer","text":"Usually the lock cylinder is worn or frozen. We repair or replace the cylinder and key it to your existing key."}},{"@type":"Question","name":"Can you fix a trunk that won&#x27;t open?","acceptedAnswer":{"@type":"Answer","text":"Yes. Trunk lock cylinders and latches are repaired or replaced on site."}},{"@type":"Question","name":"Will the new door lock use my current key?","acceptedAnswer":{"@type":"Answer","text":"Yes. We rekey the replacement cylinder to match the key you already have."}},{"@type":"Question","name":"How fast can you get to me in Seattle?","acceptedAnswer":{"@type":"Answer","text":"Most calls in Seattle are reached within 20 to 40 minutes. Mike Locksmith 247 runs mobile units around the city 24 hours a day, and the dispatcher gives you an arrival time when you call 206-984-7642."}},{"@type":"Question","name":"Do I get a price before you start?","acceptedAnswer":{"@type":"Answer","text":"Yes, always. The technician checks the lock or the car on arrival and quotes the whole job before touching anything. The estimate is free and there are no hidden fees."}},{"@type":"Question","name":"Are you licensed and insured?","acceptedAnswer":{"@type":"Answer","text":"Yes. Mike Locksmith 247 is licensed and insured, in business since 2020, and every technician is background-checked and shows ID on arrival."}}]}</script>
 </head>
-<body class="">
+<body class="theme-c">
 <div class="progress" aria-hidden="true"></div>
 
 <header class="top">
@@ -500,6 +525,20 @@ footer .legal a{color:inherit}
     <button class="burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </header>
+<nav class="subnav" aria-label="Sections">
+  <div class="wrap">
+    <a href="/" >Home</a>
+    <a href="/emergency-locksmith/" >Emergency</a>
+    <a href="/automotive-locksmith/" >Car</a>
+    <a href="/car-key-replacement/" >Car keys</a>
+    <a href="/residential-locksmith/" >Home &amp; rekey</a>
+    <a href="/commercial-locksmith/" >Business</a>
+    <a href="/services/" aria-current="page">All services</a>
+    <a href="/service-areas/" >Areas</a>
+    <a href="/about/" >About</a>
+    <a href="/contact/" >Contact</a>
+  </div>
+</nav>
 <div class="scrim" hidden></div>
 <nav class="drawer" id="menu" aria-label="Main" hidden>
   <div class="drawer-head">

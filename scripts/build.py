@@ -159,6 +159,21 @@ PAGES = {
     "terms": ("terms", "about"),
     "404": ("404", "home"),
 }
+# Optional labelled nav bar under the header (locations.json "subnav": true). Off for every other site.
+SUBNAV = """<nav class="subnav" aria-label="Sections">
+  <div class="wrap">
+    <a href="/" {{cur_home}}>Home</a>
+    <a href="/emergency-locksmith/" {{cur_emergency}}>Emergency</a>
+    <a href="/automotive-locksmith/" {{cur_auto}}>Car</a>
+    <a href="/car-key-replacement/" {{cur_carkey}}>Car keys</a>
+    <a href="/residential-locksmith/" {{cur_residential}}>Home &amp; rekey</a>
+    <a href="/commercial-locksmith/" {{cur_commercial}}>Business</a>
+    <a href="/services/" {{cur_services}}>All services</a>
+    <a href="/service-areas/" {{cur_areas}}>Areas</a>
+    <a href="/about/" {{cur_about}}>About</a>
+    <a href="/contact/" {{cur_contact}}>Contact</a>
+  </div>
+</nav>"""
 NAV_KEYS = ["home", "emergency", "auto", "carkey", "residential", "rekey", "commercial", "services", "areas", "blog", "about", "contact"]
 
 FAQ_SCHEMA = """<script type="application/ld+json">
@@ -488,6 +503,7 @@ def fields(loc):
         "js_ver": JS_VER,
         "head_extra": "",
         "body_class": ("theme-" + loc["theme"]) if loc.get("theme") else "",
+        "subnav": SUBNAV if loc.get("subnav") else "",
         **{"ico_" + k: v for k, v in ICONS.items()},
         "social_links": social_html(loc.get("social")),
         "social_sameas": "".join(f',"{htmlmod.escape(u, quote=True)}"' for u in (loc.get("social") or {}).values() if u),
