@@ -683,7 +683,7 @@ def trust_license_li(loc):
     verification complete) state it in plain text; no Google logo or badge artwork is used."""
     v = loc.get("verified")
     if v:
-        lic = f'licensed WA {htmlmod.escape(v["license"])}, ' if v.get("license") else "licensed, "
+        lic = f'Licensed WA {htmlmod.escape(v["license"])}, ' if v.get("license") else "Licensed, "
         return (f'<li><span class="ico">{ICONS["shield"]}</span><div><b>Google-verified business</b>'
                 f'<span>{lic}insured &amp; background-checked</span></div></li>')
     return (f'<li><span class="ico">{ICONS["shield"]}</span><div><b>Licensed &amp; insured</b>'
