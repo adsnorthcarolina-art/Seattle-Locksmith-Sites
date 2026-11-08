@@ -517,6 +517,9 @@ def fields(loc):
         "nicknames": joined(loc.get("nicknames") or []), "area_code": loc.get("area_code", ""),
         "region_terms": joined(loc.get("region_terms") or []), "airport": loc.get("airport", ""),
         "alt_names_schema": "".join(f',"{htmlmod.escape(n.replace("the ", ""), quote=True)}"' for n in (loc.get("nicknames") or [])),
+        # per-site overrides: real brand variants for schema alternateName, and the base location's coordinates
+        "alt_names": json.dumps(loc["alt_names"]) if loc.get("alt_names") else "[" + json.dumps(f"{city} Locksmith") + "".join(f',"{htmlmod.escape(n.replace("the ", ""), quote=True)}"' for n in (loc.get("nicknames") or [])) + "]",
+        "geo_lat": str((loc.get("geo") or [47.6131, -122.3045])[0]), "geo_lng": str((loc.get("geo") or [47.6131, -122.3045])[1]),
         "brand_links": brand_links_inline(),
         "wordmark": (f"<em>{htmlmod.escape(city)}</em> " + htmlmod.escape(loc["business"][len(city):].strip())) if loc["business"].lower().startswith(city.lower()) else htmlmod.escape(loc["business"]),
         "verify_tags": (f'<meta name="msvalidate.01" content="{loc["bing_verify"]}">' if loc.get("bing_verify") else "") + (f'<meta name="google-site-verification" content="{loc["google_verify"]}">' if loc.get("google_verify") else ""),
