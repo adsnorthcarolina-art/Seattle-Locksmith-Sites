@@ -1,9 +1,18 @@
 {
  "hero": "m10.jpg",
- "gallery": ["m02.jpg", "m14.jpg", "m12.jpg", "m03.jpg", "m19.jpg", "m15.jpg", "m01.jpg", "m17.jpg"],
+ "gallery": [
+  "m02.jpg",
+  "m14.jpg",
+  "m12.jpg",
+  "m03.jpg",
+  "m19.jpg",
+  "m15.jpg",
+  "m01.jpg",
+  "m17.jpg"
+ ],
  "products": {
   "emergency-lockout-service": "m16.jpg",
-  "car-lockout-service": "m16.jpg",
+  "car-lockout-service": "m07.jpg",
   "car-key-replacement": "m12.jpg",
   "key-fob-programming": "m02.jpg",
   "ignition-repair": "m03.jpg",
@@ -15,11 +24,11 @@
   "safe-opening": "m17.jpg",
   "key-duplication": "m15.jpg",
   "house-lockout-service": "m01.jpg",
-  "commercial-lockout-service": "m07.jpg",
+  "commercial-lockout-service": "m18.jpg",
   "spare-car-key": "m19.jpg",
   "car-door-lock-repair": "m04.jpg",
   "lock-repair": "m00.jpg",
-  "high-security-locks": "m07.jpg",
+  "high-security-locks": "m00.jpg",
   "master-key-systems": "m10.jpg",
   "panic-bar-installation": "m18.jpg"
  }
