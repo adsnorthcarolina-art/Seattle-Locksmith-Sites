@@ -30,6 +30,7 @@
     <label>Car year, make and model (for car keys)<input type="text" name="vehicle" placeholder="e.g. 2019 Honda Civic"></label>
     <label>Anything else?<textarea name="message" rows="2"></textarea></label>
   </details>
+  <label class="consent"><input type="checkbox" name="consent" value="yes" required> I agree to the <a href="/privacy/">Privacy Policy</a> and <a href="/terms/">Terms</a>, and to be contacted by phone or text about this request.</label>
   <button class="call" type="submit">Request a call back</button>
   <p class="form-note">Locked out right now? Phone <a href="tel:+1{{phone_digits}}">{{phone}}</a> or <a href="sms:+1{{sms_digits}}?&body=Hi%2C%20I%20need%20a%20locksmith%20in%20{{city}}">text us</a>.</p>
 </form>

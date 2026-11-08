@@ -434,6 +434,12 @@ footer .cols>div:nth-child(2) li{break-inside:avoid}
 .lead.book{max-width:38rem}
 .lead .two-up{display:grid;gap:.9rem;grid-template-columns:1fr 1fr}
 @media (max-width:520px){.lead .two-up{grid-template-columns:1fr}}
+
+/* legal */
+.lead label.consent{display:flex;font-weight:400;gap:.55rem;align-items:flex-start;font-size:.88rem;color:var(--steel);line-height:1.4;margin:.25rem 0 .5rem}
+.lead .consent input{margin-top:.2rem;flex:none;width:1.05rem;height:1.05rem;accent-color:var(--signal)}
+.lead .consent a{color:inherit;text-decoration:underline}
+footer .legal a{color:inherit}
 </style>
 <script type="application/ld+json">
 {
@@ -759,6 +765,7 @@ footer .cols>div:nth-child(2) li{break-inside:avoid}
     <label>Car year, make and model (for car keys)<input type="text" name="vehicle" placeholder="e.g. 2019 Honda Civic"></label>
     <label>Anything else?<textarea name="message" rows="2"></textarea></label>
   </details>
+  <label class="consent"><input type="checkbox" name="consent" value="yes" required> I agree to the <a href="/privacy/">Privacy Policy</a> and <a href="/terms/">Terms</a>, and to be contacted by phone or text about this request.</label>
   <button class="call" type="submit">Request a call back</button>
   <p class="form-note">Locked out right now? Phone <a href="tel:+12069846356">206-984-6356</a> or <a href="sms:+12069846356?&body=Hi%2C%20I%20need%20a%20locksmith%20in%20Seattle">text us</a>.</p>
 </form>
@@ -863,6 +870,7 @@ footer .cols>div:nth-child(2) li{break-inside:avoid}
     <div class="legal">
       <span>© 2026 Bob's Locksmith</span>
       <span>Military discount · Free estimate on every call · Licensed &amp; insured</span>
+      <span><a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms of Service</a></span>
     </div>
   </div>
 </footer>

@@ -151,6 +151,8 @@ PAGES = {
     "contact": ("contact", "contact"),
     "book": ("book", "contact"),
     "thank-you": ("thankyou", "contact"),
+    "privacy": ("privacy", "about"),
+    "terms": ("terms", "about"),
     "404": ("404", "home"),
 }
 NAV_KEYS = ["home", "emergency", "auto", "carkey", "residential", "rekey", "commercial", "services", "areas", "blog", "about", "contact"]
@@ -463,6 +465,8 @@ def fields(loc):
         "phone_digits": re.sub(r"\D", "", phone), "cityst": f"{city}, {loc['st']}", "since": loc["since"],
         "email": loc["email"], "maps_embed": loc.get("maps_embed", ""), "wiki": wiki_url(loc),
         "year": str(datetime.date.today().year),
+        "today_long": datetime.date.today().strftime("%B %-d, %Y"),
+        "state_name": loc["state"].strip(),
         "nearby_inline": joined(nearby), "nearby_short": ", ".join(nearby[:4]) if nearby else "the surrounding area",
         "nearby_list": "\n      ".join(f"<li>{htmlmod.escape(n)}</li>" for n in nearby) or "<li>Surrounding communities</li>",
         "hoods_short": ", ".join(hoods[:6]) if hoods else "every neighborhood",
@@ -623,7 +627,7 @@ def render_page(slug, f):
         "page_title": htmlmod.escape(sub(title, f), quote=True),
         "page_desc": htmlmod.escape(sub(desc, f), quote=True),
         "path": path,
-        "content": autolink_brands(sub(body, f)) if slug not in ("", "about") else sub(body, f),
+        "content": autolink_brands(sub(body, f)) if slug not in ("", "about", "privacy", "terms") else sub(body, f),
         "head_extra": ('<link rel="preload" as="image" href="/img/gallery/g0-640.webp" media="(max-width:700px)" fetchpriority="high">'
                        '<link rel="preload" as="image" href="/img/gallery/g0.webp" media="(min-width:701px)" fetchpriority="high">') if slug == "" else "",
         "schema_extra": (sub(FAQ_SCHEMA, f) if slug == "" else "") + ('<meta name="robots" content="noindex">' if slug in ("thank-you", "404") else ""),
