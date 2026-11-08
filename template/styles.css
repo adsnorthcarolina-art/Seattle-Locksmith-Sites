@@ -408,3 +408,9 @@ footer .cols>div:nth-child(2) li{break-inside:avoid}
 .lead .consent input{margin-top:.2rem;flex:none;width:1.05rem;height:1.05rem;accent-color:var(--signal)}
 .lead .consent a{color:inherit;text-decoration:underline}
 footer .legal a{color:inherit}
+
+/* Scroll progress bar (CSS scroll-timeline where supported; /js/animate.js fills it in elsewhere) */
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:30;background:var(--signal);transform-origin:0 50%;transform:scaleX(0);pointer-events:none}
+@supports (animation-timeline:scroll()){.progress{animation:progress-grow linear both;animation-timeline:scroll(root)}}
+@keyframes progress-grow{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.progress{display:none}}

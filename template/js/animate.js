@@ -1,3 +1,16 @@
+/* Scroll progress bar: CSS scroll-timeline handles it in modern browsers; this is the fallback. */
+(function () {
+  var bar = document.querySelector(".progress");
+  if (!bar || (window.CSS && CSS.supports && CSS.supports("animation-timeline: scroll()"))) return;
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = "scaleX(" + (h > 0 ? Math.min(1, window.scrollY / h) : 0) + ")";
+  }
+  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  update();
+})();
 /* Site animations, driven by Motion (https://motion.dev) — /js/motion.min.js exposes window.Motion {animate, inView}.
    Rules: no animation when the visitor prefers reduced motion; the hero image (LCP) is never faded;
    elements are only hidden right before they animate, so nothing is invisible without JS. */
