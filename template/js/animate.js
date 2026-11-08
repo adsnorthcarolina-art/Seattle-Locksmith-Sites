@@ -55,7 +55,7 @@
   }
 
   // Section headings + stand-alone blocks
-  var singles = document.querySelectorAll("main section:not(.hero) h2, main section:not(.hero) h3, .pimg, .map, .aside, .rev-cta, .lead, .offer, .contact > *");
+  var singles = document.querySelectorAll("main section:not(.hero) h2, main section:not(.hero) h3, .pimg, .map, .aside, .rev-cta, .lead, .offer, .contact > *, .reveal");
   prep(singles);
   for (var s = 0; s < singles.length; s++) onView(singles[s], function (el) { run(el, 0, 0.55); });
 
