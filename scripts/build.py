@@ -678,19 +678,34 @@ def logo_header_width():
     return max(52, round(52 * w / h))
 
 
+def trust_license_li(loc):
+    """Trust-strip licensing item. Sites with "verified": {"license": "..."} (Google Local Services
+    verification complete) state it in plain text; no Google logo or badge artwork is used."""
+    v = loc.get("verified")
+    if v:
+        lic = f'licensed WA {htmlmod.escape(v["license"])}, ' if v.get("license") else "licensed, "
+        return (f'<li><span class="ico">{ICONS["shield"]}</span><div><b>Google-verified business</b>'
+                f'<span>{lic}insured &amp; background-checked</span></div></li>')
+    return (f'<li><span class="ico">{ICONS["shield"]}</span><div><b>Licensed &amp; insured</b>'
+            f'<span>Serving {loc["city"]} since {loc.get("since", "")}</span></div></li>')
+
+
 def rating_blocks(loc):
     """Hero badge / trust-strip item / footer line. With no reviews yet (new profile) fall back to an
     ownership or licensing line instead of printing an empty star rating."""
     since = loc.get("since", "")
     owned = loc.get("owned", "")  # e.g. "Women-owned", "Veteran-owned"
     if REVIEWS.get("reviews"):
+        vtag = ' <span aria-hidden="true">·</span> <span>✓ Google-verified</span>' if loc.get("verified") else ""
         return {
-            "hero_badge": f'<p class="rating badge"><span class="stars">★★★★★</span> <b>{REVIEWS["rating"]}</b> · <a href="{REVIEWS["google_url"]}" target="_blank" rel="noopener">{REVIEWS["count"]} Google reviews</a></p>',
+            "trust_license_li": trust_license_li(loc),
+            "hero_badge": f'<p class="rating badge"><span class="stars">★★★★★</span> <b>{REVIEWS["rating"]}</b> · <a href="{REVIEWS["google_url"]}" target="_blank" rel="noopener">{REVIEWS["count"]} Google reviews</a>{vtag}</p>',
             "trust_rating_li": f'<li><span class="ico">{ICONS["star"]}</span><div><b>{REVIEWS["rating"]} on Google</b><span>{REVIEWS["count"]} verified reviews</span></div></li>',
             "footer_rating_li": f'<li><span class="stars">★★★★★</span> {REVIEWS["rating"]} · <a href="{REVIEWS["google_url"]}" target="_blank" rel="noopener">{REVIEWS["count"]} Google reviews</a></li>',
         }
     label = f"{owned} · " if owned else ""
     return {
+        "trust_license_li": trust_license_li(loc),
         "hero_badge": f'<p class="rating badge">{label}Licensed &amp; insured · Since {since}</p>',
         "trust_rating_li": f'<li><span class="ico">{ICONS["star"]}</span><div><b>{owned or "Local"} business</b><span>Based in {loc["city"]}, since {since}</span></div></li>',
         "footer_rating_li": f'<li>{owned} business</li>' if owned else "",
