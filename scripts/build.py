@@ -742,7 +742,8 @@ def write_icons(logo, d):
     if not logo.exists():
         return
     from PIL import Image
-    im = Image.open(logo).convert("RGBA")
+    icon = logo.with_name("icon.png")  # optional per-site square mark (assets/<domain>/img/icon.png)
+    im = Image.open(icon if icon.exists() else logo).convert("RGBA")
     w, h = im.size
     if w > h * 1.6:
         # wide wordmark logo: the square icon shows the left-hand mark (key bow / emblem) instead of a tiny strip
