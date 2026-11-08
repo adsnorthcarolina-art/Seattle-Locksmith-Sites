@@ -9,6 +9,9 @@ Inputs:  template/base.html, template/pages/*.html, template/blog/*.html, templa
 Output:  sites/<domain>/...
 """
 import json, re, sys, datetime, shutil, html as htmlmod
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(__file__))
+import hours
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -98,6 +101,7 @@ PALETTES = [
     ("#10294F", "#0E7AC9", "#FFFFFF", "#F2F6FB"),  # navy + blue (Car Key Mobile Locksmith logo)
     ("#0B2545", "#1BA3E0", "#0B2545", "#F2F6FA"),  # navy + sky blue (Master Locksmith Seattle logo)
     ("#0E2F36", "#12DCE4", "#0E2F36", "#EEF9FA"),  # dark teal + cyan (Seattle Locksmith GBP logo)
+    ("#26292D", "#F9A12B", "#1E1F21", "#F6F4F1"),  # charcoal + Speedy orange (Speedy Locksmith GBP logo)
 ]
 
 
@@ -803,6 +807,7 @@ def build_site(loc, today):
         target.write_text(out)
         if slug not in ("thank-you", "404"):
             urls.append(path)
+    hours.apply(d, loc.get("hours"))
     version_images(d)
     (d / "robots.txt").write_text(ROBOTS.format(domain=f["domain"]))
     (d / "logo.svg").write_text(LOGO.format(business=htmlmod.escape(f["business"]), city=htmlmod.escape(f["city"].upper()), since=f["since"],

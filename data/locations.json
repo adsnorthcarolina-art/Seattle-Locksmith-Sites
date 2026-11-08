@@ -708,7 +708,18 @@
       "Columbia City",
       "West Seattle"
     ],
-    "nearby": ["Shoreline", "Bellevue", "Kirkland", "Redmond", "Renton", "Burien", "Bothell", "Lynnwood", "Everett", "Kent"],
+    "nearby": [
+      "Shoreline",
+      "Bellevue",
+      "Kirkland",
+      "Redmond",
+      "Renton",
+      "Burien",
+      "Bothell",
+      "Lynnwood",
+      "Everett",
+      "Kent"
+    ],
     "social": {
       "facebook": "https://www.facebook.com/Seattlelocksmithwa1",
       "instagram": "https://www.instagram.com/seattlelocksmithwa/",
@@ -775,6 +786,143 @@
         "Home safe serviced in {{city}}",
         750,
         1000
+      ]
+    ]
+  },
+  {
+    "domain": "speedylocksmithwa.com",
+    "business": "Speedy Locksmith",
+    "city": "Seattle",
+    "state": "Washington",
+    "st": "WA",
+    "zip": "98108",
+    "street": "",
+    "phone": "206-312-7969",
+    "email": "info@speedylocksmithwa.com",
+    "since": "2023",
+    "palette": 14,
+    "gtm": "",
+    "maps_embed": "",
+    "hours": {
+      "opens": "07:00",
+      "closes": "23:00"
+    },
+    "neighborhoods": [
+      "Georgetown",
+      "South Park",
+      "Beacon Hill",
+      "SoDo",
+      "Columbia City",
+      "Rainier Valley",
+      "Mount Baker",
+      "Seward Park",
+      "Rainier Beach",
+      "Delridge",
+      "West Seattle",
+      "Highland Park",
+      "White Center",
+      "International District",
+      "Pioneer Square",
+      "Downtown",
+      "First Hill",
+      "Central District",
+      "Capitol Hill",
+      "Belltown",
+      "Queen Anne",
+      "Ballard",
+      "Fremont",
+      "University District"
+    ],
+    "nearby": [
+      "Tukwila",
+      "Burien",
+      "SeaTac",
+      "Renton",
+      "Kent",
+      "Des Moines",
+      "Mercer Island",
+      "Bellevue"
+    ],
+    "social": {
+      "facebook": "https://www.facebook.com/Speedylocksmithseattle",
+      "instagram": "https://www.instagram.com/speedylocksmithh",
+      "x": "https://x.com/speedylocksmi",
+      "youtube": "https://www.youtube.com/@SpeedyLocksmith-s5d",
+      "tiktok": "https://www.tiktok.com/@speedylocksmith1"
+    },
+    "place_id": "",
+    "cid": "19489710709915328",
+    "sms": "206-312-7969",
+    "whatsapp": "",
+    "nicknames": [
+      "the Emerald City",
+      "Jet City",
+      "Rain City",
+      "Seatown"
+    ],
+    "area_code": "206",
+    "region_terms": [
+      "Pacific Northwest (PNW)",
+      "Puget Sound",
+      "King County"
+    ],
+    "airport": "SEA",
+    "form_backend": "web3forms",
+    "web3forms_key": "70f90148-447c-40e6-9aa0-c8a87b435cf6",
+    "gallery": [
+      [
+        "g0.jpg",
+        "{{business}} service van on a call in {{city}}",
+        1400,
+        1050
+      ],
+      [
+        "p02.jpg",
+        "Key blanks and lock cylinders ready on the {{business}} key wall",
+        900,
+        1200
+      ],
+      [
+        "p12.jpg",
+        "Smart key and emergency blade cut and programmed in {{city}}",
+        900,
+        1200
+      ],
+      [
+        "p03.jpg",
+        "Push-button keypad lock serviced at a {{city}} business",
+        675,
+        1200
+      ],
+      [
+        "p16.jpg",
+        "Lock cylinder rekeyed for a {{city}} homeowner",
+        900,
+        1200
+      ],
+      [
+        "p21.jpg",
+        "Car door lock cylinder repaired in {{city}}",
+        900,
+        1200
+      ],
+      [
+        "p18.jpg",
+        "Fire safe opened for a {{city}} customer",
+        900,
+        1200
+      ],
+      [
+        "p19.jpg",
+        "Keypad deadbolt installed at a {{city}} home",
+        675,
+        1200
+      ],
+      [
+        "p10.jpg",
+        "Key programming tablet used on {{city}} car key jobs",
+        1200,
+        901
       ]
     ]
   }
