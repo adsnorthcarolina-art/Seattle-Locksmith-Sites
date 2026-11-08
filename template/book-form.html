@@ -52,6 +52,7 @@
   <label>Service address in {{city}} or nearby<input type="text" name="address" required autocomplete="street-address" placeholder="Street address, or where the car is parked"></label>
   <label>Car year, make and model (for car keys / lockouts)<input type="text" name="vehicle" placeholder="e.g. 2019 Honda Civic"></label>
   <label>Anything we should know?<textarea name="message" rows="3" placeholder="Gate code, number of locks, what happened…"></textarea></label>
+  <label class="consent"><input type="checkbox" name="consent" value="yes" required> I agree to the <a href="/privacy/">Privacy Policy</a> and <a href="/terms/">Terms</a>, and to be contacted by phone or text about this request.</label>
   <button class="call" type="submit">Book this service</button>
   <p class="form-note">We confirm every booking by phone or text within minutes. Locked out right now? Call <a href="tel:+1{{phone_digits}}">{{phone}}</a> — 24 hours.</p>
 </form>

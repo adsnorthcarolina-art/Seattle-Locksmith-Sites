@@ -23,6 +23,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png">
 <link rel="apple-touch-icon" href="/img/icon-192.png">
 {{verify_tags}}
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}(function(){var c=null;try{c=localStorage.getItem('cc')}catch(e){}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:c==='1'?'granted':'denied',functionality_storage:'granted',security_storage:'granted'});window.__cc=c})();</script>
 {{gtm_head}}
 {{head_extra}}
 <link rel="preload" href="/fonts/barlowcondensed-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -178,7 +179,7 @@
     <div class="legal">
       <span>© {{year}} {{business}}</span>
       <span>Military discount · Free estimate on every call · Licensed &amp; insured</span>
-      <span><a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms of Service</a></span>
+      <span><a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms of Service</a> · <a href="#" class="cc-open">Cookie settings</a></span>
     </div>
   </div>
 </footer>
@@ -188,6 +189,16 @@ function open(){m.hidden=false;sc.hidden=false;requestAnimationFrame(function(){
 function close(){document.body.classList.remove('menu-open');b.setAttribute('aria-expanded','false');setTimeout(function(){m.hidden=true;sc.hidden=true},220);b.focus()}
 b.addEventListener('click',open);c.addEventListener('click',close);sc.addEventListener('click',close);
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden)close()});})();
+</script>
+<div class="cc" id="cc" role="dialog" aria-label="Cookie notice" hidden>
+  <p>We use cookies for anonymous visitor analytics (Google Analytics). No ads, nothing sold. <a href="/privacy/">Privacy Policy</a></p>
+  <div class="cc-btns"><button type="button" class="cc-no">Decline</button><button type="button" class="cc-yes">Accept</button></div>
+</div>
+<script>
+(function(){var b=document.getElementById('cc');function show(){b.hidden=false}function set(v){try{localStorage.setItem('cc',v)}catch(e){}b.hidden=true;window.__cc=v;if(v==='1'){gtag('consent','update',{analytics_storage:'granted'});window.dataLayer.push({event:'consent_granted'})}}
+b.querySelector('.cc-yes').addEventListener('click',function(){set('1')});b.querySelector('.cc-no').addEventListener('click',function(){set('0')});
+document.querySelectorAll('.cc-open').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();show()})});
+if(window.__cc===null||window.__cc===undefined)setTimeout(show,1200);})();
 </script>
 <div class="sticky"><a class="call" href="tel:+1{{phone_digits}}">Call {{phone}}</a><a class="sms" href="sms:+1{{sms_digits}}?&body=Hi%2C%20I%20need%20a%20locksmith%20in%20{{city}}" aria-label="Text us">💬 Text</a></div>
 <script>
