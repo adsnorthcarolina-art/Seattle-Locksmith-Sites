@@ -1015,6 +1015,14 @@
    "Snohomish County"
   ],
   "airport": "SEA",
-  "base_city": "Woodinville"
+  "base_city": "Woodinville",
+  "gallery": [
+   [
+    "g0.jpg",
+    "{{business}} mobile locksmith service in {{city}}",
+    1400,
+    1050
+   ]
+  ]
  }
 ]
