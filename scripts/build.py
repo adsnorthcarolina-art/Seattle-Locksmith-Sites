@@ -468,6 +468,10 @@ def fields(loc):
         "st": loc["st"], "zip": loc["zip"], "street": loc.get("street", ""), "phone": phone,
         "phone_digits": re.sub(r"\D", "", phone), "cityst": f"{city}, {loc['st']}", "since": loc["since"],
         "email": loc["email"], "maps_embed": loc.get("maps_embed", ""), "wiki": wiki_url(loc),
+        # ZIP belongs to base_city (where the business is based); defaults to the target city
+        "base_city": loc.get("base_city", city), "base_cityst": f"{loc.get('base_city', city)}, {loc['st']}",
+        "base_wiki": wiki_url({**loc, "city": loc.get("base_city", city), "wiki": loc.get("base_wiki") if loc.get("base_city") else loc.get("wiki")}),
+        "title_zip": "" if loc.get("base_city", city) != city else " " + loc["zip"],
         "year": str(datetime.date.today().year),
         "today_long": datetime.date.today().strftime("%B %-d, %Y"),
         "state_name": loc["state"].strip(),

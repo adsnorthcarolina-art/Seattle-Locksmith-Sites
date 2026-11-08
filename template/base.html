@@ -45,7 +45,7 @@
   "email": "{{email}}",
   "foundingDate": "{{since}}",
   "priceRange": "$$",
-  "address": {"@type":"PostalAddress","addressLocality":"{{city}}","addressRegion":"{{st}}","postalCode":"{{zip}}","addressCountry":"US"},
+  "address": {"@type":"PostalAddress","addressLocality":"{{base_city}}","addressRegion":"{{st}}","postalCode":"{{zip}}","addressCountry":"US"},
   "geo": {"@type":"GeoCoordinates","latitude":47.6131,"longitude":-122.3045},
   "areaServed": [{"@type":"City","name":"{{city}}","sameAs":"{{wiki}}"},{"@type":"AdministrativeArea","name":"King County"},{"@type":"Place","name":"Puget Sound region"}{{areas_schema}}],
   "sameAs": ["{{wiki}}"{{social_sameas}}]{{review_schema}},
@@ -107,7 +107,7 @@
   <a href="/book/">Book online</a>
   <a href="/#faq">Common questions</a>
   <a class="call" href="tel:+1{{phone_digits}}">Call {{phone}}</a>
-  <p class="drawer-note">Open 24 hours · {{cityst}} {{zip}}</p>
+  <p class="drawer-note">Open 24 hours · {{base_cityst}} {{zip}}</p>
 </nav>
 
 <main>
@@ -120,7 +120,7 @@
       <div>
         <h3>{{business}}</h3>
         <ul>
-          <li><a href="{{wiki}}" rel="noopener">{{city}}</a>, {{st}} {{zip}}</li>
+          <li><a href="{{base_wiki}}" rel="noopener">{{base_city}}</a>, {{st}} {{zip}}</li>
           <li><a href="tel:+1{{phone_digits}}">{{phone}}</a></li>
           <li><a href="mailto:{{email}}">{{email}}</a></li>
           <li>Open 24 hours, 7 days a week</li>

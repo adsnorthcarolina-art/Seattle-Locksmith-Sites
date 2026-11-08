@@ -1015,6 +1015,7 @@
    "King County",
    "Snohomish County"
   ],
-  "airport": "SEA"
+  "airport": "SEA",
+  "base_city": "Woodinville"
  }
 ]
