@@ -715,9 +715,7 @@
       "Columbia City",
       "West Seattle"
     ],
-    "nearby": [
-      "Shoreline"
-    ],
+    "nearby": ["Shoreline", "Bellevue", "Kirkland", "Redmond", "Renton", "Burien", "Bothell", "Lynnwood", "Everett", "Kent"],
     "social": {
       "facebook": "https://www.facebook.com/Seattlelocksmithwa1",
       "instagram": "https://www.instagram.com/seattlelocksmithwa/",
