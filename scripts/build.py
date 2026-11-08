@@ -734,6 +734,8 @@ def version_images(site_dir):
     for html_file in site_dir.rglob("*.html"):
         txt = html_file.read_text()
         new = pat.sub(repl, webp.sub(to_webp, txt))
+        if ver("/favicon.ico"):  # browsers cache /favicon.ico very hard; version it like the images
+            new = new.replace('href="/favicon.ico"', f'href="/favicon.ico?v={ver("/favicon.ico")}"')
         if new != txt:
             html_file.write_text(new)
 
