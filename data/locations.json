@@ -1019,9 +1019,57 @@
   "gallery": [
    [
     "g0.jpg",
-    "{{business}} mobile locksmith service in {{city}}",
+    "{{business}} rekey pin kit, ready for jobs in {{city}}",
     1400,
     1050
+   ],
+   [
+    "m02.jpg",
+    "Flip key fob cut and programmed by {{business}} in {{city}}",
+    900,
+    1200
+   ],
+   [
+    "m14.jpg",
+    "BMW smart key replaced for a {{city}} driver",
+    675,
+    1200
+   ],
+   [
+    "m12.jpg",
+    "Key programming on a car key job in {{city}}",
+    675,
+    1200
+   ],
+   [
+    "m03.jpg",
+    "Ignition switch repaired by {{business}}",
+    675,
+    1200
+   ],
+   [
+    "m19.jpg",
+    "Push-to-start smart key made in {{city}}",
+    675,
+    1200
+   ],
+   [
+    "m15.jpg",
+    "Duplicate key cut for a {{city}} customer",
+    900,
+    1200
+   ],
+   [
+    "m01.jpg",
+    "Front door handleset serviced at a {{city}} home",
+    900,
+    1200
+   ],
+   [
+    "m17.jpg",
+    "Lock cylinder service by {{business}}",
+    900,
+    1200
    ]
   ]
  }
