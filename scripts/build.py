@@ -516,7 +516,7 @@ def fields(loc):
         "areas_schema": "".join(f',{{"@type":"City","name":"{htmlmod.escape(n)}"}}' for n in nearby),
         "gtm_head": (GTM_HEAD.replace("{gtm}", gtm) if gtm else "") + (GA4_HEAD.replace("{ga4}", loc["ga4"]) if loc.get("ga4") else ""),
         "gtm_body": GTM_BODY.replace("{gtm}", gtm) if gtm else "",
-        "mark": ('<img class="logo" src="/img/logo-104.png" alt="{{business}} logo" width="%d" height="52">' % logo_header_width() if (IMG_DIR / "logo.png").exists() else MARK.format(signal=pal["c_signal"], ink=pal["c_ink"])),
+        "mark": ('<img class="logo" src="/img/logo-104.webp" alt="{{business}} logo" width="%d" height="52">' % logo_header_width() if (IMG_DIR / "logo.png").exists() else MARK.format(signal=pal["c_signal"], ink=pal["c_ink"])),
         "favicon": "data:image/svg+xml," + MARK.format(signal=pal["c_signal"], ink=pal["c_ink"]).replace("#", "%23").replace("<", "%3C").replace(">", "%3E").replace("'", "%27"),
         "styles": STYLES,
         "js_ver": JS_VER,
@@ -691,8 +691,11 @@ ALL_POSTS = POSTS
 DEFAULT_GALLERY = GALLERY
 DEFAULT_IMG_DIR = IMG_DIR
 def logo_header_width():
+    """Width of the header logo at 52px height. Uses the same source write_icons() renders
+    logo-104 from (the square icon.png when the site has one), so width/height match the file."""
     from PIL import Image
-    w, h = Image.open(IMG_DIR / "logo.png").size
+    src = IMG_DIR / "icon.png" if (IMG_DIR / "icon.png").exists() else IMG_DIR / "logo.png"
+    w, h = Image.open(src).size
     return max(52, round(52 * w / h))
 
 
@@ -795,7 +798,9 @@ def write_icons(logo, d):
     for n in (192, 512):
         sq.resize((n, n), Image.LANCZOS).save(d / "img" / f"icon-{n}.png", optimize=True)
     sq.resize((48, 48), Image.LANCZOS).save(d / "favicon.ico", sizes=[(48, 48), (32, 32), (16, 16)])
-    im.resize((max(104, round(104 * w / h)), 104), Image.LANCZOS).save(d / "img" / "logo-104.png", optimize=True)
+    lg = im.resize((max(104, round(104 * w / h)), 104), Image.LANCZOS)
+    lg.save(d / "img" / "logo-104.png", optimize=True)  # kept for anything linking the PNG
+    lg.save(d / "img" / "logo-104.webp", quality=90, method=6)  # header uses the WebP (a fraction of the PNG's size)
 
 
 def write_webp(d):
