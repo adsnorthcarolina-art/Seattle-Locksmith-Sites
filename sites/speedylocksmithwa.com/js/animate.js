@@ -23,18 +23,24 @@
   var EASE = [0.22, 1, 0.36, 1];
   var reveal = { opacity: [0, 1], transform: ["translateY(18px)", "translateY(0)"] };
 
+  var VH = window.innerHeight || document.documentElement.clientHeight;
+  function onScreen(el) { var r = el.getBoundingClientRect(); return r.top < VH && r.bottom > 0; }
   function prep(els) {
-    for (var i = 0; i < els.length; i++) { els[i].style.opacity = "0"; els[i].style.willChange = "opacity, transform"; }
+    for (var i = 0; i < els.length; i++) {
+      if (onScreen(els[i]) && !(els[i].closest && els[i].closest(".hero"))) { els[i].__skip = true; continue; } /* visible at load: show now */
+      els[i].style.opacity = "0"; els[i].style.willChange = "opacity, transform";
+    }
   }
   function done(el) { el.style.willChange = ""; el.style.opacity = ""; el.style.transform = ""; }
   function run(el, delay, dur) {
+    if (el.__skip) return;
     M.animate(el, reveal, { duration: dur || 0.6, delay: delay || 0, easing: EASE }).finished.then(function () { done(el); });
   }
 
   /* 1. Hero: quick stagger on load (short, so LCP/FCP are not delayed) */
   var hero = document.querySelector(".hero");
   if (hero) {
-    var parts = hero.querySelectorAll(".wrap > .badge, .wrap > h1, .wrap > .lede, .wrap > .bignum, .wrap > .cta-row, .wrap > .crumb");
+    var parts = hero.querySelectorAll(".wrap > .badge, .wrap > .bignum, .wrap > .cta-row, .wrap > .crumb"); /* h1 + lede stay visible: they are often the LCP element */
     prep(parts);
     for (var i = 0; i < parts.length; i++) run(parts[i], 0.05 + i * 0.09, 0.55);
     var facts = hero.querySelectorAll(".facts li");
