@@ -834,6 +834,26 @@ def write_webp(d):
                 small.save(jpg.with_name("g0-640.webp"), "WEBP", quality=60, method=6)
 
 
+def fit_titles(d, f, limit=65):
+    """Keep every <title> within `limit` characters so Google does not truncate it.
+    Too long -> drop ", ST"; still too long -> keep ", ST" and drop the " | Business" suffix instead."""
+    pat = re.compile(r"<title>(.*?)</title>", re.S)
+    suffix, st = " | " + f["business"], ", " + f["st"]
+    for fp in d.rglob("*.html"):
+        t = fp.read_text()
+        m = pat.search(t)
+        if not m:
+            continue
+        cur = htmlmod.unescape(m.group(1))
+        if len(cur) <= limit:
+            continue
+        new = cur.replace(st + suffix, suffix) if st + suffix in cur else cur
+        if len(new) > limit and cur.endswith(suffix):
+            new = cur[: -len(suffix)]
+        if new != cur:
+            fp.write_text(t[: m.start(1)] + htmlmod.escape(new, quote=False) + t[m.end(1):])
+
+
 def build_site(loc, today):
     select_site_assets(loc)
     f = fields(loc)
@@ -888,6 +908,7 @@ def build_site(loc, today):
         if slug not in ("thank-you", "404"):
             urls.append(path)
     hours.apply(d, loc.get("hours"))
+    fit_titles(d, f)
     if loc.get("wiki_link_st"):
         # Optional: let the city's Wikipedia link cover "City, ST" rather than just "City".
         a, b = f'>{loc["city"]}</a>, {loc["st"]}', f'>{loc["city"]}, {loc["st"]}</a>'
