@@ -589,7 +589,7 @@ def _ulen(s):
     return len(htmlmod.unescape(s))
 
 
-def fit_title(t, phone="", limit=60):
+def fit_title(t, phone="", limit=60, strict=False):
     """Trim an 'A | B | C' title to ~60 chars: drop the phone segment, then middle segments."""
     if _ulen(t) <= limit:
         return t
@@ -603,7 +603,14 @@ def fit_title(t, phone="", limit=60):
     while _ulen("".join(x for pair in zip(segs, seps + [""]) for x in pair)) > limit and len(segs) > 2:
         segs.pop(1)
         seps.pop(0)
-    return "".join(x for pair in zip(segs, seps + [""]) for x in pair)
+    join = lambda: "".join(x for pair in zip(segs, seps + [""]) for x in pair)
+    if strict and _ulen(join()) > limit:
+        # strict (opt-in): drop ", ST" from the place name, then the trailing brand segment
+        segs = [re.sub(r", [A-Z]{2}\b", "", x) for x in segs]
+        if _ulen(join()) > limit and len(segs) > 1:
+            segs.pop()
+            seps.pop()
+    return join()
 
 
 def fit_desc(d, limit=158, min_len=80):
@@ -624,8 +631,11 @@ def fit_desc(d, limit=158, min_len=80):
     return htmlmod.escape(cut + ".", quote=True)
 
 
+STRICT_TITLES = {}
+
+
 def fit_meta(pf):
-    pf["page_title"] = fit_title(pf["page_title"], pf.get("phone", ""))
+    pf["page_title"] = fit_title(pf["page_title"], pf.get("phone", ""), strict=STRICT_TITLES.get(pf.get("domain"), False))
     pf["page_desc"] = fit_desc(pf["page_desc"])
     return pf
 
@@ -854,7 +864,27 @@ def fit_titles(d, f, limit=65):
             fp.write_text(t[: m.start(1)] + htmlmod.escape(new, quote=False) + t[m.end(1):])
 
 
+def refit_meta(site_dir):
+    """Re-fit <title> and meta descriptions after post-processing (e.g. the hours rewrite) changed their length."""
+    for fp in site_dir.rglob("*.html"):
+        t = fp.read_text()
+        ti = re.search(r"<title>(.*?)</title>", t, re.S)
+        de = re.search(r'<meta name="description" content="(.*?)">', t)
+        if not ti or not de:
+            continue
+        nt, nd = fit_title(ti.group(1), strict=True), fit_desc(de.group(1))
+        if (nt, nd) == (ti.group(1), de.group(1)):
+            continue
+        t = t.replace(f"<title>{ti.group(1)}</title>", f"<title>{nt}</title>")
+        for k in ('property="og:title"', 'name="twitter:title"'):
+            t = t.replace(f'<meta {k} content="{ti.group(1)}">', f'<meta {k} content="{nt}">')
+        for k in ('name="description"', 'property="og:description"', 'name="twitter:description"'):
+            t = t.replace(f'<meta {k} content="{de.group(1)}">', f'<meta {k} content="{nd}">')
+        fp.write_text(t)
+
+
 def build_site(loc, today):
+    STRICT_TITLES[loc["domain"]] = bool(loc.get("strict_titles"))
     select_site_assets(loc)
     f = fields(loc)
     d = OUT / f["domain"]
@@ -908,6 +938,8 @@ def build_site(loc, today):
         if slug not in ("thank-you", "404"):
             urls.append(path)
     hours.apply(d, loc.get("hours"))
+    if loc.get("strict_titles"):
+        refit_meta(d)
     fit_titles(d, f)
     if loc.get("wiki_link_st"):
         # Optional: let the city's Wikipedia link cover "City, ST" rather than just "City".

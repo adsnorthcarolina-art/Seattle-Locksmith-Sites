@@ -801,6 +801,7 @@
   "email": "info@speedylocksmithwa.com",
   "since": "2023",
   "palette": 14,
+  "strict_titles": true,
   "wiki_link_st": true,
   "verified": {
    "license": "SPEEDLL761BT"
