@@ -850,6 +850,13 @@ def build_site(loc, today):
         if slug not in ("thank-you", "404"):
             urls.append(path)
     hours.apply(d, loc.get("hours"))
+    if loc.get("wiki_link_st"):
+        # Optional: let the city's Wikipedia link cover "City, ST" rather than just "City".
+        a, b = f'>{loc["city"]}</a>, {loc["st"]}', f'>{loc["city"]}, {loc["st"]}</a>'
+        for fp in d.rglob("*.html"):
+            t = fp.read_text()
+            if a in t:
+                fp.write_text(t.replace(a, b))
     version_images(d)
     (d / "robots.txt").write_text(ROBOTS.format(domain=f["domain"]))
     (d / "logo.svg").write_text(LOGO.format(business=htmlmod.escape(f["business"]), city=htmlmod.escape(f["city"].upper()), since=f["since"],
