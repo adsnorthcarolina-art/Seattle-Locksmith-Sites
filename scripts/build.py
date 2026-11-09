@@ -159,6 +159,24 @@ PAGES = {
     "terms": ("terms", "about"),
     "404": ("404", "home"),
 }
+def promo_bar(loc):
+    """Optional offer strip under the header (locations.json "promo": {"title","code","until":"YYYY-MM-DD"}).
+    Skipped at build time once expired, and hidden client-side after the end date too."""
+    pr = loc.get("promo")
+    if not pr:
+        return ""
+    import datetime as _dt
+    until = _dt.date.fromisoformat(pr["until"])
+    if _dt.date.today() > until:
+        return ""
+    tel = re.sub(r"\D", "", loc["phone"])
+    nice = until.strftime("%b %-d, %Y")
+    return (f'<div class="promo" data-until="{pr["until"]}"><div class="wrap">'
+            f'<strong>{htmlmod.escape(pr["title"])}</strong> <span>Mention code <b>{htmlmod.escape(pr["code"])}</b> when you call · through {nice}</span> '
+            f'<a href="tel:+1{tel}">Call now</a></div></div>'
+            '<script>(function(){var b=document.querySelector(".promo");if(b&&new Date()>new Date(b.dataset.until+"T23:59:59"))b.remove()})();</script>')
+
+
 # Optional labelled nav bar under the header (locations.json "subnav": true). Off for every other site.
 SUBNAV = """<nav class="subnav" aria-label="Sections">
   <div class="wrap">
@@ -504,7 +522,7 @@ def fields(loc):
         "js_ver": JS_VER,
         "head_extra": "",
         "body_class": ("theme-" + loc["theme"]) if loc.get("theme") else "",
-        "subnav": SUBNAV if loc.get("subnav") else "",
+        "subnav": (SUBNAV if loc.get("subnav") else "") + promo_bar(loc),
         **{"ico_" + k: v for k, v in ICONS.items()},
         "social_links": social_html(loc.get("social")),
         "social_sameas": "".join(f',"{htmlmod.escape(u, quote=True)}"' for u in (loc.get("social") or {}).values() if u),

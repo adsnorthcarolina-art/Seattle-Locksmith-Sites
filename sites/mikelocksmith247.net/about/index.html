@@ -480,6 +480,12 @@ footer .legal a{color:inherit}
 .theme-c .call,.theme-c .cta-row a,.theme-c .lead button.call{border-radius:12px}
 .theme-c details{border:1px solid var(--panel);border-radius:12px;padding:.9rem 1.1rem;margin-bottom:.6rem;background:var(--white)}
 .theme-c .band{background:linear-gradient(120deg,var(--ink) 0%,var(--ink) 55%,color-mix(in srgb,var(--signal) 35%,var(--ink)) 100%)}
+
+/* per-site offer strip */
+.promo{background:var(--signal);color:#fff;font-size:.95rem}
+.promo .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.35rem .9rem;padding:.5rem 0;text-align:center}
+.promo b{letter-spacing:.04em;background:rgba(0,0,0,.18);padding:.05rem .4rem;border-radius:4px}
+.promo a{color:#fff;font-weight:700;text-decoration:underline;white-space:nowrap}
 </style>
 <script type="application/ld+json">
 {
@@ -539,7 +545,7 @@ footer .legal a{color:inherit}
     <a href="/about/" aria-current="page">About</a>
     <a href="/contact/" >Contact</a>
   </div>
-</nav>
+</nav><div class="promo" data-until="2026-12-31"><div class="wrap"><strong>$10 off any locksmith service</strong> <span>Mention code <b>MIKE10</b> when you call · through Dec 31, 2026</span> <a href="tel:+12069847642">Call now</a></div></div><script>(function(){var b=document.querySelector(".promo");if(b&&new Date()>new Date(b.dataset.until+"T23:59:59"))b.remove()})();</script>
 <div class="scrim" hidden></div>
 <nav class="drawer" id="menu" aria-label="Main" hidden>
   <div class="drawer-head">
