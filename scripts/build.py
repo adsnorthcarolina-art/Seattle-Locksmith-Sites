@@ -189,6 +189,7 @@ SUBNAV = """<nav class="subnav" aria-label="Sections">
     <a href="/commercial-locksmith/" {{cur_commercial}}>Business</a>
     <a href="/services/" {{cur_services}}>All services</a>
     <a href="/service-areas/" {{cur_areas}}>Areas</a>
+    <a href="/faq/">FAQ</a>
     <a href="/about/" {{cur_about}}>About</a>
     <a href="/contact/" {{cur_contact}}>Contact</a>
   </div>
