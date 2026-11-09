@@ -155,6 +155,7 @@ PAGES = {
     "contact": ("contact", "contact"),
     "book": ("book", "contact"),
     "thank-you": ("thankyou", "contact"),
+    "faq": ("faq", "about"),
     "privacy": ("privacy", "about"),
     "terms": ("terms", "about"),
     "404": ("404", "home"),
@@ -490,6 +491,12 @@ def joined(items, fallback="the surrounding area"):
     return ", ".join(items[:-1]) + " and " + items[-1]
 
 
+def faq_page_items(loc):
+    """Optional per-site FAQ page: data/faq_pages/<domain>.json {"items": [[q, a], ...]}."""
+    fp = ROOT / "data" / "faq_pages" / f"{loc['domain']}.json"
+    return json.loads(fp.read_text())["items"] if fp.exists() else None
+
+
 def fields(loc):
     phone = loc["phone"]
     nearby = loc.get("nearby") or []
@@ -497,7 +504,10 @@ def fields(loc):
     city = loc["city"].strip()
     pal = palette_for(loc.get("palette", 0))
     gtm = loc.get("gtm", "")
+    has_faq = faq_page_items(loc) is not None
     f = {
+        "faq_href": "/faq/" if has_faq else "/#faq",
+        "faq_more": '<p><a class="more" href="/faq/">See all 15 customer questions</a></p>' if has_faq else "",
         "domain": loc["domain"], "business": loc["business"], "city": city, "state": loc["state"].strip(),
         "st": loc["st"], "zip": loc["zip"], "street": loc.get("street", ""), "phone": phone,
         "phone_digits": re.sub(r"\D", "", phone), "cityst": f"{city}, {loc['st']}", "since": loc["since"],
@@ -676,7 +686,7 @@ def render_page(slug, f):
         "content": autolink_brands(sub(body, f)) if slug not in ("", "about", "privacy", "terms") else sub(body, f),
         "head_extra": ('<link rel="preload" as="image" href="/img/gallery/g0-640.webp" media="(max-width:700px)" fetchpriority="high">'
                        '<link rel="preload" as="image" href="/img/gallery/g0.webp" media="(min-width:701px)" fetchpriority="high">') if slug == "" else "",
-        "schema_extra": (sub(FAQ_SCHEMA, f) if slug == "" else "") + ('<meta name="robots" content="noindex">' if slug in ("thank-you", "404") else ""),
+        "schema_extra": (sub(FAQ_SCHEMA, f) if slug == "" else "") + (faq_schema(faq_page_items({"domain": f["domain"]}), f) if slug == "faq" else "") + ('<meta name="robots" content="noindex">' if slug in ("thank-you", "404") else ""),
     })
     for k in NAV_KEYS:
         pf[f"cur_{k}"] = 'aria-current="page"' if k == nav_key else ""
@@ -865,7 +875,11 @@ def build_site(loc, today):
     f["product_cards"] = "\n".join(
         f'      <div class="svc pcard"><a href="/{p["slug"]}/"><img src="/img/products/{p["image"].rsplit(".", 1)[0]}.webp" alt="{htmlmod.escape(p["name"])} in {f["cityst"]}" loading="lazy" decoding="async" fetchpriority="low" width="500" height="500"></a><h3><a href="/{p["slug"]}/">{htmlmod.escape(p["name"])}</a></h3><p>From ${p["price"]} · {f["cityst"]}</p><a class="more" href="/{p["slug"]}/">{htmlmod.escape(p["name"])} details</a></div>'
         for p in PRODUCTS)
+    fq = faq_page_items(loc)
+    f["faq_page_items"] = faq_html(fq, f) if fq else ""
     for slug in PAGES:
+        if slug == "faq" and not fq:
+            continue
         path, out = render_page(slug, f)
         target = d / "404.html" if slug == "404" else (d / slug / "index.html" if slug else d / "index.html")
         target.parent.mkdir(parents=True, exist_ok=True)
