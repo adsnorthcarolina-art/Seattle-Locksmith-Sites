@@ -23,7 +23,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png?v=5eff6050">
 <link rel="apple-touch-icon" href="/img/icon-192.png?v=5eff6050">
 
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}(function(){var c=null;try{c=localStorage.getItem('cc')}catch(e){}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:c==='1'?'granted':'denied',functionality_storage:'granted',security_storage:'granted'});window.__cc=c})();</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}(function(){var c=null;try{c=localStorage.getItem('cc')}catch(e){}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:c==='1'?'granted':'denied',functionality_storage:'granted',security_storage:'granted'});if(c!=='0')gtag('consent','default',{analytics_storage:'granted',region:['US']});window.__cc=c})();</script>
 <!-- Google Tag Manager (deferred until first interaction or 5 s, keeps it off the LCP path) -->
 <script>window.__hasGTM=true;window.dataLayer=window.dataLayer||[];(function(w,d,i){var done=false;function go(){if(done)return;done=true;w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});var j=d.createElement('script');j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;d.head.appendChild(j)}
 ['scroll','touchstart','mousemove','keydown','click'].forEach(function(e){w.addEventListener(e,go,{once:true,passive:true})});w.addEventListener('load',function(){setTimeout(go,5000)})})(window,document,'GTM-5BWCFTTS');</script>
@@ -803,10 +803,10 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden)c
 </script>
 <div class="cc" id="cc" role="dialog" aria-label="Cookie notice" hidden>
   <p>We use cookies for anonymous visitor analytics (Google Analytics). No ads, nothing sold. <a href="/privacy/">Privacy Policy</a></p>
-  <div class="cc-btns"><button type="button" class="cc-no">Decline</button><button type="button" class="cc-yes">Accept</button></div>
+  <div class="cc-btns"><button type="button" class="cc-no">Opt out</button><button type="button" class="cc-yes">OK</button></div>
 </div>
 <script>
-(function(){var b=document.getElementById('cc');function show(){b.hidden=false}function set(v){try{localStorage.setItem('cc',v)}catch(e){}b.hidden=true;window.__cc=v;if(v==='1'){gtag('consent','update',{analytics_storage:'granted'});window.dataLayer.push({event:'consent_granted'})}}
+(function(){var b=document.getElementById('cc');function show(){b.hidden=false}function set(v){try{localStorage.setItem('cc',v)}catch(e){}b.hidden=true;window.__cc=v;if(v==='1'){gtag('consent','update',{analytics_storage:'granted'});window.dataLayer.push({event:'consent_granted'})}else{gtag('consent','update',{analytics_storage:'denied'})}}
 b.querySelector('.cc-yes').addEventListener('click',function(){set('1')});b.querySelector('.cc-no').addEventListener('click',function(){set('0')});
 document.querySelectorAll('.cc-open').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();show()})});
 if(window.__cc===null||window.__cc===undefined)setTimeout(show,1200);})();

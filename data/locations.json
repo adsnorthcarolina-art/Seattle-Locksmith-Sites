@@ -803,6 +803,7 @@
   "palette": 14,
   "strict_titles": true,
   "wiki_link_st": true,
+  "consent_us_optout": true,
   "verified": {
    "license": "SPEEDLL761BT"
   },

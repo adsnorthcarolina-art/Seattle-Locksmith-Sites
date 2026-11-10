@@ -948,6 +948,27 @@ def build_site(loc, today):
             t = fp.read_text()
             if a in t:
                 fp.write_text(t.replace(a, b))
+    if loc.get("consent_us_optout"):
+        # Optional: analytics on by default for US visitors (opt-out banner); still opt-in elsewhere.
+        reps = [
+            ("analytics_storage:c==='1'?'granted':'denied',functionality_storage:'granted',security_storage:'granted'});",
+             "analytics_storage:c==='1'?'granted':'denied',functionality_storage:'granted',security_storage:'granted'});"
+             "if(c!=='0')gtag('consent','default',{analytics_storage:'granted',region:['US']});"),
+            ("if(v==='1'){gtag('consent','update',{analytics_storage:'granted'});window.dataLayer.push({event:'consent_granted'})}",
+             "if(v==='1'){gtag('consent','update',{analytics_storage:'granted'});window.dataLayer.push({event:'consent_granted'})}"
+             "else{gtag('consent','update',{analytics_storage:'denied'})}"),
+            ("<button type=\"button\" class=\"cc-no\">Decline</button>",
+             "<button type=\"button\" class=\"cc-no\">Opt out</button>"),
+            ("<button type=\"button\" class=\"cc-yes\">Accept</button>",
+             "<button type=\"button\" class=\"cc-yes\">OK</button>"),
+        ]
+        for fp in d.rglob("*.html"):
+            t = fp.read_text()
+            t2 = t
+            for a, b in reps:
+                t2 = t2.replace(a, b)
+            if t2 != t:
+                fp.write_text(t2)
     version_images(d)
     (d / "robots.txt").write_text(ROBOTS.format(domain=f["domain"]))
     (d / "logo.svg").write_text(LOGO.format(business=htmlmod.escape(f["business"]), city=htmlmod.escape(f["city"].upper()), since=f["since"],
