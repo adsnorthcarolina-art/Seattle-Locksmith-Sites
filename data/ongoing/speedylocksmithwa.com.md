@@ -45,3 +45,7 @@ After Dec 13: propose the next 4-week package to the user for approval.
 | Date | Total on GBP | New | Replied | Notes |
 |---|---|---|---|---|
 | Nov 16 | 14 (was 21 on Nov 10) | 2 (los, Rakeeme Cooper) | 1 (los – pending) | Rakeeme reply → "Something went wrong" twice (review likely being filtered). 7 reviews disappeared since Nov 10 (incl. Jarred McGahee, Juanma Zambrano) – Google review filter after the burst of new-account reviews. Retry Rakeeme next Monday. |
+
+## Verified facts
+- Nov 16: WA L&I SPEEDLL761BT – Construction Contractor, Active, specialty "Locks, Security and Alarm Equipment", 02/05/2024–03/02/2028. Bonds: Western Surety $30,000 + American Contractors Indemnity $12,000. Insurance: Hiscox $1,000,000, valid until 02/25/2027 (re-check then). Owner Dudi Lankry, UBI 605 384 365. "Licensed and insured" claim is OK.
+- Seen Nov 16 (not acted on): Google Ads account has a paused, disapproved search ad ("See Us in Renton", typos "Serviec", "Quality Video") – user decision. Old Google snippet of the FB page still says 24/7 (page itself is fixed; snippet will refresh).
