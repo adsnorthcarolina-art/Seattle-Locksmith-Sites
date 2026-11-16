@@ -40,3 +40,8 @@ Photos: site product images with logo badge (/img/products/<slug>.jpg). Button: 
 FB/IG hashtags: #SeattleLocksmith #Locksmith #Seattle #MobileLocksmith + 2–3 topic tags.
 Weekly check (Mondays): reply to new Google reviews (user chose only this check).
 After Dec 13: propose the next 4-week package to the user for approval.
+
+## Reviews log
+| Date | Total on GBP | New | Replied | Notes |
+|---|---|---|---|---|
+| Nov 16 | 14 (was 21 on Nov 10) | 2 (los, Rakeeme Cooper) | 1 (los – pending) | Rakeeme reply → "Something went wrong" twice (review likely being filtered). 7 reviews disappeared since Nov 10 (incl. Jarred McGahee, Juanma Zambrano) – Google review filter after the burst of new-account reviews. Retry Rakeeme next Monday. |
