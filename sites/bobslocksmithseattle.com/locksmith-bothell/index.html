@@ -19,7 +19,7 @@
 <meta name="twitter:title" content="Bothell Locksmith 24/7 | Bob&#x27;s Locksmith">
 <meta name="twitter:description" content="24/7 mobile locksmith in Bothell: car, home and business lockouts, car keys, fob programming, rekeying and lock installation. Call 206-984-6356.">
 <meta name="twitter:image" content="https://www.bobslocksmithseattle.com/img/og.jpg?v=111b3030">
-<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.ico?v=f18d9e5f" sizes="48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png?v=995e7b43">
 <link rel="apple-touch-icon" href="/img/icon-192.png?v=995e7b43">
 
@@ -449,6 +449,43 @@ footer .cols>div:nth-child(2) li{break-inside:avoid}
 .lead .consent input{margin-top:.2rem;flex:none;width:1.05rem;height:1.05rem;accent-color:var(--signal)}
 .lead .consent a{color:inherit;text-decoration:underline}
 footer .legal a{color:inherit}
+
+/* Scroll progress bar (CSS scroll-timeline where supported; /js/animate.js fills it in elsewhere) */
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:30;background:var(--signal);transform-origin:0 50%;transform:scaleX(0);pointer-events:none}
+@supports (animation-timeline:scroll()){.progress{animation:progress-grow linear both;animation-timeline:scroll(root)}}
+@keyframes progress-grow{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.progress{display:none}}
+
+/* ======== theme-c (per-site variant: white header + labelled section bar, soft cards) ======== */
+.subnav{background:var(--ink);border-bottom:3px solid var(--signal);position:sticky;top:0;z-index:9}
+.subnav .wrap{display:flex;gap:.25rem;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:.45rem 0}
+.subnav .wrap::-webkit-scrollbar{display:none}
+.subnav a{flex:none;color:var(--ondark);text-decoration:none;font-weight:600;font-size:.95rem;padding:.5rem .85rem;border-radius:999px;white-space:nowrap}
+.subnav a:hover{color:var(--signal)}
+.subnav a[aria-current]{background:var(--signal);color:var(--signal-ink)}
+.theme-c .top{background:var(--white);color:var(--ink);border-bottom:1px solid var(--panel)}
+.theme-c .brand{color:var(--ink)}
+.theme-c .brand small{color:var(--steel)}
+.theme-c .brand img.logo{background:transparent;padding:0}
+.theme-c .burger{border-color:var(--panel)}
+.theme-c .burger span{background:var(--ink)}
+@media (min-width:1000px){.theme-c .burger{display:none}.subnav .wrap{justify-content:center}}
+.theme-c{--radius:14px}
+.theme-c h1,.theme-c h2{letter-spacing:-.01em}
+.theme-c section h2{border-left:6px solid var(--signal);padding-left:.75rem}
+.theme-c .svc{border-radius:var(--radius);box-shadow:0 12px 28px -20px rgba(0,0,0,.45)}
+.theme-c .svc::before{height:0}
+.theme-c .svc.pcard img,.theme-c .gallery figure{border-radius:12px}
+.theme-c .rev,.theme-c .offer div,.theme-c .aside,.theme-c .why li{border-radius:var(--radius)}
+.theme-c .call,.theme-c .cta-row a,.theme-c .lead button.call{border-radius:12px}
+.theme-c details{border:1px solid var(--panel);border-radius:12px;padding:.9rem 1.1rem;margin-bottom:.6rem;background:var(--white)}
+.theme-c .band{background:linear-gradient(120deg,var(--ink) 0%,var(--ink) 55%,color-mix(in srgb,var(--signal) 35%,var(--ink)) 100%)}
+
+/* per-site offer strip */
+.promo{background:var(--signal);color:var(--ink);font-size:.95rem}
+.promo .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.35rem .9rem;padding:.5rem 0;text-align:center}
+.promo b{letter-spacing:.04em;background:var(--ink);color:var(--signal);padding:.05rem .45rem;border-radius:4px}
+.promo a{color:var(--ink);font-weight:700;text-decoration:underline;white-space:nowrap}
 </style>
 <script type="application/ld+json">
 {
@@ -483,17 +520,19 @@ footer .legal a{color:inherit}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How fast can a locksmith get to Bothell?","acceptedAnswer":{"@type":"Answer","text":"Usually 20 to 40 minutes. Bob&#x27;s Locksmith runs mobile units around Seattle 24 hours a day; the dispatcher gives you an arrival time for Bothell when you call 206-984-6356."}},{"@type":"Question","name":"Do you charge extra to come to Bothell?","acceptedAnswer":{"@type":"Answer","text":"No. Bothell is inside our regular service area, so you pay the same rates as anywhere in Seattle. You get a firm price before any work starts, and the estimate is free."}},{"@type":"Question","name":"Can you make a car key in Bothell if I lost mine?","acceptedAnswer":{"@type":"Answer","text":"Yes. We cut and program transponder keys, remote-head keys and push-to-start fobs at your location in Bothell, for almost every make and model, with no tow to a dealer."}},{"@type":"Question","name":"Are you a licensed locksmith serving Bothell?","acceptedAnswer":{"@type":"Answer","text":"Yes. Bob&#x27;s Locksmith is licensed and insured, in business since 2009, and every technician is background-checked and shows ID on arrival."}}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"Locksmith","name":"Locksmith Bothell","provider":{"@id":"https://www.bobslocksmithseattle.com/#business"},"areaServed":{"@type":"City","name":"Bothell"},"url":"https://www.bobslocksmithseattle.com/locksmith-bothell/"}</script>
 </head>
 <body class="">
+<div class="progress" aria-hidden="true"></div>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7X6LB3C" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="top">
   <div class="wrap">
     <a class="brand" href="/" aria-label="Bob's Locksmith home">
-      <img class="logo" src="/img/logo-104.png?v=ebf3f919" alt="Bob's Locksmith logo" width="52" height="52">
+      <img class="logo" src="/img/logo-104.webp?v=970e23b5" alt="Bob's Locksmith logo" width="52" height="52">
       <span class="wm"><b>Bob&#x27;s Locksmith</b><small>Since 2009 · Seattle, WA · 24 hours</small></span>
     </a>
     <a class="call" href="tel:+12069846356" aria-label="Call 206-984-6356"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.7a2 2 0 0 1 1.7 2z"/></svg><span>206-984-6356</span></a>
     <button class="burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </header>
+
 <div class="scrim" hidden></div>
 <nav class="drawer" id="menu" aria-label="Main" hidden>
   <div class="drawer-head">
@@ -768,7 +807,7 @@ if(window.__cc===null||window.__cc===undefined)setTimeout(show,1200);})();
   if(location.pathname.indexOf('/thank-you')===0){track('lead_form_submit');}
 })();
 </script>
-<script src="/js/motion.min.js?v=cc08aa24" defer></script>
-<script src="/js/animate.js?v=cc08aa24" defer></script>
+<script src="/js/motion.min.js?v=e0f9e557" defer></script>
+<script src="/js/animate.js?v=e0f9e557" defer></script>
 </body>
 </html>

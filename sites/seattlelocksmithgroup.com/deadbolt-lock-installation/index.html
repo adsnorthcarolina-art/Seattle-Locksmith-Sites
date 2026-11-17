@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Deadbolt &amp; Lock Installation Seattle, WA | Seattle Locksmith Group</title>
+<title>Deadbolt &amp; Lock Installation Seattle | Seattle Locksmith Group</title>
 <meta name="description" content="New deadbolts, knobs, levers and handlesets from Schlage, Kwikset, Yale, Baldwin and Medeco, supplied and fitted at your Seattle, WA. Call 206-309-1138.">
 <link rel="canonical" href="https://www.seattlelocksmithgroup.com/deadbolt-lock-installation/">
 <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
 <meta name="twitter:title" content="Deadbolt &amp; Lock Installation Seattle, WA | Seattle Locksmith Group">
 <meta name="twitter:description" content="New deadbolts, knobs, levers and handlesets from Schlage, Kwikset, Yale, Baldwin and Medeco, supplied and fitted at your Seattle, WA. Call 206-309-1138.">
 <meta name="twitter:image" content="https://www.seattlelocksmithgroup.com/img/og.jpg?v=319b4f2a">
-<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.ico?v=9831fa92" sizes="48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png?v=57f233d9">
 <link rel="apple-touch-icon" href="/img/icon-192.png?v=57f233d9">
 
@@ -447,6 +447,43 @@ footer .cols>div:nth-child(2) li{break-inside:avoid}
 .lead .consent input{margin-top:.2rem;flex:none;width:1.05rem;height:1.05rem;accent-color:var(--signal)}
 .lead .consent a{color:inherit;text-decoration:underline}
 footer .legal a{color:inherit}
+
+/* Scroll progress bar (CSS scroll-timeline where supported; /js/animate.js fills it in elsewhere) */
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:30;background:var(--signal);transform-origin:0 50%;transform:scaleX(0);pointer-events:none}
+@supports (animation-timeline:scroll()){.progress{animation:progress-grow linear both;animation-timeline:scroll(root)}}
+@keyframes progress-grow{to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.progress{display:none}}
+
+/* ======== theme-c (per-site variant: white header + labelled section bar, soft cards) ======== */
+.subnav{background:var(--ink);border-bottom:3px solid var(--signal);position:sticky;top:0;z-index:9}
+.subnav .wrap{display:flex;gap:.25rem;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:.45rem 0}
+.subnav .wrap::-webkit-scrollbar{display:none}
+.subnav a{flex:none;color:var(--ondark);text-decoration:none;font-weight:600;font-size:.95rem;padding:.5rem .85rem;border-radius:999px;white-space:nowrap}
+.subnav a:hover{color:var(--signal)}
+.subnav a[aria-current]{background:var(--signal);color:var(--signal-ink)}
+.theme-c .top{background:var(--white);color:var(--ink);border-bottom:1px solid var(--panel)}
+.theme-c .brand{color:var(--ink)}
+.theme-c .brand small{color:var(--steel)}
+.theme-c .brand img.logo{background:transparent;padding:0}
+.theme-c .burger{border-color:var(--panel)}
+.theme-c .burger span{background:var(--ink)}
+@media (min-width:1000px){.theme-c .burger{display:none}.subnav .wrap{justify-content:center}}
+.theme-c{--radius:14px}
+.theme-c h1,.theme-c h2{letter-spacing:-.01em}
+.theme-c section h2{border-left:6px solid var(--signal);padding-left:.75rem}
+.theme-c .svc{border-radius:var(--radius);box-shadow:0 12px 28px -20px rgba(0,0,0,.45)}
+.theme-c .svc::before{height:0}
+.theme-c .svc.pcard img,.theme-c .gallery figure{border-radius:12px}
+.theme-c .rev,.theme-c .offer div,.theme-c .aside,.theme-c .why li{border-radius:var(--radius)}
+.theme-c .call,.theme-c .cta-row a,.theme-c .lead button.call{border-radius:12px}
+.theme-c details{border:1px solid var(--panel);border-radius:12px;padding:.9rem 1.1rem;margin-bottom:.6rem;background:var(--white)}
+.theme-c .band{background:linear-gradient(120deg,var(--ink) 0%,var(--ink) 55%,color-mix(in srgb,var(--signal) 35%,var(--ink)) 100%)}
+
+/* per-site offer strip */
+.promo{background:var(--signal);color:var(--ink);font-size:.95rem}
+.promo .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.35rem .9rem;padding:.5rem 0;text-align:center}
+.promo b{letter-spacing:.04em;background:var(--ink);color:var(--signal);padding:.05rem .45rem;border-radius:4px}
+.promo a{color:var(--ink);font-weight:700;text-decoration:underline;white-space:nowrap}
 </style>
 <script type="application/ld+json">
 {
@@ -483,17 +520,19 @@ footer .legal a{color:inherit}
 </script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do you supply the locks or do I buy them?","acceptedAnswer":{"@type":"Answer","text":"Either. The van carries Schlage, Kwikset and Yale deadbolts and handlesets, or we install hardware you already bought."}},{"@type":"Question","name":"Can you install a deadbolt on a door that never had one?","acceptedAnswer":{"@type":"Answer","text":"Yes. We bore the door and frame, fit a reinforced strike plate and align everything so the bolt throws smoothly."}},{"@type":"Question","name":"What grade of deadbolt should I get?","acceptedAnswer":{"@type":"Answer","text":"Grade 1 or 2 for exterior doors. We will show you the options and the price difference on site."}},{"@type":"Question","name":"How fast can you get to me in Seattle?","acceptedAnswer":{"@type":"Answer","text":"Most calls in Seattle are reached within 20 to 40 minutes. Seattle Locksmith Group runs mobile units around the city 24 hours a day, and the dispatcher gives you an arrival time when you call 206-309-1138."}},{"@type":"Question","name":"Do I get a price before you start?","acceptedAnswer":{"@type":"Answer","text":"Yes, always. The technician checks the lock or the car on arrival and quotes the whole job before touching anything. The estimate is free and there are no hidden fees."}},{"@type":"Question","name":"Are you licensed and insured?","acceptedAnswer":{"@type":"Answer","text":"Yes. Seattle Locksmith Group is licensed and insured, in business since 2012, and every technician is background-checked and shows ID on arrival."}}]}</script>
 </head>
 <body class="">
+<div class="progress" aria-hidden="true"></div>
 
 <header class="top">
   <div class="wrap">
     <a class="brand" href="/" aria-label="Seattle Locksmith Group home">
-      <img class="logo" src="/img/logo-104.png?v=9fc2593d" alt="Seattle Locksmith Group logo" width="52" height="52">
+      <img class="logo" src="/img/logo-104.webp?v=3e467356" alt="Seattle Locksmith Group logo" width="52" height="52">
       <span class="wm"><b><em>Seattle</em> Locksmith Group</b><small>Since 2012 · Seattle, WA · 24 hours</small></span>
     </a>
     <a class="call" href="tel:+12063091138" aria-label="Call 206-309-1138"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.7a2 2 0 0 1 1.7 2z"/></svg><span>206-309-1138</span></a>
     <button class="burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </header>
+
 <div class="scrim" hidden></div>
 <nav class="drawer" id="menu" aria-label="Main" hidden>
   <div class="drawer-head">
@@ -781,7 +820,7 @@ if(window.__cc===null||window.__cc===undefined)setTimeout(show,1200);})();
   if(location.pathname.indexOf('/thank-you')===0){track('lead_form_submit');}
 })();
 </script>
-<script src="/js/motion.min.js?v=cc08aa24" defer></script>
-<script src="/js/animate.js?v=cc08aa24" defer></script>
+<script src="/js/motion.min.js?v=e0f9e557" defer></script>
+<script src="/js/animate.js?v=e0f9e557" defer></script>
 </body>
 </html>
