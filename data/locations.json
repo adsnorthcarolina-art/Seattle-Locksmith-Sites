@@ -133,7 +133,8 @@
       "x": "https://x.com/seattlelocksmi",
       "instagram": "https://www.instagram.com/seattlelocksmithgroup",
       "youtube": "https://www.youtube.com/@SeattleLocksmithGroup",
-      "tiktok": "https://www.tiktok.com/@seattlelocksmithgroup"
+      "tiktok": "https://www.tiktok.com/@seattlelocksmithgroup",
+      "pinterest": "https://www.pinterest.com/seattlelocksmithgroup/"
     },
     "place_id": "ChIJuwk9SfSM7mIRN3vODxMATk8",
     "sms": "206-309-1138",
@@ -191,7 +192,10 @@
     ],
     "ga4": "G-LYCP4WB3VY",
     "form_backend": "web3forms",
-    "web3forms_key": "70f90148-447c-40e6-9aa0-c8a87b435cf6"
+    "web3forms_key": "70f90148-447c-40e6-9aa0-c8a87b435cf6",
+    "maps": {
+      "google": "https://www.google.com/maps?cid=5714505059049306935"
+    }
   },
   {
     "domain": "bobslocksmithseattle.com",
