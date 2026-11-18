@@ -538,7 +538,7 @@ def fields(loc):
         "subnav": (SUBNAV if loc.get("subnav") else "") + promo_bar(loc),
         **{"ico_" + k: v for k, v in ICONS.items()},
         "social_links": social_html(loc.get("social")),
-        "social_sameas": "".join(f',"{htmlmod.escape(u, quote=True)}"' for u in (loc.get("social") or {}).values() if u),
+        "social_sameas": "".join(f',"{htmlmod.escape(u, quote=True)}"' for u in list((loc.get("social") or {}).values()) + list((loc.get("maps") or {}).values()) if u),
         "sms_digits": re.sub(r"\D", "", loc.get("sms") or phone),
         "rating": REVIEWS.get("rating", ""), "review_count": REVIEWS.get("count", ""),
         **rating_blocks(loc),
