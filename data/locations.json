@@ -305,7 +305,11 @@
         576,
         1024
       ]
-    ]
+    ],
+    "maps": {
+      "google": "https://www.google.com/maps?cid=16984518406695176244",
+      "bing": "https://www.bing.com/maps?ss=ypid.YN4E0E92C597C05640"
+    }
   },
   {
     "domain": "carkeymobilelocksmithseattle.com",
